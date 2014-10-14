@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.fusepool.geo.enriching;
+package eu.fusepool.p3.geo.enriching;
 
 
 import eu.fusepool.p3.transformer.sample.Arguments;

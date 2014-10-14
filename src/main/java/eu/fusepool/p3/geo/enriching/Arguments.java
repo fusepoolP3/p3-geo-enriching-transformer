@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eu.fusepool.geo.enriching;
+package eu.fusepool.p3.geo.enriching;
 
 import org.wymiwyg.commons.util.arguments.ArgumentsWithHelp;
 import org.wymiwyg.commons.util.arguments.CommandLine;
