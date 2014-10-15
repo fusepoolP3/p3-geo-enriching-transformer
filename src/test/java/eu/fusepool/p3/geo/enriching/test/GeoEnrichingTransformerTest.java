@@ -95,7 +95,7 @@ public class GeoEnrichingTransformerTest {
         Assert.assertTrue("None of the supported output formats is turtle", turtleFound);
     }
         
-	
+
 	@Test
     public void testRemoteConfig() throws Exception {
 		stubFor(get(urlEqualTo("/data/farmacie-trentino.ttl"))
@@ -134,6 +134,7 @@ public class GeoEnrichingTransformerTest {
     	Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
     	
     }
+    
 	
 	public static int findFreePort() {
         int port = 0;
