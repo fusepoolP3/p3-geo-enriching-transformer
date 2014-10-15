@@ -1,0 +1,10 @@
+language: java
+before_install: mvn install -DskipTests=true -DfinalName=geo-enriching-transformer-$TRAVIS_TAG
+deploy:
+  provider: releases
+  api_key:
+    secure: ktoTJUpqffcubSuUfVGYLuH/i3gIEDVtQIjaEZZChFMB6iK6Kddgd8ajYqQARw9oy7PAsGzl1N9BwIOXbODZu832wbIBK4+D1EDTtz8hjEDYZbHZe9zdAQI99IZXeMk7yAk7jHC7H0LhXOkDJ5RuPUauk1RnjwohhcbuYvH4umE=
+  file: target/geo-enriching-transformer-$TRAVIS_TAG-jar-with-dependencies.jar
+  on:
+    tags: true
+    all_branches: true
