@@ -19,6 +19,7 @@ package eu.fusepool.p3.geo.enriching.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.atlas.logging.LogCtl;
@@ -36,6 +37,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.sparql.util.QueryExecUtils;
 import com.hp.hpl.jena.tdb.TDBFactory;
+
 import org.junit.Test;
 
 /**
@@ -43,10 +45,9 @@ import org.junit.Test;
  */
 public class JenaSpatialTest {
 
-    final String LUCENE_INDEX_PATH = "src/test/resources/lucene";
     File LUCENE_INDEX_DIR = null;
-    final String TDB_PATH = "src/test/resources/dataset";
     File TDB_DIR = null;
+    final String TEST_DATASET = "spatial-data-latlong.ttl";
     Dataset spatialDataset = null;
     
     static {
@@ -58,7 +59,6 @@ public class JenaSpatialTest {
     public void setUp() throws Exception {
         LUCENE_INDEX_DIR = File.createTempFile("lucene-", "-index");
         TDB_DIR = File.createTempFile("jenatdb-", "-dataset");
-        
         //spatialDataset = initInMemoryDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR);
         spatialDataset = initTDBDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR, TDB_DIR);
         
@@ -71,7 +71,8 @@ public class JenaSpatialTest {
 
     @Test
     public void testJenaSpatial() throws IOException {
-        loadData(spatialDataset, "src/test/resources/eu/fusepool/p3/geo/enriching/test/spatial-data-latlong.ttl");
+        URL testFile = getClass().getResource(TEST_DATASET);
+        loadData(spatialDataset, testFile.getFile());
         queryData(spatialDataset);
         
     }
