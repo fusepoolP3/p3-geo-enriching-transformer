@@ -35,7 +35,7 @@ public class Main {
 
     private static void start(Arguments arguments) throws Exception {
         TransformerServer server = new TransformerServer(arguments.getPort());        
-        server.start(new GeoEnrichingTransformer());       
+        server.start(new GeoEnrichingTransformerFactory());       
         server.join();
     }
     

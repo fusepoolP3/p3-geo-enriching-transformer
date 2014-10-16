@@ -20,7 +20,7 @@ import eu.fusepool.p3.transformer.server.TransformerServer;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import eu.fusepool.p3.geo.enriching.GeoEnrichingTransformer;
+import eu.fusepool.p3.geo.enriching.GeoEnrichingTransformerFactory;
 import eu.fusepool.p3.transformer.client.Transformer;
 import eu.fusepool.p3.transformer.client.TransformerClientImpl;
 import eu.fusepool.p3.transformer.commons.Entity;
@@ -74,7 +74,7 @@ public class GeoEnrichingTransformerTest {
         transformerBaseUri = "http://localhost:" + transformerServerPort + "/";
         RestAssured.baseURI = transformerBaseUri;
         TransformerServer server = new TransformerServer(transformerServerPort);
-        server.start(new GeoEnrichingTransformer());
+        server.start(new GeoEnrichingTransformerFactory());
     
 	}
 	

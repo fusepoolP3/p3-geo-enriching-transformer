@@ -15,19 +15,8 @@
  */
 package eu.fusepool.p3.geo.enriching;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,25 +24,27 @@ import javax.activation.MimeType;
 import javax.activation.MimeTypeParseException;
 
 import org.apache.clerezza.rdf.core.TripleCollection;
-import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.clerezza.rdf.core.serializedform.Parser;
-import org.apache.clerezza.rdf.core.serializedform.SupportedFormat;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import eu.fusepool.p3.transformer.HttpRequestEntity;
 import eu.fusepool.p3.transformer.RdfGeneratingTransformer;
 
-public class GeoEnrichingTransformer extends RdfGeneratingTransformer {
+/**
+ * A transformer geo-enriching Data against a URI specified at construction.
+ */
+class GeoEnrichingTransformer extends RdfGeneratingTransformer {
 
 
     private static final Logger log = LoggerFactory.getLogger(GeoEnrichingTransformer.class);
     
-    SpatialDataEnhancer jenas = null;
+    final SpatialDataEnhancer spatialDataEnhancer;
+    final String kbDataUrl;
 
-    public GeoEnrichingTransformer() throws Exception {
-        
+    GeoEnrichingTransformer(SpatialDataEnhancer spatialDataEnhancer, String kbDataUrl) {
+        this.spatialDataEnhancer = spatialDataEnhancer;
+        this.kbDataUrl = kbDataUrl;
     }
 
     @Override
@@ -77,22 +68,11 @@ public class GeoEnrichingTransformer extends RdfGeneratingTransformer {
      */
     @Override
     protected TripleCollection generateRdf(HttpRequestEntity entity) throws IOException {
-        String rdfDataFormat = entity.getType().getBaseType();
-        String requestUri = entity.getRequest().getRequestURI();
-        TripleCollection resultGraph = new SimpleMGraph();
+        String mediaType = entity.getType().toString();   
         Parser parser = Parser.getInstance();
-        // adds clent graph to the result graph
-        resultGraph.addAll(parser.parse( entity.getData(), SupportedFormat.TURTLE) );
-        // extracts the knowledge base URI
-        String kbDataUrl = entity.getRequest().getQueryString();
-        if(kbDataUrl != null) {
-           log.info("KB URL: " + kbDataUrl);
-           // load the data and enrich the client graph
-        }
-        else {
-            throw new RuntimeException();
-        }
-        return resultGraph;
+        TripleCollection requestedGraph = parser.parse( entity.getData(), mediaType);
+        //TODO use : return spatialDataEnhancer.enhance(kbDataUrl, requestedGraph);
+        return requestedGraph;
     }
   
     @Override
