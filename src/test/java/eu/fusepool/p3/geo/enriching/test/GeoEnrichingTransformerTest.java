@@ -28,7 +28,6 @@ import eu.fusepool.p3.transformer.commons.util.WritingEntity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Set;
 import java.util.logging.Level;
@@ -129,7 +128,7 @@ public class GeoEnrichingTransformerTest {
             }
         }, turtle);
     	
-        Assert.assertEquals("Wrong media Type of response", turtle, response.getType());
+        Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
         final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
         //is there a better property for nearby?
         final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
