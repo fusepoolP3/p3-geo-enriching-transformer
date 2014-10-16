@@ -26,6 +26,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +35,9 @@ import javax.activation.MimeType;
 import javax.activation.MimeTypeParseException;
 
 import org.apache.clerezza.rdf.core.TripleCollection;
+import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.clerezza.rdf.core.serializedform.Parser;
+import org.apache.clerezza.rdf.core.serializedform.SupportedFormat;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,9 +71,26 @@ public class GeoEnrichingTransformer extends RdfGeneratingTransformer {
         }
     }
 
+    /**
+     * Takes the RDF data sent by the client and the graph name (url) of the knowledge base to search
+     * for points of interest nearby the locations described in the client graph and sends it back enriched with
+     * information about the points of interest that have been found.   
+     */
     @Override
     protected TripleCollection generateRdf(HttpRequestEntity entity) throws IOException {
-        throw new UnsupportedOperationException("Not implemented yet");
+        String rdfDataFormat = entity.getType().getBaseType();
+        String requestUri = entity.getRequest().getRequestURI();
+        TripleCollection resultGraph = new SimpleMGraph();
+        Parser parser = Parser.getInstance();
+        // adds clent graph to the result graph
+        resultGraph.addAll(parser.parse( entity.getData(), SupportedFormat.TURTLE) );
+        // extracts the knowledge base URI
+        String kbDataUrl = entity.getRequest().getParameter("data");  
+        if(kbDataUrl != null) {
+           System.out.println("KB URL: " + kbDataUrl);
+           // load the data and enrich the client graph
+        }
+        return resultGraph;
     }
   
     @Override
