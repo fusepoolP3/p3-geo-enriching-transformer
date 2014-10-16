@@ -28,6 +28,8 @@ import eu.fusepool.p3.transformer.commons.util.WritingEntity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,8 +114,8 @@ public class GeoEnrichingTransformerTest {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Serializer.getInstance().serialize(baos, graphToEnrich, "text/turtle");
         final byte[] ttlData = baos.toByteArray();
-        
-        Transformer t = new TransformerClientImpl(RestAssured.baseURI);
+        String dataUrl = "http://localhost:" + mockPort + "/data/farmacie-trentino.ttl";
+        Transformer t = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl, "UTF-8"));
         Entity response = t.transform(new WritingEntity() {
 
             @Override
