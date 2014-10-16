@@ -84,7 +84,7 @@ public class GeoEnrichingTransformer extends RdfGeneratingTransformer {
         // adds clent graph to the result graph
         resultGraph.addAll(parser.parse( entity.getData(), SupportedFormat.TURTLE) );
         // extracts the knowledge base URI
-        String kbDataUrl = entity.getRequest().getParameter("data");  
+        String kbDataUrl = entity.getRequest().getQueryString();
         if(kbDataUrl != null) {
            log.info("KB URL: " + kbDataUrl);
            // load the data and enrich the client graph
