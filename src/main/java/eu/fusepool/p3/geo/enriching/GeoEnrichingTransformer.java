@@ -51,7 +51,6 @@ public class GeoEnrichingTransformer extends RdfGeneratingTransformer {
     private static final Logger log = LoggerFactory.getLogger(GeoEnrichingTransformer.class);
     
     SpatialDataEnhancer jenas = null;
-    File sourceData = null; // source RDF data
 
     public GeoEnrichingTransformer() throws Exception {
         
