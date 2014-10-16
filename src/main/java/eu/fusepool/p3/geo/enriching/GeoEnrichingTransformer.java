@@ -15,7 +15,16 @@
  */
 package eu.fusepool.p3.geo.enriching;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +34,7 @@ import javax.activation.MimeTypeParseException;
 
 import org.apache.clerezza.rdf.core.TripleCollection;
 import org.apache.clerezza.rdf.core.serializedform.Parser;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,8 +45,12 @@ public class GeoEnrichingTransformer extends RdfGeneratingTransformer {
 
 
     private static final Logger log = LoggerFactory.getLogger(GeoEnrichingTransformer.class);
+    
+    SpatialDataEnhancer jenas = null;
+    File sourceData = null; // source RDF data
 
-    public GeoEnrichingTransformer() {
+    public GeoEnrichingTransformer() throws Exception {
+        
     }
 
     @Override
