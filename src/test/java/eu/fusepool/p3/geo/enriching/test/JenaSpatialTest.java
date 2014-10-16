@@ -47,7 +47,6 @@ public class JenaSpatialTest {
     File LUCENE_INDEX_DIR = null;
     final String TDB_PATH = "src/test/resources/dataset";
     File TDB_DIR = null;
-    final String JENA_SPATIAL_ASSEMBLER = "src/test/resources/eu/fusepool/p3/geo/enriching/test/jena-spatial-assembler.ttl";
     Dataset spatialDataset = null;
     
     static {
@@ -62,7 +61,7 @@ public class JenaSpatialTest {
         
         //spatialDataset = initInMemoryDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR);
         spatialDataset = initTDBDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR, TDB_DIR);
-        //spatialDataset = createLuceneAssembler(JENA_SPATIAL_ASSEMBLER) ;
+        
     }
 
     @After
@@ -152,12 +151,6 @@ public class JenaSpatialTest {
         // Join together into a dataset
         Dataset ds = SpatialDatasetFactory.createLucene(baseDataset, dir, entDef);
 
-        return ds;
-    }
-
-    public Dataset createLuceneAssembler(String assemblerFile) {
-        log.info("Construct lucene spatial dataset using an assembler description");
-        Dataset ds = DatasetFactory.assemble(assemblerFile, "http://localhost/jena_example/#spatial_dataset");
         return ds;
     }
 
