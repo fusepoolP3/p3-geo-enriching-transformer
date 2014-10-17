@@ -1,0 +1,2416 @@
+@prefix schema: <http://schema.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+<http://fusepool.eu/pharmacy/4054> a schema:Pharmacy ;
+	schema:legalName "SILVESTRI LUCIANA" ;
+	geo:lat "46.4123540693265" ;
+	geo:long "11.0520541954953" .
+
+<http://fusepool.eu/pharmacy/address/0> a schema:PostalAddress ;
+	schema:streetAddress "VIA J. A. MAFFEI, 8" ;
+	schema:addressLocality "REVO'" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38028" .
+
+<http://fusepool.eu/pharmacy/4054> schema:streetAddress <http://fusepool.eu/pharmacy/address/0> ;
+	rdfs:label "Farmacia SILVESTRI LUCIANA" .
+
+<http://fusepool.eu/pharmacy/4162> a schema:Pharmacy ;
+	schema:legalName "RAVAGNANI CHIARA" ;
+	geo:lat "45.7590051426327" ;
+	geo:long "11.0026564100186" .
+
+<http://fusepool.eu/pharmacy/address/1> a schema:PostalAddress ;
+	schema:streetAddress "CORSO PASSO BUOLE, 5/A" ;
+	schema:addressLocality "ALA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38061" .
+
+<http://fusepool.eu/pharmacy/4162> schema:streetAddress <http://fusepool.eu/pharmacy/address/1> ;
+	rdfs:label "Farmacia RAVAGNANI CHIARA" .
+
+<http://fusepool.eu/pharmacy/4163> a schema:Pharmacy ;
+	schema:legalName "FRANZELLIN VITTORIO E C. SNC" ;
+	geo:lat "45.7479086521251" ;
+	geo:long "11.0414606774668" .
+
+<http://fusepool.eu/pharmacy/address/2> a schema:PostalAddress ;
+	schema:streetAddress "VIA SEGANTINI, 1" ;
+	schema:addressLocality "ALA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38061" .
+
+<http://fusepool.eu/pharmacy/4163> schema:streetAddress <http://fusepool.eu/pharmacy/address/2> ;
+	rdfs:label "Farmacia FRANZELLIN VITTORIO E C. SNC" .
+
+<http://fusepool.eu/pharmacy/4164> a schema:Pharmacy ;
+	schema:legalName "BETTINAZZI - R. & T. PHARMA SNC" ;
+	geo:lat "45.9304227931688" ;
+	geo:long "10.9070021739945" .
+
+<http://fusepool.eu/pharmacy/address/3> a schema:PostalAddress ;
+	schema:streetAddress "VIA GALAS, 49" ;
+	schema:addressLocality "ARCO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38062" .
+
+<http://fusepool.eu/pharmacy/4164> schema:streetAddress <http://fusepool.eu/pharmacy/address/3> ;
+	rdfs:label "Farmacia BETTINAZZI - R. & T. PHARMA SNC" .
+
+<http://fusepool.eu/pharmacy/4165> a schema:Pharmacy ;
+	schema:legalName "FAMIGLIA COOPERATIVA VALLAGARINA" ;
+	geo:lat "45.7321595956525" ;
+	geo:long "10.9198632803229" .
+
+<http://fusepool.eu/pharmacy/address/4> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA ROMA, 6" ;
+	schema:addressLocality "AVIO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38063" .
+
+<http://fusepool.eu/pharmacy/4165> schema:streetAddress <http://fusepool.eu/pharmacy/address/4> ;
+	rdfs:label "Farmacia FAMIGLIA COOPERATIVA VALLAGARINA" .
+
+<http://fusepool.eu/pharmacy/4166> a schema:Pharmacy ;
+	schema:legalName "BAILO MICHELE" ;
+	geo:lat "46.0153100445136" ;
+	geo:long "11.4345899281404" .
+
+<http://fusepool.eu/pharmacy/address/5> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA DANTE ALIGHIERI, 1" ;
+	schema:addressLocality "BORGO VALSUGANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38051" .
+
+<http://fusepool.eu/pharmacy/4166> schema:streetAddress <http://fusepool.eu/pharmacy/address/5> ;
+	rdfs:label "Farmacia BAILO MICHELE" .
+
+<http://fusepool.eu/pharmacy/4167> a schema:Pharmacy ;
+	schema:legalName "CALLIANO SAS DI VITULLO GHERTA" ;
+	geo:lat "45.9345629" ;
+	geo:long "11.0942589" .
+
+<http://fusepool.eu/pharmacy/address/6> a schema:PostalAddress ;
+	schema:streetAddress "VIA VALENTINI, 19" ;
+	schema:addressLocality "CALLIANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4167> schema:streetAddress <http://fusepool.eu/pharmacy/address/6> ;
+	rdfs:label "Farmacia CALLIANO SAS DI VITULLO GHERTA" .
+
+<http://fusepool.eu/pharmacy/4168> a schema:Pharmacy ;
+	schema:legalName "FRANZELLIN GIANCARLO" ;
+	geo:lat "46.2908054279005" ;
+	geo:long "11.4621468378048" .
+
+<http://fusepool.eu/pharmacy/address/7> a schema:PostalAddress ;
+	schema:streetAddress "VIA FRATELLI BRONZETTI, 28" ;
+	schema:addressLocality "CAVALESE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38033" .
+
+<http://fusepool.eu/pharmacy/4168> schema:streetAddress <http://fusepool.eu/pharmacy/address/7> ;
+	rdfs:label "Farmacia FRANZELLIN GIANCARLO" .
+
+<http://fusepool.eu/pharmacy/4169> a schema:Pharmacy ;
+	schema:legalName "ALL'ANGELO SNC" ;
+	geo:lat "46.2719475733844" ;
+	geo:long "11.052403821412" .
+
+<http://fusepool.eu/pharmacy/address/8> a schema:PostalAddress ;
+	schema:streetAddress "VIA GUGLIELMO MARCONI, 8" ;
+	schema:addressLocality "DENNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/4169> schema:streetAddress <http://fusepool.eu/pharmacy/address/8> ;
+	rdfs:label "Farmacia ALL'ANGELO SNC" .
+
+<http://fusepool.eu/pharmacy/4170> a schema:Pharmacy ;
+	schema:legalName "GIRARDI DI DOTT. C. TADDEI & C. SNC" ;
+	geo:lat "45.9090169713352" ;
+	geo:long "11.1996587694094" .
+
+<http://fusepool.eu/pharmacy/address/9> a schema:PostalAddress ;
+	schema:streetAddress "VIA E. COLPI, 181" ;
+	schema:addressLocality "FOLGARIA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38064" .
+
+<http://fusepool.eu/pharmacy/4170> schema:streetAddress <http://fusepool.eu/pharmacy/address/9> ;
+	rdfs:label "Farmacia GIRARDI DI DOTT. C. TADDEI & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4171> a schema:Pharmacy ;
+	schema:legalName "ROMANI DI ERRIGO A. E C. SNC" ;
+	geo:lat "46.1512831931641" ;
+	geo:long "11.1042541241409" .
+
+<http://fusepool.eu/pharmacy/address/10> a schema:PostalAddress ;
+	schema:streetAddress "VIA SEGANTINI 1" ;
+	schema:addressLocality "LAVIS" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38015" .
+
+<http://fusepool.eu/pharmacy/4171> schema:streetAddress <http://fusepool.eu/pharmacy/address/10> ;
+	rdfs:label "Farmacia ROMANI DI ERRIGO A. E C. SNC" .
+
+<http://fusepool.eu/pharmacy/4172> a schema:Pharmacy ;
+	schema:legalName "ROMANESE" ;
+	geo:lat "46.0113979272623" ;
+	geo:long "11.3005470633363" .
+
+<http://fusepool.eu/pharmacy/address/11> a schema:PostalAddress ;
+	schema:streetAddress "VIA REGIA, 12" ;
+	schema:addressLocality "LEVICO TERME" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38056" .
+
+<http://fusepool.eu/pharmacy/4172> schema:streetAddress <http://fusepool.eu/pharmacy/address/11> ;
+	rdfs:label "Farmacia ROMANESE" .
+
+<http://fusepool.eu/pharmacy/4173> a schema:Pharmacy ;
+	schema:legalName "RIGONI DEL DR. RIGONI ANTONIO & C. SNC" ;
+	geo:lat "46.3645137061942" ;
+	geo:long "11.7061404227998" .
+
+<http://fusepool.eu/pharmacy/address/12> a schema:PostalAddress ;
+	schema:streetAddress "STRADA CERILO DELLANTONIO BORA, 2" ;
+	schema:addressLocality "MOENA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38035" .
+
+<http://fusepool.eu/pharmacy/4173> schema:streetAddress <http://fusepool.eu/pharmacy/address/12> ;
+	rdfs:label "Farmacia RIGONI DEL DR. RIGONI ANTONIO & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4174> a schema:Pharmacy ;
+	schema:legalName "CRESCINI - DR.SSA TOGNANA" ;
+	geo:lat "46.0616404" ;
+	geo:long "11.2398474" .
+
+<http://fusepool.eu/pharmacy/address/13> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA SERRA, 8" ;
+	schema:addressLocality "PERGINE VALSUGANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38057" .
+
+<http://fusepool.eu/pharmacy/4174> schema:streetAddress <http://fusepool.eu/pharmacy/address/13> ;
+	rdfs:label "Farmacia CRESCINI - DR.SSA TOGNANA" .
+
+<http://fusepool.eu/pharmacy/4175> a schema:Pharmacy ;
+	schema:legalName "SCAGLIA S.A.S. DI SCAGLIA ANNA & C." ;
+	geo:lat "46.2220374200605" ;
+	geo:long "10.7963137713744" .
+
+<http://fusepool.eu/pharmacy/address/14> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA S. GIACOMO, 1" ;
+	schema:addressLocality "PINZOLO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38086" .
+
+<http://fusepool.eu/pharmacy/4175> schema:streetAddress <http://fusepool.eu/pharmacy/address/14> ;
+	rdfs:label "Farmacia SCAGLIA S.A.S. DI SCAGLIA ANNA & C." .
+
+<http://fusepool.eu/pharmacy/4176> a schema:Pharmacy ;
+	schema:legalName "COVI ANNAMARIA" ;
+	geo:lat "45.9985303442461" ;
+	geo:long "10.6370184064172" .
+
+<http://fusepool.eu/pharmacy/address/15> a schema:PostalAddress ;
+	schema:streetAddress "VIA NAZIONALE, 3" ;
+	schema:addressLocality "RONCONE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38087" .
+
+<http://fusepool.eu/pharmacy/4176> schema:streetAddress <http://fusepool.eu/pharmacy/address/15> ;
+	rdfs:label "Farmacia COVI ANNAMARIA" .
+
+<http://fusepool.eu/pharmacy/4177> a schema:Pharmacy ;
+	schema:legalName "ZACCHILLI VINOTTI LEONELLA" ;
+	geo:lat "46.3169743035502" ;
+	geo:long "11.069269766697" .
+
+<http://fusepool.eu/pharmacy/address/16> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 38" ;
+	schema:addressLocality "TAIO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38012" .
+
+<http://fusepool.eu/pharmacy/4177> schema:streetAddress <http://fusepool.eu/pharmacy/address/16> ;
+	rdfs:label "Farmacia ZACCHILLI VINOTTI LEONELLA" .
+
+<http://fusepool.eu/pharmacy/4178> a schema:Pharmacy ;
+	schema:legalName "DALL'ARMI SNC PATTINI DR. ALBERTO E DR.SSA ALESSANDRA" ;
+	geo:lat "46.0676193498462" ;
+	geo:long "11.1215188143335" .
+
+<http://fusepool.eu/pharmacy/address/17> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA DUOMO, 10" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4178> schema:streetAddress <http://fusepool.eu/pharmacy/address/17> ;
+	rdfs:label "Farmacia DALL'ARMI SNC PATTINI DR. ALBERTO E DR.SSA ALESSANDRA" .
+
+<http://fusepool.eu/pharmacy/4179> a schema:Pharmacy ;
+	schema:legalName "GALLO SNC" ;
+	geo:lat "45.9155143299823" ;
+	geo:long "10.8849798811351" .
+
+<http://fusepool.eu/pharmacy/address/18> a schema:PostalAddress ;
+	schema:streetAddress "VIA MANTOVA, 51" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4179> schema:streetAddress <http://fusepool.eu/pharmacy/address/18> ;
+	rdfs:label "Farmacia GALLO SNC" .
+
+<http://fusepool.eu/pharmacy/4180> a schema:Pharmacy ;
+	schema:legalName "DE BATTTAGLIA SNC" ;
+	geo:lat "46.0622059167663" ;
+	geo:long "11.1117645926563" .
+
+<http://fusepool.eu/pharmacy/address/19> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA PASI, 20" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4180> schema:streetAddress <http://fusepool.eu/pharmacy/address/19> ;
+	rdfs:label "Farmacia DE BATTTAGLIA SNC" .
+
+<http://fusepool.eu/pharmacy/4181> a schema:Pharmacy ;
+	schema:legalName "GIUPPONI" ;
+	geo:lat "45.9933102" ;
+	geo:long "10.9749001" .
+
+<http://fusepool.eu/pharmacy/address/20> a schema:PostalAddress ;
+	schema:streetAddress "VIA CATONI, 69" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4181> schema:streetAddress <http://fusepool.eu/pharmacy/address/20> ;
+	rdfs:label "Farmacia GIUPPONI" .
+
+<http://fusepool.eu/pharmacy/4182> a schema:Pharmacy ;
+	schema:legalName "BALDRACHI LUKAS" ;
+	geo:lat "46.2651735914533" ;
+	geo:long "10.9487329392243" .
+
+<http://fusepool.eu/pharmacy/address/21> a schema:PostalAddress ;
+	schema:streetAddress "VIA E. LEONARDI, 29" ;
+	schema:addressLocality "TUENNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38019" .
+
+<http://fusepool.eu/pharmacy/4182> schema:streetAddress <http://fusepool.eu/pharmacy/address/21> ;
+	rdfs:label "Farmacia BALDRACHI LUKAS" .
+
+<http://fusepool.eu/pharmacy/4183> a schema:Pharmacy ;
+	schema:legalName "GAGLIARDI CLAUDIO" ;
+	geo:lat "45.9861874205662" ;
+	geo:long "10.8216630422551" .
+
+<http://fusepool.eu/pharmacy/address/22> a schema:PostalAddress ;
+	schema:streetAddress "VIA ALCIDE DE GASPERI, 1" ;
+	schema:addressLocality "FIAVE'" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38075" .
+
+<http://fusepool.eu/pharmacy/4183> schema:streetAddress <http://fusepool.eu/pharmacy/address/22> ;
+	rdfs:label "Farmacia GAGLIARDI CLAUDIO" .
+
+<http://fusepool.eu/pharmacy/4184> a schema:Pharmacy ;
+	schema:legalName "BRANCALEONI RENZO" ;
+	geo:lat "46.1596468747837" ;
+	geo:long "11.0589755169334" .
+
+<http://fusepool.eu/pharmacy/address/23> a schema:PostalAddress ;
+	schema:streetAddress "VIA PER TRENTO, 11/B" ;
+	schema:addressLocality "ZAMBANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/4184> schema:streetAddress <http://fusepool.eu/pharmacy/address/23> ;
+	rdfs:label "Farmacia BRANCALEONI RENZO" .
+
+<http://fusepool.eu/pharmacy/4185> a schema:Pharmacy ;
+	schema:legalName "TESEO FRANCESCO" ;
+	geo:lat "46.1396954319267" ;
+	geo:long "11.4642967434695" .
+
+<http://fusepool.eu/pharmacy/address/24> a schema:PostalAddress ;
+	schema:streetAddress "VIA PARADISO, 2" ;
+	schema:addressLocality "TELVE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/4185> schema:streetAddress <http://fusepool.eu/pharmacy/address/24> ;
+	rdfs:label "Farmacia TESEO FRANCESCO" .
+
+<http://fusepool.eu/pharmacy/4186> a schema:Pharmacy ;
+	schema:legalName "BOLGHERA" ;
+	geo:lat "46.0577971934673" ;
+	geo:long "11.1327523327511" .
+
+<http://fusepool.eu/pharmacy/address/25> a schema:PostalAddress ;
+	schema:streetAddress "LARGO MEDAGLIE D'ORO, 8" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4186> schema:streetAddress <http://fusepool.eu/pharmacy/address/25> ;
+	rdfs:label "Farmacia BOLGHERA" .
+
+<http://fusepool.eu/pharmacy/4187> a schema:Pharmacy ;
+	schema:legalName "NARDELLI DR. GABRIELE" ;
+	geo:lat "45.9913596636596" ;
+	geo:long "10.9247729886099" .
+
+<http://fusepool.eu/pharmacy/address/26> a schema:PostalAddress ;
+	schema:streetAddress "STRADA GARDESANA OCC.9/B" ;
+	schema:addressLocality "DRO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38074" .
+
+<http://fusepool.eu/pharmacy/4187> schema:streetAddress <http://fusepool.eu/pharmacy/address/26> ;
+	rdfs:label "Farmacia NARDELLI DR. GABRIELE" .
+
+<http://fusepool.eu/pharmacy/4189> a schema:Pharmacy ;
+	schema:legalName "TRINTINAGLIA GIANMARIA" ;
+	geo:lat "46.016929" ;
+	geo:long "11.635857" .
+
+<http://fusepool.eu/pharmacy/address/27> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA DANTE, 14" ;
+	schema:addressLocality "GRIGNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38055" .
+
+<http://fusepool.eu/pharmacy/4189> schema:streetAddress <http://fusepool.eu/pharmacy/address/27> ;
+	rdfs:label "Farmacia TRINTINAGLIA GIANMARIA" .
+
+<http://fusepool.eu/pharmacy/4190> a schema:Pharmacy ;
+	schema:legalName "COMUNALE 1" ;
+	geo:lat "45.8937085302942" ;
+	geo:long "11.0402015076214" .
+
+<http://fusepool.eu/pharmacy/address/28> a schema:PostalAddress ;
+	schema:streetAddress "VIA PAOLI, 19" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/4190> schema:streetAddress <http://fusepool.eu/pharmacy/address/28> ;
+	rdfs:label "Farmacia COMUNALE 1" .
+
+<http://fusepool.eu/pharmacy/4191> a schema:Pharmacy ;
+	schema:legalName "VILLAZZANO DI BOLEGO PAOLO" ;
+	geo:lat "46.0497829" ;
+	geo:long "11.1439821" .
+
+<http://fusepool.eu/pharmacy/address/29> a schema:PostalAddress ;
+	schema:streetAddress "VIA TAMBOSI, 2" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/4191> schema:streetAddress <http://fusepool.eu/pharmacy/address/29> ;
+	rdfs:label "Farmacia VILLAZZANO DI BOLEGO PAOLO" .
+
+<http://fusepool.eu/pharmacy/4192> a schema:Pharmacy ;
+	schema:legalName "CREMONESI" ;
+	geo:lat "46.1449671070267" ;
+	geo:long "11.2000600793698" .
+
+<http://fusepool.eu/pharmacy/address/30> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 17A" ;
+	schema:addressLocality "ALBIANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38041" .
+
+<http://fusepool.eu/pharmacy/4192> schema:streetAddress <http://fusepool.eu/pharmacy/address/30> ;
+	rdfs:label "Farmacia CREMONESI" .
+
+<http://fusepool.eu/pharmacy/4193> a schema:Pharmacy ;
+	schema:legalName "PIZZO DR. PAOLO" ;
+	geo:lat "46.0616404" ;
+	geo:long "11.2398474" .
+
+<http://fusepool.eu/pharmacy/address/31> a schema:PostalAddress ;
+	schema:streetAddress "VIA BELLINI, 17" ;
+	schema:addressLocality "PERGINE VALSUGANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38057" .
+
+<http://fusepool.eu/pharmacy/4193> schema:streetAddress <http://fusepool.eu/pharmacy/address/31> ;
+	rdfs:label "Farmacia PIZZO DR. PAOLO" .
+
+<http://fusepool.eu/pharmacy/4194> a schema:Pharmacy ;
+	schema:legalName "RIGON LUCIANA" ;
+	geo:lat "45.7836839764063" ;
+	geo:long "11.1199162694893" .
+
+<http://fusepool.eu/pharmacy/address/32> a schema:PostalAddress ;
+	schema:streetAddress "-" ;
+	schema:addressLocality "VALLARSA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4194> schema:streetAddress <http://fusepool.eu/pharmacy/address/32> ;
+	rdfs:label "Farmacia RIGON LUCIANA" .
+
+<http://fusepool.eu/pharmacy/4195> a schema:Pharmacy ;
+	schema:legalName "PAVANI LUIGI" ;
+	geo:lat "45.8874533935421" ;
+	geo:long "11.0317654771857" .
+
+<http://fusepool.eu/pharmacy/address/33> a schema:PostalAddress ;
+	schema:streetAddress "V.LE DELLA VITTORIA, 42" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/4195> schema:streetAddress <http://fusepool.eu/pharmacy/address/33> ;
+	rdfs:label "Farmacia PAVANI LUIGI" .
+
+<http://fusepool.eu/pharmacy/4196> a schema:Pharmacy ;
+	schema:legalName "MONTELISCIANI M. LORETTA" ;
+	geo:lat "46.0686047625162" ;
+	geo:long "11.6097662126501" .
+
+<http://fusepool.eu/pharmacy/address/34> a schema:PostalAddress ;
+	schema:streetAddress "VIA BRIGATA ABRUZZI, 10/A" ;
+	schema:addressLocality "PIEVE TESINO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/4196> schema:streetAddress <http://fusepool.eu/pharmacy/address/34> ;
+	rdfs:label "Farmacia MONTELISCIANI M. LORETTA" .
+
+<http://fusepool.eu/pharmacy/4197> a schema:Pharmacy ;
+	schema:legalName "FARMAGEF SNC" ;
+	geo:lat "46.204401180197" ;
+	geo:long "11.0092429435392" .
+
+<http://fusepool.eu/pharmacy/address/35> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA CHIESA, 1" ;
+	schema:addressLocality "SPORMAGGIORE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/4197> schema:streetAddress <http://fusepool.eu/pharmacy/address/35> ;
+	rdfs:label "Farmacia FARMAGEF SNC" .
+
+<http://fusepool.eu/pharmacy/4198> a schema:Pharmacy ;
+	schema:legalName "DI SEGONZANO DI DR. PIERANGELO VILLACI" ;
+	geo:lat "46.1927490800325" ;
+	geo:long "11.2831916275084" .
+
+<http://fusepool.eu/pharmacy/address/36> a schema:PostalAddress ;
+	schema:streetAddress "FRAZ. SCANCIO, 26" ;
+	schema:addressLocality "SEGONZANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38047" .
+
+<http://fusepool.eu/pharmacy/4198> schema:streetAddress <http://fusepool.eu/pharmacy/address/36> ;
+	rdfs:label "Farmacia DI SEGONZANO DI DR. PIERANGELO VILLACI" .
+
+<http://fusepool.eu/pharmacy/4199> a schema:Pharmacy ;
+	schema:legalName "CESCHI LUCA" ;
+	geo:lat "46.4223636612322" ;
+	geo:long "11.0070611985411" .
+
+<http://fusepool.eu/pharmacy/address/37> a schema:PostalAddress ;
+	schema:streetAddress "VIA G. MARCONI, 86" ;
+	schema:addressLocality "LIVO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38020" .
+
+<http://fusepool.eu/pharmacy/4199> schema:streetAddress <http://fusepool.eu/pharmacy/address/37> ;
+	rdfs:label "Farmacia CESCHI LUCA" .
+
+<http://fusepool.eu/pharmacy/4200> a schema:Pharmacy ;
+	schema:legalName "DALLA VALENTINA" ;
+	geo:lat "46.39920559999999" ;
+	geo:long "10.8486303" .
+
+<http://fusepool.eu/pharmacy/address/38> a schema:PostalAddress ;
+	schema:streetAddress "-" ;
+	schema:addressLocality "RABBI" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38020" .
+
+<http://fusepool.eu/pharmacy/4200> schema:streetAddress <http://fusepool.eu/pharmacy/address/38> ;
+	rdfs:label "Farmacia DALLA VALENTINA" .
+
+<http://fusepool.eu/pharmacy/4201> a schema:Pharmacy ;
+	schema:legalName "TOMAZZOLLI MARCELLA" ;
+	geo:lat "46.1890727967541" ;
+	geo:long "11.1258198550935" .
+
+<http://fusepool.eu/pharmacy/address/39> a schema:PostalAddress ;
+	schema:streetAddress "VIA BRENNERO, 20" ;
+	schema:addressLocality "SAN MICHELE ALL'ADIGE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/4201> schema:streetAddress <http://fusepool.eu/pharmacy/address/39> ;
+	rdfs:label "Farmacia TOMAZZOLLI MARCELLA" .
+
+<http://fusepool.eu/pharmacy/4202> a schema:Pharmacy ;
+	schema:legalName "SERENA DI MONTAGNIN ELENA" ;
+	geo:lat "45.8080332177553" ;
+	geo:long "10.5404626934837" .
+
+<http://fusepool.eu/pharmacy/address/40> a schema:PostalAddress ;
+	schema:streetAddress "VIA DI MEZZO, 3" ;
+	schema:addressLocality "BONDONE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38080" .
+
+<http://fusepool.eu/pharmacy/4202> schema:streetAddress <http://fusepool.eu/pharmacy/address/40> ;
+	rdfs:label "Farmacia SERENA DI MONTAGNIN ELENA" .
+
+<http://fusepool.eu/pharmacy/4203> a schema:Pharmacy ;
+	schema:legalName "VALLE DEI MOCHENI SNC" ;
+	geo:lat "46.1087705" ;
+	geo:long "11.3031744" .
+
+<http://fusepool.eu/pharmacy/address/41> a schema:PostalAddress ;
+	schema:streetAddress "LOC. PINTAREI, 75/E" ;
+	schema:addressLocality "SANT'ORSOLA TERME" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/4203> schema:streetAddress <http://fusepool.eu/pharmacy/address/41> ;
+	rdfs:label "Farmacia VALLE DEI MOCHENI SNC" .
+
+<http://fusepool.eu/pharmacy/4204> a schema:Pharmacy ;
+	schema:legalName "BARBACOVI GIORGIO" ;
+	geo:lat "45.9720953094206" ;
+	geo:long "11.0935322633462" .
+
+<http://fusepool.eu/pharmacy/address/42> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA C. BATTISTI, 4" ;
+	schema:addressLocality "ALDENO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4204> schema:streetAddress <http://fusepool.eu/pharmacy/address/42> ;
+	rdfs:label "Farmacia BARBACOVI GIORGIO" .
+
+<http://fusepool.eu/pharmacy/4205> a schema:Pharmacy ;
+	schema:legalName "REDI - R. & T. PHARMA SNC" ;
+	geo:lat "45.9172551306022" ;
+	geo:long "10.8784250233605" .
+
+<http://fusepool.eu/pharmacy/address/43> a schema:PostalAddress ;
+	schema:streetAddress "VIA NAS, 3" ;
+	schema:addressLocality "ARCO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38062" .
+
+<http://fusepool.eu/pharmacy/4205> schema:streetAddress <http://fusepool.eu/pharmacy/address/43> ;
+	rdfs:label "Farmacia REDI - R. & T. PHARMA SNC" .
+
+<http://fusepool.eu/pharmacy/4206> a schema:Pharmacy ;
+	schema:legalName "MORELLI GIUSEPPE SNC" ;
+	geo:lat "46.1321200575374" ;
+	geo:long "11.2468391450306" .
+
+<http://fusepool.eu/pharmacy/address/44> a schema:PostalAddress ;
+	schema:streetAddress "VIA CESARE BATTISTI, 69" ;
+	schema:addressLocality "BASELGA DI PINE'" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38042" .
+
+<http://fusepool.eu/pharmacy/4206> schema:streetAddress <http://fusepool.eu/pharmacy/address/44> ;
+	rdfs:label "Farmacia MORELLI GIUSEPPE SNC" .
+
+<http://fusepool.eu/pharmacy/4207> a schema:Pharmacy ;
+	schema:legalName "CENTRALE SAS - BALLISTA" ;
+	geo:lat "46.0554152254333" ;
+	geo:long "11.4606663226576" .
+
+<http://fusepool.eu/pharmacy/address/45> a schema:PostalAddress ;
+	schema:streetAddress "CORSO AUSUGUM, 40" ;
+	schema:addressLocality "BORGO VALSUGANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38051" .
+
+<http://fusepool.eu/pharmacy/4207> schema:streetAddress <http://fusepool.eu/pharmacy/address/45> ;
+	rdfs:label "Farmacia CENTRALE SAS - BALLISTA" .
+
+<http://fusepool.eu/pharmacy/4208> a schema:Pharmacy ;
+	schema:legalName "OTTAVIANI FRANCO" ;
+	geo:lat "45.8020613409721" ;
+	geo:long "10.9390077325141" .
+
+<http://fusepool.eu/pharmacy/address/46> a schema:PostalAddress ;
+	schema:streetAddress "VIA GIUSEPPE GARIBALDI, 9" ;
+	schema:addressLocality "BRENTONICO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4208> schema:streetAddress <http://fusepool.eu/pharmacy/address/46> ;
+	rdfs:label "Farmacia OTTAVIANI FRANCO" .
+
+<http://fusepool.eu/pharmacy/4209> a schema:Pharmacy ;
+	schema:legalName "MAISTRI ELVIO & GIRARDI CLAUDIO SNC" ;
+	geo:lat "45.9839520661247" ;
+	geo:long "11.2725313859021" .
+
+<http://fusepool.eu/pharmacy/address/47> a schema:PostalAddress ;
+	schema:streetAddress "LOC. TROZO DEI CAVAI, 8" ;
+	schema:addressLocality "CALDONAZZO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38052" .
+
+<http://fusepool.eu/pharmacy/4209> schema:streetAddress <http://fusepool.eu/pharmacy/address/47> ;
+	rdfs:label "Farmacia MAISTRI ELVIO & GIRARDI CLAUDIO SNC" .
+
+<http://fusepool.eu/pharmacy/4210> a schema:Pharmacy ;
+	schema:legalName "RIGONI CRISTIANO" ;
+	geo:lat "46.1219023022185" ;
+	geo:long "11.6469032548419" .
+
+<http://fusepool.eu/pharmacy/address/48> a schema:PostalAddress ;
+	schema:streetAddress "VIA DANTE ALIGHIERI, 12/A" ;
+	schema:addressLocality "CASTELLO TESINO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38053" .
+
+<http://fusepool.eu/pharmacy/4210> schema:streetAddress <http://fusepool.eu/pharmacy/address/48> ;
+	rdfs:label "Farmacia RIGONI CRISTIANO" .
+
+<http://fusepool.eu/pharmacy/4211> a schema:Pharmacy ;
+	schema:legalName "SARTORI DONINO" ;
+	geo:lat "46.40791919999999" ;
+	geo:long "11.1365971" .
+
+<http://fusepool.eu/pharmacy/address/49> a schema:PostalAddress ;
+	schema:streetAddress "VIA DE CAMPI 3" ;
+	schema:addressLocality "CAVARENO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38011" .
+
+<http://fusepool.eu/pharmacy/4211> schema:streetAddress <http://fusepool.eu/pharmacy/address/49> ;
+	rdfs:label "Farmacia SARTORI DONINO" .
+
+<http://fusepool.eu/pharmacy/4212> a schema:Pharmacy ;
+	schema:legalName "FOLGARESI PAOLO" ;
+	geo:lat "45.9868409301662" ;
+	geo:long "10.989954412224" .
+
+<http://fusepool.eu/pharmacy/address/50> a schema:PostalAddress ;
+	schema:streetAddress "VIA DON NEGRI, 22" ;
+	schema:addressLocality "CAVEDINE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38073" .
+
+<http://fusepool.eu/pharmacy/4212> schema:streetAddress <http://fusepool.eu/pharmacy/address/50> ;
+	rdfs:label "Farmacia FOLGARESI PAOLO" .
+
+<http://fusepool.eu/pharmacy/4213> a schema:Pharmacy ;
+	schema:legalName "MARTINI GIORGIO" ;
+	geo:lat "46.17475280000001" ;
+	geo:long "11.2209905" .
+
+<http://fusepool.eu/pharmacy/address/51> a schema:PostalAddress ;
+	schema:streetAddress "VIA IV NOVEMBRE, 44" ;
+	schema:addressLocality "CEMBRA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38034" .
+
+<http://fusepool.eu/pharmacy/4213> schema:streetAddress <http://fusepool.eu/pharmacy/address/51> ;
+	rdfs:label "Farmacia MARTINI GIORGIO" .
+
+<http://fusepool.eu/pharmacy/4214> a schema:Pharmacy ;
+	schema:legalName "BETTI PAOLO" ;
+	geo:lat "46.0899632" ;
+	geo:long "11.1823868" .
+
+<http://fusepool.eu/pharmacy/address/52> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA SANTA MARIA, 4" ;
+	schema:addressLocality "CIVEZZANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38045" .
+
+<http://fusepool.eu/pharmacy/4214> schema:streetAddress <http://fusepool.eu/pharmacy/address/52> ;
+	rdfs:label "Farmacia BETTI PAOLO" .
+
+<http://fusepool.eu/pharmacy/4215> a schema:Pharmacy ;
+	schema:legalName "DIEMME FARMA SNC" ;
+	geo:lat "46.3477336976718" ;
+	geo:long "10.9893656443914" .
+
+<http://fusepool.eu/pharmacy/address/53> a schema:PostalAddress ;
+	schema:streetAddress "VIA G. A. PILATI, 13" ;
+	schema:addressLocality "CLES" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38023" .
+
+<http://fusepool.eu/pharmacy/4215> schema:streetAddress <http://fusepool.eu/pharmacy/address/53> ;
+	rdfs:label "Farmacia DIEMME FARMA SNC" .
+
+<http://fusepool.eu/pharmacy/4216> a schema:Pharmacy ;
+	schema:legalName "ZONTINI BARBARA" ;
+	geo:lat "45.8817539883688" ;
+	geo:long "10.5939868704181" .
+
+<http://fusepool.eu/pharmacy/address/54> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 43" ;
+	schema:addressLocality "CONDINO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38083" .
+
+<http://fusepool.eu/pharmacy/4216> schema:streetAddress <http://fusepool.eu/pharmacy/address/54> ;
+	rdfs:label "Farmacia ZONTINI BARBARA" .
+
+<http://fusepool.eu/pharmacy/4217> a schema:Pharmacy ;
+	schema:legalName "CESCHINELLI DINO" ;
+	geo:lat "45.9415635716799" ;
+	geo:long "10.6651430913003" .
+
+<http://fusepool.eu/pharmacy/address/55> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 9" ;
+	schema:addressLocality "PIEVE DI BONO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38085" .
+
+<http://fusepool.eu/pharmacy/4217> schema:streetAddress <http://fusepool.eu/pharmacy/address/55> ;
+	rdfs:label "Farmacia CESCHINELLI DINO" .
+
+<http://fusepool.eu/pharmacy/4218> a schema:Pharmacy ;
+	schema:legalName "ALLA MADONNA DI TROTTER GIORGIO E DAMIANO SNC" ;
+	geo:lat "46.1765516" ;
+	geo:long "11.8292505" .
+
+<http://fusepool.eu/pharmacy/address/56> a schema:PostalAddress ;
+	schema:streetAddress "VIA GUADAGNINI, 28" ;
+	schema:addressLocality "FIERA DI PRIMIERO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38054" .
+
+<http://fusepool.eu/pharmacy/4218> schema:streetAddress <http://fusepool.eu/pharmacy/address/56> ;
+	rdfs:label "Farmacia ALLA MADONNA DI TROTTER GIORGIO E DAMIANO SNC" .
+
+<http://fusepool.eu/pharmacy/4219> a schema:Pharmacy ;
+	schema:legalName "DIEMME FARMA SAS DI DE MAFFEI ANTONIA E C." ;
+	geo:lat "46.4171162798013" ;
+	geo:long "11.1402654172457" .
+
+<http://fusepool.eu/pharmacy/address/57> a schema:PostalAddress ;
+	schema:streetAddress "VIA CESARE BATTISTI, 20" ;
+	schema:addressLocality "FONDO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38013" .
+
+<http://fusepool.eu/pharmacy/4219> schema:streetAddress <http://fusepool.eu/pharmacy/address/57> ;
+	rdfs:label "Farmacia DIEMME FARMA SAS DI DE MAFFEI ANTONIA E C." .
+
+<http://fusepool.eu/pharmacy/4220> a schema:Pharmacy ;
+	schema:legalName "FANZAGO D.RI ROBERTO E DIEGO SNC" ;
+	geo:lat "45.9420649936859" ;
+	geo:long "11.2867907271599" .
+
+<http://fusepool.eu/pharmacy/address/58> a schema:PostalAddress ;
+	schema:streetAddress "VIA GIONGHI, 99" ;
+	schema:addressLocality "LAVARONE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38046" .
+
+<http://fusepool.eu/pharmacy/4220> schema:streetAddress <http://fusepool.eu/pharmacy/address/58> ;
+	rdfs:label "Farmacia FANZAGO D.RI ROBERTO E DIEGO SNC" .
+
+<http://fusepool.eu/pharmacy/4221> a schema:Pharmacy ;
+	schema:legalName "DE PREZ" ;
+	geo:lat "45.9975203025033" ;
+	geo:long "11.3305984683628" .
+
+<http://fusepool.eu/pharmacy/address/59> a schema:PostalAddress ;
+	schema:streetAddress "VIA DANTE, 31" ;
+	schema:addressLocality "LEVICO TERME" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38056" .
+
+<http://fusepool.eu/pharmacy/4221> schema:streetAddress <http://fusepool.eu/pharmacy/address/59> ;
+	rdfs:label "Farmacia DE PREZ" .
+
+<http://fusepool.eu/pharmacy/4222> a schema:Pharmacy ;
+	schema:legalName "COMANO TERME SNC DI BETTA PAOLA" ;
+	geo:lat "46.024138" ;
+	geo:long "10.8659923" .
+
+<http://fusepool.eu/pharmacy/address/60> a schema:PostalAddress ;
+	schema:streetAddress "VIA BATTISTI 45" ;
+	schema:addressLocality "COMANO TERME" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38070" .
+
+<http://fusepool.eu/pharmacy/4222> schema:streetAddress <http://fusepool.eu/pharmacy/address/60> ;
+	rdfs:label "Farmacia COMANO TERME SNC DI BETTA PAOLA" .
+
+<http://fusepool.eu/pharmacy/4223> a schema:Pharmacy ;
+	schema:legalName "TOMASI NICOLETTA" ;
+	geo:lat "46.3516068" ;
+	geo:long "10.9128757" .
+
+<http://fusepool.eu/pharmacy/address/61> a schema:PostalAddress ;
+	schema:streetAddress "P.ZZA DANTE, 1" ;
+	schema:addressLocality "MALE'" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38027" .
+
+<http://fusepool.eu/pharmacy/4223> schema:streetAddress <http://fusepool.eu/pharmacy/address/61> ;
+	rdfs:label "Farmacia TOMASI NICOLETTA" .
+
+<http://fusepool.eu/pharmacy/4224> a schema:Pharmacy ;
+	schema:legalName "ZANINI PAOLO & C. SNC" ;
+	geo:lat "46.21510650296" ;
+	geo:long "11.1192545228305" .
+
+<http://fusepool.eu/pharmacy/address/62> a schema:PostalAddress ;
+	schema:streetAddress "P.ZZA SAN GOTTARDO, 13" ;
+	schema:addressLocality "MEZZOCORONA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38016" .
+
+<http://fusepool.eu/pharmacy/4224> schema:streetAddress <http://fusepool.eu/pharmacy/address/62> ;
+	rdfs:label "Farmacia ZANINI PAOLO & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4225> a schema:Pharmacy ;
+	schema:legalName "CAMPAGNOLA GIUSEPPE & C. SNC" ;
+	geo:lat "46.2073466498511" ;
+	geo:long "11.091409194271" .
+
+<http://fusepool.eu/pharmacy/address/63> a schema:PostalAddress ;
+	schema:streetAddress "VIA ALCIDE DE GASPERI, 19" ;
+	schema:addressLocality "MEZZOLOMBARDO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38017" .
+
+<http://fusepool.eu/pharmacy/4225> schema:streetAddress <http://fusepool.eu/pharmacy/address/63> ;
+	rdfs:label "Farmacia CAMPAGNOLA GIUSEPPE & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4226> a schema:Pharmacy ;
+	schema:legalName "SANTO STEFANO DI CANDIOLI ROBERTO & C. SNC" ;
+	geo:lat "45.8566608968003" ;
+	geo:long "10.9517733419702" .
+
+<http://fusepool.eu/pharmacy/address/64> a schema:PostalAddress ;
+	schema:streetAddress "VIA MALFATTI, 6" ;
+	schema:addressLocality "MORI" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38065" .
+
+<http://fusepool.eu/pharmacy/4226> schema:streetAddress <http://fusepool.eu/pharmacy/address/64> ;
+	rdfs:label "Farmacia SANTO STEFANO DI CANDIOLI ROBERTO & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4227> a schema:Pharmacy ;
+	schema:legalName "GALLINA FRANCA" ;
+	geo:lat "46.3111888266907" ;
+	geo:long "10.7236486991021" .
+
+<http://fusepool.eu/pharmacy/address/65> a schema:PostalAddress ;
+	schema:streetAddress "VIA NAZIONALE, 49" ;
+	schema:addressLocality "PELLIZZANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38020" .
+
+<http://fusepool.eu/pharmacy/4227> schema:streetAddress <http://fusepool.eu/pharmacy/address/65> ;
+	rdfs:label "Farmacia GALLINA FRANCA" .
+
+<http://fusepool.eu/pharmacy/4228> a schema:Pharmacy ;
+	schema:legalName "DE VARDA" ;
+	geo:lat "46.0616404" ;
+	geo:long "11.2398474" .
+
+<http://fusepool.eu/pharmacy/address/66> a schema:PostalAddress ;
+	schema:streetAddress "VIA CESARE BATTISTI, 26" ;
+	schema:addressLocality "PERGINE VALSUGANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38057" .
+
+<http://fusepool.eu/pharmacy/4228> schema:streetAddress <http://fusepool.eu/pharmacy/address/66> ;
+	rdfs:label "Farmacia DE VARDA" .
+
+<http://fusepool.eu/pharmacy/4229> a schema:Pharmacy ;
+	schema:legalName "A. FOLETTO DI FOLETTO A. & C.  SNC" ;
+	geo:lat "45.8896543" ;
+	geo:long "10.7313102" .
+
+<http://fusepool.eu/pharmacy/address/67> a schema:PostalAddress ;
+	schema:streetAddress "VIA CASSONI, 3" ;
+	schema:addressLocality "LEDRO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4229> schema:streetAddress <http://fusepool.eu/pharmacy/address/67> ;
+	rdfs:label "Farmacia A. FOLETTO DI FOLETTO A. & C.  SNC" .
+
+<http://fusepool.eu/pharmacy/4230> a schema:Pharmacy ;
+	schema:legalName "DEGASPERI ENRICO" ;
+	geo:lat "46.1558787" ;
+	geo:long "11.1524547" .
+
+<http://fusepool.eu/pharmacy/address/68> a schema:PostalAddress ;
+	schema:streetAddress "VIA AI MOLINI, 1" ;
+	schema:addressLocality "GIOVO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38030" .
+
+<http://fusepool.eu/pharmacy/4230> schema:streetAddress <http://fusepool.eu/pharmacy/address/68> ;
+	rdfs:label "Farmacia DEGASPERI ENRICO" .
+
+<http://fusepool.eu/pharmacy/4231> a schema:Pharmacy ;
+	schema:legalName "PASI SNC  DI PASI LUISA & C." ;
+	geo:lat "46.3116641911769" ;
+	geo:long "11.602528688639" .
+
+<http://fusepool.eu/pharmacy/address/69> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 1/C" ;
+	schema:addressLocality "PREDAZZO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38037" .
+
+<http://fusepool.eu/pharmacy/4231> schema:streetAddress <http://fusepool.eu/pharmacy/address/69> ;
+	rdfs:label "Farmacia PASI SNC  DI PASI LUISA & C." .
+
+<http://fusepool.eu/pharmacy/4232> a schema:Pharmacy ;
+	schema:legalName "TOMASI MONICA" ;
+	geo:lat "46.3320314741192" ;
+	geo:long "10.8808911911955" .
+
+<http://fusepool.eu/pharmacy/address/70> a schema:PostalAddress ;
+	schema:streetAddress "VIA BRESCIA, 82" ;
+	schema:addressLocality "MONCLASSICO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38020" .
+
+<http://fusepool.eu/pharmacy/4232> schema:streetAddress <http://fusepool.eu/pharmacy/address/70> ;
+	rdfs:label "Farmacia TOMASI MONICA" .
+
+<http://fusepool.eu/pharmacy/4234> a schema:Pharmacy ;
+	schema:legalName "ACCORSI MASSIMO & C.  SNC" ;
+	geo:lat "45.88517299999999" ;
+	geo:long "10.8409729" .
+
+<http://fusepool.eu/pharmacy/address/71> a schema:PostalAddress ;
+	schema:streetAddress "VIA MAFFEI,8" ;
+	schema:addressLocality "RIVA DEL GARDA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38066" .
+
+<http://fusepool.eu/pharmacy/4234> schema:streetAddress <http://fusepool.eu/pharmacy/address/71> ;
+	rdfs:label "Farmacia ACCORSI MASSIMO & C.  SNC" .
+
+<http://fusepool.eu/pharmacy/4235> a schema:Pharmacy ;
+	schema:legalName "MUTALIPASSI LUCA & C. SNC" ;
+	geo:lat "45.8895860775008" ;
+	geo:long "10.8224217268873" .
+
+<http://fusepool.eu/pharmacy/address/72> a schema:PostalAddress ;
+	schema:streetAddress "VIALE LUTTI, 12" ;
+	schema:addressLocality "RIVA DEL GARDA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38066" .
+
+<http://fusepool.eu/pharmacy/4235> schema:streetAddress <http://fusepool.eu/pharmacy/address/72> ;
+	rdfs:label "Farmacia MUTALIPASSI LUCA & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4236> a schema:Pharmacy ;
+	schema:legalName "S. LUCIA DI GENEM DR. KAMAL" ;
+	geo:lat "46.0510607" ;
+	geo:long "11.4093559" .
+
+<http://fusepool.eu/pharmacy/address/73> a schema:PostalAddress ;
+	schema:streetAddress "VIA DON GUETTI, 1" ;
+	schema:addressLocality "RONCEGNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/4236> schema:streetAddress <http://fusepool.eu/pharmacy/address/73> ;
+	rdfs:label "Farmacia S. LUCIA DI GENEM DR. KAMAL" .
+
+<http://fusepool.eu/pharmacy/4237> a schema:Pharmacy ;
+	schema:legalName "SANTONI DR. GIORGIO & C. SNC" ;
+	geo:lat "45.8915375" ;
+	geo:long "11.0384953" .
+
+<http://fusepool.eu/pharmacy/address/74> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA F. FILZI, 21" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/4237> schema:streetAddress <http://fusepool.eu/pharmacy/address/74> ;
+	rdfs:label "Farmacia SANTONI DR. GIORGIO & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4238> a schema:Pharmacy ;
+	schema:legalName "COBELLI SAS DI DE COBELLI FLAVIA & C." ;
+	geo:lat "45.89010725" ;
+	geo:long "11.04341225" .
+
+<http://fusepool.eu/pharmacy/address/75> a schema:PostalAddress ;
+	schema:streetAddress "VIA GIUSEPPE MAZZINI, 10" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/4238> schema:streetAddress <http://fusepool.eu/pharmacy/address/75> ;
+	rdfs:label "Farmacia COBELLI SAS DI DE COBELLI FLAVIA & C." .
+
+<http://fusepool.eu/pharmacy/4239> a schema:Pharmacy ;
+	schema:legalName "SOAVE DI SOAVE ALBERTO SNC" ;
+	geo:lat "45.8915375" ;
+	geo:long "11.0384953" .
+
+<http://fusepool.eu/pharmacy/address/76> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA ERBE, 17" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/4239> schema:streetAddress <http://fusepool.eu/pharmacy/address/76> ;
+	rdfs:label "Farmacia SOAVE DI SOAVE ALBERTO SNC" .
+
+<http://fusepool.eu/pharmacy/4240> a schema:Pharmacy ;
+	schema:legalName "BARBACOVI DI BOLEGO MARGHERITA & C. SNC" ;
+	geo:lat "45.88411165" ;
+	geo:long "11.04166115" .
+
+<http://fusepool.eu/pharmacy/address/77> a schema:PostalAddress ;
+	schema:streetAddress "VIA BENACENSE, 9/B" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/4240> schema:streetAddress <http://fusepool.eu/pharmacy/address/77> ;
+	rdfs:label "Farmacia BARBACOVI DI BOLEGO MARGHERITA & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4241> a schema:Pharmacy ;
+	schema:legalName "THALER" ;
+	geo:lat "45.88942" ;
+	geo:long "11.04034" .
+
+<http://fusepool.eu/pharmacy/address/78> a schema:PostalAddress ;
+	schema:streetAddress "VIA DANTE, 3" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/4241> schema:streetAddress <http://fusepool.eu/pharmacy/address/78> ;
+	rdfs:label "Farmacia THALER" .
+
+<http://fusepool.eu/pharmacy/4242> a schema:Pharmacy ;
+	schema:legalName "CATTANI PAOLO" ;
+	geo:lat "46.1014148698208" ;
+	geo:long "10.7373486216062" .
+
+<http://fusepool.eu/pharmacy/address/79> a schema:PostalAddress ;
+	schema:streetAddress "VIA S. VIGILIO, 83" ;
+	schema:addressLocality "SPIAZZO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38088" .
+
+<http://fusepool.eu/pharmacy/4242> schema:streetAddress <http://fusepool.eu/pharmacy/address/79> ;
+	rdfs:label "Farmacia CATTANI PAOLO" .
+
+<http://fusepool.eu/pharmacy/4243> a schema:Pharmacy ;
+	schema:legalName "STENICO E SAN LORENZO DI POLLA GABRIELE E SARTORI MAURA SNC" ;
+	geo:lat "46.0981455715646" ;
+	geo:long "10.8413250782721" .
+
+<http://fusepool.eu/pharmacy/address/80> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA G. PRATI, 11" ;
+	schema:addressLocality "STENICO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38070" .
+
+<http://fusepool.eu/pharmacy/4243> schema:streetAddress <http://fusepool.eu/pharmacy/address/80> ;
+	rdfs:label "Farmacia STENICO E SAN LORENZO DI POLLA GABRIELE E SARTORI MAURA SNC" .
+
+<http://fusepool.eu/pharmacy/4245> a schema:Pharmacy ;
+	schema:legalName "FUSI ALESSANDRO" ;
+	geo:lat "45.8487404217364" ;
+	geo:long "10.5594192760137" .
+
+<http://fusepool.eu/pharmacy/address/81> a schema:PostalAddress ;
+	schema:streetAddress "VIA G. GARIBALDI, 125" ;
+	schema:addressLocality "STORO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38089" .
+
+<http://fusepool.eu/pharmacy/4245> schema:streetAddress <http://fusepool.eu/pharmacy/address/81> ;
+	rdfs:label "Farmacia FUSI ALESSANDRO" .
+
+<http://fusepool.eu/pharmacy/4246> a schema:Pharmacy ;
+	schema:legalName "BORSATO LUIGI" ;
+	geo:lat "46.066631" ;
+	geo:long "11.523447" .
+
+<http://fusepool.eu/pharmacy/address/82> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 29" ;
+	schema:addressLocality "STRIGNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38059" .
+
+<http://fusepool.eu/pharmacy/4246> schema:streetAddress <http://fusepool.eu/pharmacy/address/82> ;
+	rdfs:label "Farmacia BORSATO LUIGI" .
+
+<http://fusepool.eu/pharmacy/4247> a schema:Pharmacy ;
+	schema:legalName "DONATI BRUNO" ;
+	geo:lat "46.2891041386364" ;
+	geo:long "11.4636325431318" .
+
+<http://fusepool.eu/pharmacy/address/83> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 21" ;
+	schema:addressLocality "TESERO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38038" .
+
+<http://fusepool.eu/pharmacy/4247> schema:streetAddress <http://fusepool.eu/pharmacy/address/83> ;
+	rdfs:label "Farmacia DONATI BRUNO" .
+
+<http://fusepool.eu/pharmacy/4248> a schema:Pharmacy ;
+	schema:legalName "BONI GUIDO E GIULIO SNC" ;
+	geo:lat "46.03341" ;
+	geo:long "10.7245" .
+
+<http://fusepool.eu/pharmacy/address/84> a schema:PostalAddress ;
+	schema:streetAddress "VIALE DANTE, 42" ;
+	schema:addressLocality "TIONE DI TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38079" .
+
+<http://fusepool.eu/pharmacy/4248> schema:streetAddress <http://fusepool.eu/pharmacy/address/84> ;
+	rdfs:label "Farmacia BONI GUIDO E GIULIO SNC" .
+
+<http://fusepool.eu/pharmacy/4249> a schema:Pharmacy ;
+	schema:legalName "S. BARTOLAMEO DOTT. C. BERTOLINI & C. SNC" ;
+	geo:lat "46.0427575586414" ;
+	geo:long "11.1314631169961" .
+
+<http://fusepool.eu/pharmacy/address/85> a schema:PostalAddress ;
+	schema:streetAddress "VIALE VERONA, 92" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4249> schema:streetAddress <http://fusepool.eu/pharmacy/address/85> ;
+	rdfs:label "Farmacia S. BARTOLAMEO DOTT. C. BERTOLINI & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4250> a schema:Pharmacy ;
+	schema:legalName "LEPORE DR. MARCO" ;
+	geo:lat "46.0748132409383" ;
+	geo:long "11.1251346567747" .
+
+<http://fusepool.eu/pharmacy/address/86> a schema:PostalAddress ;
+	schema:streetAddress "VIA MANZONI, 7/A" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4250> schema:streetAddress <http://fusepool.eu/pharmacy/address/86> ;
+	rdfs:label "Farmacia LEPORE DR. MARCO" .
+
+<http://fusepool.eu/pharmacy/4251> a schema:Pharmacy ;
+	schema:legalName "ALLA MADONNA DR. GIANMARCO CASAGRANDE & C. SNC" ;
+	geo:lat "46.0622059167663" ;
+	geo:long "11.1117645926563" .
+
+<http://fusepool.eu/pharmacy/address/87> a schema:PostalAddress ;
+	schema:streetAddress "VIA G. MANCI, 42" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38122" .
+
+<http://fusepool.eu/pharmacy/4251> schema:streetAddress <http://fusepool.eu/pharmacy/address/87> ;
+	rdfs:label "Farmacia ALLA MADONNA DR. GIANMARCO CASAGRANDE & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4252> a schema:Pharmacy ;
+	schema:legalName "AI SOLTERI-GADOTTI ANDREA &C.SNC" ;
+	geo:lat "46.09211699999999" ;
+	geo:long "11.11746" .
+
+<http://fusepool.eu/pharmacy/address/88> a schema:PostalAddress ;
+	schema:streetAddress "VIA R. LUNELLI, 9" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38121" .
+
+<http://fusepool.eu/pharmacy/4252> schema:streetAddress <http://fusepool.eu/pharmacy/address/88> ;
+	rdfs:label "Farmacia AI SOLTERI-GADOTTI ANDREA &C.SNC" .
+
+<http://fusepool.eu/pharmacy/4253> a schema:Pharmacy ;
+	schema:legalName "SANTA CHIARA SNC DEI DOTT. ALESSIA ED EDOARDO ABBONDI" ;
+	geo:lat "46.0125447976514" ;
+	geo:long "11.2950495625519" .
+
+<http://fusepool.eu/pharmacy/address/89> a schema:PostalAddress ;
+	schema:streetAddress "VIA SANTA CROCE, 57" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4253> schema:streetAddress <http://fusepool.eu/pharmacy/address/89> ;
+	rdfs:label "Farmacia SANTA CHIARA SNC DEI DOTT. ALESSIA ED EDOARDO ABBONDI" .
+
+<http://fusepool.eu/pharmacy/4254> a schema:Pharmacy ;
+	schema:legalName "BRETTA GIORGIO" ;
+	geo:lat "46.2220374200605" ;
+	geo:long "10.7963137713744" .
+
+<http://fusepool.eu/pharmacy/address/90> a schema:PostalAddress ;
+	schema:streetAddress "VIALE DOLOMITI BRENTA, 44" ;
+	schema:addressLocality "PINZOLO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38086" .
+
+<http://fusepool.eu/pharmacy/4254> schema:streetAddress <http://fusepool.eu/pharmacy/address/90> ;
+	rdfs:label "Farmacia BRETTA GIORGIO" .
+
+<http://fusepool.eu/pharmacy/4255> a schema:Pharmacy ;
+	schema:legalName "BOSSINI SANDRA" ;
+	geo:lat "46.1627028634106" ;
+	geo:long "10.9950609598302" .
+
+<http://fusepool.eu/pharmacy/address/91> a schema:PostalAddress ;
+	schema:streetAddress "VIA PONTE LAMBIN 27/A" ;
+	schema:addressLocality "ANDALO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/4255> schema:streetAddress <http://fusepool.eu/pharmacy/address/91> ;
+	rdfs:label "Farmacia BOSSINI SANDRA" .
+
+<http://fusepool.eu/pharmacy/4256> a schema:Pharmacy ;
+	schema:legalName "TURAZZA LUIGI" ;
+	geo:lat "46.0779043256191" ;
+	geo:long "10.9991219054545" .
+
+<http://fusepool.eu/pharmacy/address/92> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 1" ;
+	schema:addressLocality "VEZZANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38070" .
+
+<http://fusepool.eu/pharmacy/4256> schema:streetAddress <http://fusepool.eu/pharmacy/address/92> ;
+	rdfs:label "Farmacia TURAZZA LUIGI" .
+
+<http://fusepool.eu/pharmacy/4257> a schema:Pharmacy ;
+	schema:legalName "DE PROBIZER PAOLO" ;
+	geo:lat "45.9191875" ;
+	geo:long "11.0600981" .
+
+<http://fusepool.eu/pharmacy/address/93> a schema:PostalAddress ;
+	schema:streetAddress "VIA XXV APRILE, 28" ;
+	schema:addressLocality "VILLA LAGARINA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4257> schema:streetAddress <http://fusepool.eu/pharmacy/address/93> ;
+	rdfs:label "Farmacia DE PROBIZER PAOLO" .
+
+<http://fusepool.eu/pharmacy/4258> a schema:Pharmacy ;
+	schema:legalName "LADINA DI DOTT. GIOVANNI ROMANO & C. SNC" ;
+	geo:lat "46.47774" ;
+	geo:long "11.76887" .
+
+<http://fusepool.eu/pharmacy/address/94> a schema:PostalAddress ;
+	schema:streetAddress "VIA DOLOMITI, 44" ;
+	schema:addressLocality "CANAZEI" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38032" .
+
+<http://fusepool.eu/pharmacy/4258> schema:streetAddress <http://fusepool.eu/pharmacy/address/94> ;
+	rdfs:label "Farmacia LADINA DI DOTT. GIOVANNI ROMANO & C. SNC" .
+
+<http://fusepool.eu/pharmacy/4259> a schema:Pharmacy ;
+	schema:legalName "CHINAGLIA MONICA" ;
+	geo:lat "45.8725644012506" ;
+	geo:long "10.8745116195109" .
+
+<http://fusepool.eu/pharmacy/address/95> a schema:PostalAddress ;
+	schema:streetAddress "VIA MATTEOTTI, 62" ;
+	schema:addressLocality "NAGO-TORBOLE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38069" .
+
+<http://fusepool.eu/pharmacy/4259> schema:streetAddress <http://fusepool.eu/pharmacy/address/95> ;
+	rdfs:label "Farmacia CHINAGLIA MONICA" .
+
+<http://fusepool.eu/pharmacy/4260> a schema:Pharmacy ;
+	schema:legalName "FONTANA MARCELLA E C. SNC" ;
+	geo:lat "46.1077103208361" ;
+	geo:long "11.1128169933321" .
+
+<http://fusepool.eu/pharmacy/address/96> a schema:PostalAddress ;
+	schema:streetAddress "VIA MARCO POLA, 2" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38121" .
+
+<http://fusepool.eu/pharmacy/4260> schema:streetAddress <http://fusepool.eu/pharmacy/address/96> ;
+	rdfs:label "Farmacia FONTANA MARCELLA E C. SNC" .
+
+<http://fusepool.eu/pharmacy/4261> a schema:Pharmacy ;
+	schema:legalName "SAN LORENZO" ;
+	geo:lat "46.0696924" ;
+	geo:long "11.1210886" .
+
+<http://fusepool.eu/pharmacy/address/97> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA G. CANTORE, 1" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/4261> schema:streetAddress <http://fusepool.eu/pharmacy/address/97> ;
+	rdfs:label "Farmacia SAN LORENZO" .
+
+<http://fusepool.eu/pharmacy/4262> a schema:Pharmacy ;
+	schema:legalName "ZONTA ADRIANA" ;
+	geo:lat "46.1545569" ;
+	geo:long "11.805873" .
+
+<http://fusepool.eu/pharmacy/address/98> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 72/A" ;
+	schema:addressLocality "MEZZANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/4262> schema:streetAddress <http://fusepool.eu/pharmacy/address/98> ;
+	rdfs:label "Farmacia ZONTA ADRIANA" .
+
+<http://fusepool.eu/pharmacy/4263> a schema:Pharmacy ;
+	schema:legalName "BOURLOT CARLA" ;
+	geo:lat "46.3710056000803" ;
+	geo:long "10.652750673773" .
+
+<http://fusepool.eu/pharmacy/address/99> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROGE, 9" ;
+	schema:addressLocality "PEIO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38024" .
+
+<http://fusepool.eu/pharmacy/4263> schema:streetAddress <http://fusepool.eu/pharmacy/address/99> ;
+	rdfs:label "Farmacia BOURLOT CARLA" .
+
+<http://fusepool.eu/pharmacy/4264> a schema:Pharmacy ;
+	schema:legalName "BETTA MARCO" ;
+	geo:lat "46.0622059167663" ;
+	geo:long "11.1117645926563" .
+
+<http://fusepool.eu/pharmacy/address/100> a schema:PostalAddress ;
+	schema:streetAddress "VIA HERRSCHING, 1" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38040" .
+
+<http://fusepool.eu/pharmacy/4264> schema:streetAddress <http://fusepool.eu/pharmacy/address/100> ;
+	rdfs:label "Farmacia BETTA MARCO" .
+
+<http://fusepool.eu/pharmacy/4265> a schema:Pharmacy ;
+	schema:legalName "DIEMME FARMA SNC" ;
+	geo:lat "46.349715476156" ;
+	geo:long "11.1328072982685" .
+
+<http://fusepool.eu/pharmacy/address/101> a schema:PostalAddress ;
+	schema:streetAddress "P.ZZA CIGNI, 2" ;
+	schema:addressLocality "COREDO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/4265> schema:streetAddress <http://fusepool.eu/pharmacy/address/101> ;
+	rdfs:label "Farmacia DIEMME FARMA SNC" .
+
+<http://fusepool.eu/pharmacy/4266> a schema:Pharmacy ;
+	schema:legalName "MANFREDI CRISTINA" ;
+	geo:lat "46.004407" ;
+	geo:long "11.195213" .
+
+<http://fusepool.eu/pharmacy/address/102> a schema:PostalAddress ;
+	schema:streetAddress "VIA DELLA FRICCA, 12" ;
+	schema:addressLocality "VIGOLO VATTARO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38049" .
+
+<http://fusepool.eu/pharmacy/4266> schema:streetAddress <http://fusepool.eu/pharmacy/address/102> ;
+	rdfs:label "Farmacia MANFREDI CRISTINA" .
+
+<http://fusepool.eu/pharmacy/4267> a schema:Pharmacy ;
+	schema:legalName "SCERRA VINCENZA" ;
+	geo:lat "46.1991541767805" ;
+	geo:long "11.7002338696905" .
+
+<http://fusepool.eu/pharmacy/address/103> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 39" ;
+	schema:addressLocality "CANAL SAN BOVO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/4267> schema:streetAddress <http://fusepool.eu/pharmacy/address/103> ;
+	rdfs:label "Farmacia SCERRA VINCENZA" .
+
+<http://fusepool.eu/pharmacy/4270> a schema:Pharmacy ;
+	schema:legalName "FERRI" ;
+	geo:lat "46.0696924" ;
+	geo:long "11.1210886" .
+
+<http://fusepool.eu/pharmacy/address/104> a schema:PostalAddress ;
+	schema:streetAddress "VIA FORMIGHETA 1" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38121" .
+
+<http://fusepool.eu/pharmacy/4270> schema:streetAddress <http://fusepool.eu/pharmacy/address/104> ;
+	rdfs:label "Farmacia FERRI" .
+
+<http://fusepool.eu/pharmacy/4271> a schema:Pharmacy ;
+	schema:legalName "TRENTINI ANGELO" ;
+	geo:lat "46.2492896751533" ;
+	geo:long "11.789688409407" .
+
+<http://fusepool.eu/pharmacy/address/105> a schema:PostalAddress ;
+	schema:streetAddress "VIA PASSO ROLLE, 161" ;
+	schema:addressLocality "SIROR" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38054" .
+
+<http://fusepool.eu/pharmacy/4271> schema:streetAddress <http://fusepool.eu/pharmacy/address/105> ;
+	rdfs:label "Farmacia TRENTINI ANGELO" .
+
+<http://fusepool.eu/pharmacy/4272> a schema:Pharmacy ;
+	schema:legalName "DE GERLONI DR. PIER FRANCESCO" ;
+	geo:lat "46.0622059167663" ;
+	geo:long "11.1117645926563" .
+
+<http://fusepool.eu/pharmacy/address/106> a schema:PostalAddress ;
+	schema:streetAddress "LOC. SOPRAMONTE, 205 F" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38123" .
+
+<http://fusepool.eu/pharmacy/4272> schema:streetAddress <http://fusepool.eu/pharmacy/address/106> ;
+	rdfs:label "Farmacia DE GERLONI DR. PIER FRANCESCO" .
+
+<http://fusepool.eu/pharmacy/4273> a schema:Pharmacy ;
+	schema:legalName "MOLARI IVANA" ;
+	geo:lat "46.3761187214135" ;
+	geo:long "11.6614721879533" .
+
+<http://fusepool.eu/pharmacy/address/107> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA DEI VICH, 4" ;
+	schema:addressLocality "VIGO DI FASSA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38039" .
+
+<http://fusepool.eu/pharmacy/4273> schema:streetAddress <http://fusepool.eu/pharmacy/address/107> ;
+	rdfs:label "Farmacia MOLARI IVANA" .
+
+<http://fusepool.eu/pharmacy/4274> a schema:Pharmacy ;
+	schema:legalName "ACCORSI ELENA & C. SAS" ;
+	geo:lat "45.8976952008556" ;
+	geo:long "10.8442243924117" .
+
+<http://fusepool.eu/pharmacy/address/108> a schema:PostalAddress ;
+	schema:streetAddress "VIA DEGLI OLEANDRI, 23" ;
+	schema:addressLocality "RIVA DEL GARDA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38066" .
+
+<http://fusepool.eu/pharmacy/4274> schema:streetAddress <http://fusepool.eu/pharmacy/address/108> ;
+	rdfs:label "Farmacia ACCORSI ELENA & C. SAS" .
+
+<http://fusepool.eu/pharmacy/4275> a schema:Pharmacy ;
+	schema:legalName "VINANTE GIORGIO E C. SNC" ;
+	geo:lat "46.2817897601343" ;
+	geo:long "11.4320162612705" .
+
+<http://fusepool.eu/pharmacy/address/109> a schema:PostalAddress ;
+	schema:streetAddress "VIA LATEMAR, 1/A" ;
+	schema:addressLocality "CASTELLO-MOLINA DI FIEMME" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38030" .
+
+<http://fusepool.eu/pharmacy/4275> schema:streetAddress <http://fusepool.eu/pharmacy/address/109> ;
+	rdfs:label "Farmacia VINANTE GIORGIO E C. SNC" .
+
+<http://fusepool.eu/pharmacy/4276> a schema:Pharmacy ;
+	schema:legalName "VERMIGLIO" ;
+	geo:lat "46.2696160884184" ;
+	geo:long "10.6463787491706" .
+
+<http://fusepool.eu/pharmacy/address/110> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA PAPA GIOVANNI XXIII" ;
+	schema:addressLocality "VERMIGLIO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38029" .
+
+<http://fusepool.eu/pharmacy/4276> schema:streetAddress <http://fusepool.eu/pharmacy/address/110> ;
+	rdfs:label "Farmacia VERMIGLIO" .
+
+<http://fusepool.eu/pharmacy/4277> a schema:Pharmacy ;
+	schema:legalName "MORELLI UMBERTO" ;
+	geo:lat "45.8916597" ;
+	geo:long "10.9525689" .
+
+<http://fusepool.eu/pharmacy/address/111> a schema:PostalAddress ;
+	schema:streetAddress "VIA A. MANZONI, 5" ;
+	schema:addressLocality "RONZO-CHIENIS" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/4277> schema:streetAddress <http://fusepool.eu/pharmacy/address/111> ;
+	rdfs:label "Farmacia MORELLI UMBERTO" .
+
+<http://fusepool.eu/pharmacy/4278> a schema:Pharmacy ;
+	schema:legalName "DI GARDOLO DI  BRANDOLANI RENATO" ;
+	geo:lat "46.1066852" ;
+	geo:long "11.1119955" .
+
+<http://fusepool.eu/pharmacy/address/112> a schema:PostalAddress ;
+	schema:streetAddress "VIA SOPRASASSO, 32/7" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38014" .
+
+<http://fusepool.eu/pharmacy/4278> schema:streetAddress <http://fusepool.eu/pharmacy/address/112> ;
+	rdfs:label "Farmacia DI GARDOLO DI  BRANDOLANI RENATO" .
+
+<http://fusepool.eu/pharmacy/4279> a schema:Pharmacy ;
+	schema:legalName "DI MOLVENO" ;
+	geo:lat "46.1425221390597" ;
+	geo:long "10.9661351527025" .
+
+<http://fusepool.eu/pharmacy/address/113> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA GUGLIELMO MARCONI, 1/A" ;
+	schema:addressLocality "MOLVENO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38018" .
+
+<http://fusepool.eu/pharmacy/4279> schema:streetAddress <http://fusepool.eu/pharmacy/address/113> ;
+	rdfs:label "Farmacia DI MOLVENO" .
+
+<http://fusepool.eu/pharmacy/4280> a schema:Pharmacy ;
+	schema:legalName "MONTE ALBANO SNC" ;
+	geo:lat "45.8566608968003" ;
+	geo:long "10.9517733419702" .
+
+<http://fusepool.eu/pharmacy/address/114> a schema:PostalAddress ;
+	schema:streetAddress "VIA TERRA NERA, 45/1B" ;
+	schema:addressLocality "MORI" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38065" .
+
+<http://fusepool.eu/pharmacy/4280> schema:streetAddress <http://fusepool.eu/pharmacy/address/114> ;
+	rdfs:label "Farmacia MONTE ALBANO SNC" .
+
+<http://fusepool.eu/pharmacy/4281> a schema:Pharmacy ;
+	schema:legalName "CATANZARO MARIA GRAZIA" ;
+	geo:lat "46.1793313" ;
+	geo:long "11.0689304" .
+
+<http://fusepool.eu/pharmacy/address/115> a schema:PostalAddress ;
+	schema:streetAddress "VIA VILLA, 27" ;
+	schema:addressLocality "FAI DELLA PAGANELLA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/4281> schema:streetAddress <http://fusepool.eu/pharmacy/address/115> ;
+	rdfs:label "Farmacia CATANZARO MARIA GRAZIA" .
+
+<http://fusepool.eu/pharmacy/17716> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR. KOSTNER FRANCESCO" ;
+	geo:lat "45.8393356853709" ;
+	geo:long "11.0018249355173" .
+
+<http://fusepool.eu/pharmacy/address/116> a schema:PostalAddress ;
+	schema:streetAddress "VIA VECCHIO ALVEO, 8" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/17716> schema:streetAddress <http://fusepool.eu/pharmacy/address/116> ;
+	rdfs:label "Farmacia DISPENSARIO DR. KOSTNER FRANCESCO" .
+
+<http://fusepool.eu/pharmacy/16971> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.2 AL S. CAMILLO" ;
+	geo:lat "46.2905400810553" ;
+	geo:long "11.4387214382326" .
+
+<http://fusepool.eu/pharmacy/address/117> a schema:PostalAddress ;
+	schema:streetAddress "VIA GIOVANNELLI, 5" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16971> schema:streetAddress <http://fusepool.eu/pharmacy/address/117> ;
+	rdfs:label "Farmacia COMUNALE N.2 AL S. CAMILLO" .
+
+<http://fusepool.eu/pharmacy/18642> a schema:Pharmacy ;
+	schema:legalName "COMUNALE TENNO" ;
+	geo:lat "45.9227632007897" ;
+	geo:long "10.830151590822" .
+
+<http://fusepool.eu/pharmacy/address/118> a schema:PostalAddress ;
+	schema:streetAddress "VA DEI LAGHI, 4" ;
+	schema:addressLocality "TENNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/18642> schema:streetAddress <http://fusepool.eu/pharmacy/address/118> ;
+	rdfs:label "Farmacia COMUNALE TENNO" .
+
+<http://fusepool.eu/pharmacy/17036> a schema:Pharmacy ;
+	schema:legalName "COMUNALE PIETRAMURATA" ;
+	geo:lat "46.0166250533252" ;
+	geo:long "10.9416918996483" .
+
+<http://fusepool.eu/pharmacy/address/119> a schema:PostalAddress ;
+	schema:streetAddress "VIA BORGO NUOVO, 39" ;
+	schema:addressLocality "DRO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38070" .
+
+<http://fusepool.eu/pharmacy/17036> schema:streetAddress <http://fusepool.eu/pharmacy/address/119> ;
+	rdfs:label "Farmacia COMUNALE PIETRAMURATA" .
+
+<http://fusepool.eu/pharmacy/17037> a schema:Pharmacy ;
+	schema:legalName "FARMACIA COMUNALE S. UDALRICO" ;
+	geo:lat "46.1512831931641" ;
+	geo:long "11.1042541241409" .
+
+<http://fusepool.eu/pharmacy/address/120> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA CESARE BATTISTI, 28" ;
+	schema:addressLocality "LAVIS" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38015" .
+
+<http://fusepool.eu/pharmacy/17037> schema:streetAddress <http://fusepool.eu/pharmacy/address/120> ;
+	rdfs:label "Farmacia FARMACIA COMUNALE S. UDALRICO" .
+
+<http://fusepool.eu/pharmacy/18668> a schema:Pharmacy ;
+	schema:legalName "COMUNALE DI BESENELLO" ;
+	geo:lat "45.9385840088118" ;
+	geo:long "11.1103068808492" .
+
+<http://fusepool.eu/pharmacy/address/121> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 6/A" ;
+	schema:addressLocality "BESENELLO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/18668> schema:streetAddress <http://fusepool.eu/pharmacy/address/121> ;
+	rdfs:label "Farmacia COMUNALE DI BESENELLO" .
+
+<http://fusepool.eu/pharmacy/17110> a schema:Pharmacy ;
+	schema:legalName "COMUNALE G.P. ADAMI" ;
+	geo:lat "45.9293739971436" ;
+	geo:long "11.0636538484615" .
+
+<http://fusepool.eu/pharmacy/address/122> a schema:PostalAddress ;
+	schema:streetAddress "VIA 3 NOVEMBRE, 10" ;
+	schema:addressLocality "POMAROLO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/17110> schema:streetAddress <http://fusepool.eu/pharmacy/address/122> ;
+	rdfs:label "Farmacia COMUNALE G.P. ADAMI" .
+
+<http://fusepool.eu/pharmacy/18822> a schema:Pharmacy ;
+	schema:legalName "SAN GIORGIO" ;
+	geo:lat "45.8952385" ;
+	geo:long "11.0276615" .
+
+<http://fusepool.eu/pharmacy/address/123> a schema:PostalAddress ;
+	schema:streetAddress "VIA UNIONE, 83" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/18822> schema:streetAddress <http://fusepool.eu/pharmacy/address/123> ;
+	rdfs:label "Farmacia SAN GIORGIO" .
+
+<http://fusepool.eu/pharmacy/18834> a schema:Pharmacy ;
+	schema:legalName "CAMPAGNOLO" ;
+	geo:lat "46.0696924" ;
+	geo:long "11.1210886" .
+
+<http://fusepool.eu/pharmacy/address/124> a schema:PostalAddress ;
+	schema:streetAddress "VIA ALLE SETTE FONTANE" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38123" .
+
+<http://fusepool.eu/pharmacy/18834> schema:streetAddress <http://fusepool.eu/pharmacy/address/124> ;
+	rdfs:label "Farmacia CAMPAGNOLO" .
+
+<http://fusepool.eu/pharmacy/17217> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DI STENICO SNC" ;
+	geo:lat "46.0767045" ;
+	geo:long "10.9092711" .
+
+<http://fusepool.eu/pharmacy/address/125> a schema:PostalAddress ;
+	schema:streetAddress "-" ;
+	schema:addressLocality "SAN LORENZO IN BANALE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38078" .
+
+<http://fusepool.eu/pharmacy/17217> schema:streetAddress <http://fusepool.eu/pharmacy/address/125> ;
+	rdfs:label "Farmacia DISPENSARIO DI STENICO SNC" .
+
+<http://fusepool.eu/pharmacy/17295> a schema:Pharmacy ;
+	schema:legalName "VENEZIAN PATRIZIA" ;
+	geo:lat "45.9186694" ;
+	geo:long "10.8669217" .
+
+<http://fusepool.eu/pharmacy/address/126> a schema:PostalAddress ;
+	schema:streetAddress "VIA NEGRELLI, 12" ;
+	schema:addressLocality "ARCO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38062" .
+
+<http://fusepool.eu/pharmacy/17295> schema:streetAddress <http://fusepool.eu/pharmacy/address/126> ;
+	rdfs:label "Farmacia VENEZIAN PATRIZIA" .
+
+<http://fusepool.eu/pharmacy/17316> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.4 DI ISERA" ;
+	geo:lat "45.8939300176161" ;
+	geo:long "10.9979685227439" .
+
+<http://fusepool.eu/pharmacy/address/127> a schema:PostalAddress ;
+	schema:streetAddress "VIA C. CAVALIERI, 4/A" ;
+	schema:addressLocality "ISERA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/17316> schema:streetAddress <http://fusepool.eu/pharmacy/address/127> ;
+	rdfs:label "Farmacia COMUNALE N.4 DI ISERA" .
+
+<http://fusepool.eu/pharmacy/18168> a schema:Pharmacy ;
+	schema:legalName "FARMACIE COMUNALI SPA" ;
+	geo:lat "46.0589218431499" ;
+	geo:long "11.1257667774255" .
+
+<http://fusepool.eu/pharmacy/address/128> a schema:PostalAddress ;
+	schema:streetAddress "VIA ASILO PEDROTTI, 18" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/18168> schema:streetAddress <http://fusepool.eu/pharmacy/address/128> ;
+	rdfs:label "Farmacia FARMACIE COMUNALI SPA" .
+
+<http://fusepool.eu/pharmacy/18181> a schema:Pharmacy ;
+	schema:legalName "COMUNALE COGNOLA" ;
+	geo:lat "46.0622059167663" ;
+	geo:long "11.1117645926563" .
+
+<http://fusepool.eu/pharmacy/address/129> a schema:PostalAddress ;
+	schema:streetAddress "P.ZZA DELL'ARGENTARIO, 10" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/18181> schema:streetAddress <http://fusepool.eu/pharmacy/address/129> ;
+	rdfs:label "Farmacia COMUNALE COGNOLA" .
+
+<http://fusepool.eu/pharmacy/16627> a schema:Pharmacy ;
+	schema:legalName "COMUNALE SAN GIUSEPPE" ;
+	geo:lat "46.05885165" ;
+	geo:long "11.1247846" .
+
+<http://fusepool.eu/pharmacy/address/130> a schema:PostalAddress ;
+	schema:streetAddress "VIA VITTORIO VENETO, 39" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16627> schema:streetAddress <http://fusepool.eu/pharmacy/address/130> ;
+	rdfs:label "Farmacia COMUNALE SAN GIUSEPPE" .
+
+<http://fusepool.eu/pharmacy/16664> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.4 CLARINA" ;
+	geo:lat "46.0908623121858" ;
+	geo:long "11.184660339868" .
+
+<http://fusepool.eu/pharmacy/address/131> a schema:PostalAddress ;
+	schema:streetAddress "VIA DEGASPERI" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16664> schema:streetAddress <http://fusepool.eu/pharmacy/address/131> ;
+	rdfs:label "Farmacia COMUNALE N.4 CLARINA" .
+
+<http://fusepool.eu/pharmacy/16665> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.5 S. DONA'" ;
+	geo:lat "46.0622059167663" ;
+	geo:long "11.1117645926563" .
+
+<http://fusepool.eu/pharmacy/address/132> a schema:PostalAddress ;
+	schema:streetAddress "LOC. SAN DON, 50" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16665> schema:streetAddress <http://fusepool.eu/pharmacy/address/132> ;
+	rdfs:label "Farmacia COMUNALE N.5 S. DONA'" .
+
+<http://fusepool.eu/pharmacy/16670> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.3 PIO X" ;
+	geo:lat "46.0524938275703" ;
+	geo:long "11.1198202997403" .
+
+<http://fusepool.eu/pharmacy/address/133> a schema:PostalAddress ;
+	schema:streetAddress "VIA SAN PIO X, 77" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16670> schema:streetAddress <http://fusepool.eu/pharmacy/address/133> ;
+	rdfs:label "Farmacia COMUNALE N.3 PIO X" .
+
+<http://fusepool.eu/pharmacy/16672> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.6 POVO" ;
+	geo:lat "46.1385683241641" ;
+	geo:long "11.1140450714852" .
+
+<http://fusepool.eu/pharmacy/address/134> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA MANCI, 5" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16672> schema:streetAddress <http://fusepool.eu/pharmacy/address/134> ;
+	rdfs:label "Farmacia COMUNALE N.6 POVO" .
+
+<http://fusepool.eu/pharmacy/16675> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.7 MEANO" ;
+	geo:lat "46.1274664" ;
+	geo:long "11.1164557" .
+
+<http://fusepool.eu/pharmacy/address/135> a schema:PostalAddress ;
+	schema:streetAddress "VIA DELLE SUGARINE, 30" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16675> schema:streetAddress <http://fusepool.eu/pharmacy/address/135> ;
+	rdfs:label "Farmacia COMUNALE N.7 MEANO" .
+
+<http://fusepool.eu/pharmacy/16677> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.8 MADONNA BIANCA" ;
+	geo:lat "46.0622059167663" ;
+	geo:long "11.1117645926563" .
+
+<http://fusepool.eu/pharmacy/address/136> a schema:PostalAddress ;
+	schema:streetAddress "VIA MENGUZZATO, 85" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16677> schema:streetAddress <http://fusepool.eu/pharmacy/address/136> ;
+	rdfs:label "Farmacia COMUNALE N.8 MADONNA BIANCA" .
+
+<http://fusepool.eu/pharmacy/16681> a schema:Pharmacy ;
+	schema:legalName "COMUNALE 3" ;
+	geo:lat "45.9029876951056" ;
+	geo:long "11.0422488803273" .
+
+<http://fusepool.eu/pharmacy/address/137> a schema:PostalAddress ;
+	schema:streetAddress "VIA BRIONE, 23" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/16681> schema:streetAddress <http://fusepool.eu/pharmacy/address/137> ;
+	rdfs:label "Farmacia COMUNALE 3" .
+
+<http://fusepool.eu/pharmacy/16694> a schema:Pharmacy ;
+	schema:legalName "FARMACIA COMUNALE OLTRESARCA" ;
+	geo:lat "45.91217" ;
+	geo:long "10.90198" .
+
+<http://fusepool.eu/pharmacy/address/138> a schema:PostalAddress ;
+	schema:streetAddress "VIA DELLA STAZIONE, 6" ;
+	schema:addressLocality "ARCO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38062" .
+
+<http://fusepool.eu/pharmacy/16694> schema:streetAddress <http://fusepool.eu/pharmacy/address/138> ;
+	rdfs:label "Farmacia FARMACIA COMUNALE OLTRESARCA" .
+
+<http://fusepool.eu/pharmacy/16698> a schema:Pharmacy ;
+	schema:legalName "COMUNALE N.9 PIEDICASTELLO" ;
+	geo:lat "46.0706761122494" ;
+	geo:long "11.1134151046456" .
+
+<http://fusepool.eu/pharmacy/address/139> a schema:PostalAddress ;
+	schema:streetAddress "VIA BRESCIA, 19/A" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38100" .
+
+<http://fusepool.eu/pharmacy/16698> schema:streetAddress <http://fusepool.eu/pharmacy/address/139> ;
+	rdfs:label "Farmacia COMUNALE N.9 PIEDICASTELLO" .
+
+<http://fusepool.eu/pharmacy/18319> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO FARMACIA CHINAGLIA MONICA" ;
+	geo:lat "45.8796317371432" ;
+	geo:long "10.8930089786585" .
+
+<http://fusepool.eu/pharmacy/address/140> a schema:PostalAddress ;
+	schema:streetAddress "VIA STAZIONE, 2" ;
+	schema:addressLocality "NAGO-TORBOLE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/18319> schema:streetAddress <http://fusepool.eu/pharmacy/address/140> ;
+	rdfs:label "Farmacia DISPENSARIO FARMACIA CHINAGLIA MONICA" .
+
+<http://fusepool.eu/pharmacy/18320> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO FARMACEUTICO DI FORNACE" ;
+	geo:lat "46.1231874045505" ;
+	geo:long "11.2064208000268" .
+
+<http://fusepool.eu/pharmacy/address/141> a schema:PostalAddress ;
+	schema:streetAddress "VIA DEL BORGOLET, 12/A" ;
+	schema:addressLocality "FORNACE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38040" .
+
+<http://fusepool.eu/pharmacy/18320> schema:streetAddress <http://fusepool.eu/pharmacy/address/141> ;
+	rdfs:label "Farmacia DISPENSARIO FARMACEUTICO DI FORNACE" .
+
+<http://fusepool.eu/pharmacy/18325> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO BLEGGIO SUPERIORE" ;
+	geo:lat "46.0109072555792" ;
+	geo:long "10.7944126381545" .
+
+<http://fusepool.eu/pharmacy/address/142> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 7" ;
+	schema:addressLocality "BLEGGIO SUPERIORE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38071" .
+
+<http://fusepool.eu/pharmacy/18325> schema:streetAddress <http://fusepool.eu/pharmacy/address/142> ;
+	rdfs:label "Farmacia DISPENSARIO BLEGGIO SUPERIORE" .
+
+<http://fusepool.eu/pharmacy/16651> a schema:Pharmacy ;
+	schema:legalName "COMUNALE 2" ;
+	geo:lat "45.88411165" ;
+	geo:long "11.04166115" .
+
+<http://fusepool.eu/pharmacy/address/143> a schema:PostalAddress ;
+	schema:streetAddress "VIA BENACENSE, 43" ;
+	schema:addressLocality "ROVERETO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38068" .
+
+<http://fusepool.eu/pharmacy/16651> schema:streetAddress <http://fusepool.eu/pharmacy/address/143> ;
+	rdfs:label "Farmacia COMUNALE 2" .
+
+<http://fusepool.eu/pharmacy/16702> a schema:Pharmacy ;
+	schema:legalName "COMUNALE SAN ROCCO" ;
+	geo:lat "45.9331674745026" ;
+	geo:long "11.0940766642749" .
+
+<http://fusepool.eu/pharmacy/address/144> a schema:PostalAddress ;
+	schema:streetAddress "VIA 3 NOVEMBRE, 7" ;
+	schema:addressLocality "VOLANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/16702> schema:streetAddress <http://fusepool.eu/pharmacy/address/144> ;
+	rdfs:label "Farmacia COMUNALE SAN ROCCO" .
+
+<http://fusepool.eu/pharmacy/16705> a schema:Pharmacy ;
+	schema:legalName "FARMACIA COMUNALE SAN GIUSEPPE" ;
+	geo:lat "45.8908885137457" ;
+	geo:long "10.8463120012802" .
+
+<http://fusepool.eu/pharmacy/address/145> a schema:PostalAddress ;
+	schema:streetAddress "VIALE TRENTO, 96" ;
+	schema:addressLocality "RIVA DEL GARDA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38066" .
+
+<http://fusepool.eu/pharmacy/16705> schema:streetAddress <http://fusepool.eu/pharmacy/address/145> ;
+	rdfs:label "Farmacia FARMACIA COMUNALE SAN GIUSEPPE" .
+
+<http://fusepool.eu/pharmacy/16707> a schema:Pharmacy ;
+	schema:legalName "FARMACIA COMUNALE SAN CRISTOFORO" ;
+	geo:lat "46.0616404" ;
+	geo:long "11.2398474" .
+
+<http://fusepool.eu/pharmacy/address/146> a schema:PostalAddress ;
+	schema:streetAddress "VIALE EUROPA, 10" ;
+	schema:addressLocality "PERGINE VALSUGANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38057" .
+
+<http://fusepool.eu/pharmacy/16707> schema:streetAddress <http://fusepool.eu/pharmacy/address/146> ;
+	rdfs:label "Farmacia FARMACIA COMUNALE SAN CRISTOFORO" .
+
+<http://fusepool.eu/pharmacy/17591> a schema:Pharmacy ;
+	schema:legalName "SUCCURSALE GALLINA FRANCA" ;
+	geo:lat "46.3237313532266" ;
+	geo:long "10.8013158403302" .
+
+<http://fusepool.eu/pharmacy/address/147> a schema:PostalAddress ;
+	schema:streetAddress "VIA IV NOVEMBRE" ;
+	schema:addressLocality "MEZZANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38020" .
+
+<http://fusepool.eu/pharmacy/17591> schema:streetAddress <http://fusepool.eu/pharmacy/address/147> ;
+	rdfs:label "Farmacia SUCCURSALE GALLINA FRANCA" .
+
+<http://fusepool.eu/pharmacy/17592> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR.SSA GALLINA FRANCA" ;
+	geo:lat "46.3237313532266" ;
+	geo:long "10.8013158403302" .
+
+<http://fusepool.eu/pharmacy/address/148> a schema:PostalAddress ;
+	schema:streetAddress "-" ;
+	schema:addressLocality "MEZZANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38020" .
+
+<http://fusepool.eu/pharmacy/17592> schema:streetAddress <http://fusepool.eu/pharmacy/address/148> ;
+	rdfs:label "Farmacia DISPENSARIO DR.SSA GALLINA FRANCA" .
+
+<http://fusepool.eu/pharmacy/18352> a schema:Pharmacy ;
+	schema:legalName "SAN ROCCO" ;
+	geo:lat "46.16728699999999" ;
+	geo:long "11.110436" .
+
+<http://fusepool.eu/pharmacy/address/149> a schema:PostalAddress ;
+	schema:streetAddress "VIA IV NOVEMBRE" ;
+	schema:addressLocality "NAVE SAN ROCCO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/18352> schema:streetAddress <http://fusepool.eu/pharmacy/address/149> ;
+	rdfs:label "Farmacia SAN ROCCO" .
+
+<http://fusepool.eu/pharmacy/18390> a schema:Pharmacy ;
+	schema:legalName "DI FONSO DR. FRANCESCA" ;
+	geo:lat "46.0974127707554" ;
+	geo:long "11.1029610645526" .
+
+<http://fusepool.eu/pharmacy/address/150> a schema:PostalAddress ;
+	schema:streetAddress "VIA LUIGI CANEPPELE, 31" ;
+	schema:addressLocality "TRENTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38121" .
+
+<http://fusepool.eu/pharmacy/18390> schema:streetAddress <http://fusepool.eu/pharmacy/address/150> ;
+	rdfs:label "Farmacia DI FONSO DR. FRANCESCA" .
+
+<http://fusepool.eu/pharmacy/18393> a schema:Pharmacy ;
+	schema:legalName "RUPERTI SALVATORE" ;
+	geo:lat "46.08323575" ;
+	geo:long "11.21914735" .
+
+<http://fusepool.eu/pharmacy/address/151> a schema:PostalAddress ;
+	schema:streetAddress "VIA D'OLTREFERSINA, 133" ;
+	schema:addressLocality "PERGINE VALSUGANA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38057" .
+
+<http://fusepool.eu/pharmacy/18393> schema:streetAddress <http://fusepool.eu/pharmacy/address/151> ;
+	rdfs:label "Farmacia RUPERTI SALVATORE" .
+
+<http://fusepool.eu/pharmacy/17605> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR. FOLETTO SNC" ;
+	geo:lat "45.894495" ;
+	geo:long "10.684473" .
+
+<http://fusepool.eu/pharmacy/address/152> a schema:PostalAddress ;
+	schema:streetAddress "VIA VITTORIO EMANUELE, 13" ;
+	schema:addressLocality "LEDRO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/17605> schema:streetAddress <http://fusepool.eu/pharmacy/address/152> ;
+	rdfs:label "Farmacia DISPENSARIO DR. FOLETTO SNC" .
+
+<http://fusepool.eu/pharmacy/17607> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR.SSA COVI" ;
+	geo:lat "46.0079083" ;
+	geo:long "10.699332" .
+
+<http://fusepool.eu/pharmacy/address/153> a schema:PostalAddress ;
+	schema:streetAddress "P.ZZA CESARE BATTISTI" ;
+	schema:addressLocality "BREGUZZO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38081" .
+
+<http://fusepool.eu/pharmacy/17607> schema:streetAddress <http://fusepool.eu/pharmacy/address/153> ;
+	rdfs:label "Farmacia DISPENSARIO DR.SSA COVI" .
+
+<http://fusepool.eu/pharmacy/17608> a schema:Pharmacy ;
+	schema:legalName "SUCCURSALE TOMASI MONICA" ;
+	geo:lat "46.2905812296433" ;
+	geo:long "10.8785019243833" .
+
+<http://fusepool.eu/pharmacy/address/154> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZALE FOLGARIDA" ;
+	schema:addressLocality "DIMARO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38064" .
+
+<http://fusepool.eu/pharmacy/17608> schema:streetAddress <http://fusepool.eu/pharmacy/address/154> ;
+	rdfs:label "Farmacia SUCCURSALE TOMASI MONICA" .
+
+<http://fusepool.eu/pharmacy/17609> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR. CATTANI PAOLO" ;
+	geo:lat "46.13004000000001" ;
+	geo:long "10.758036" .
+
+<http://fusepool.eu/pharmacy/address/155> a schema:PostalAddress ;
+	schema:streetAddress "VIA ARMANDO DIAZ N. 1" ;
+	schema:addressLocality "CADERZONE" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "83081" .
+
+<http://fusepool.eu/pharmacy/17609> schema:streetAddress <http://fusepool.eu/pharmacy/address/155> ;
+	rdfs:label "Farmacia DISPENSARIO DR. CATTANI PAOLO" .
+
+<http://fusepool.eu/pharmacy/17610> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR. BORSATO LUIGI" ;
+	geo:lat "46.0448557333752" ;
+	geo:long "11.5492038958439" .
+
+<http://fusepool.eu/pharmacy/address/156> a schema:PostalAddress ;
+	schema:streetAddress "VIA ROMA, 30" ;
+	schema:addressLocality "OSPEDALETTO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38052" .
+
+<http://fusepool.eu/pharmacy/17610> schema:streetAddress <http://fusepool.eu/pharmacy/address/156> ;
+	rdfs:label "Farmacia DISPENSARIO DR. BORSATO LUIGI" .
+
+<http://fusepool.eu/pharmacy/17611> a schema:Pharmacy ;
+	schema:legalName "LADINA (SUCCURSALE)" ;
+	geo:lat "46.4904115339574" ;
+	geo:long "11.7109587382254" .
+
+<http://fusepool.eu/pharmacy/address/157> a schema:PostalAddress ;
+	schema:streetAddress "VIA DOLOMITI, 44" ;
+	schema:addressLocality "CAMPITELLO DI FASSA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38031" .
+
+<http://fusepool.eu/pharmacy/17611> schema:streetAddress <http://fusepool.eu/pharmacy/address/157> ;
+	rdfs:label "Farmacia LADINA (SUCCURSALE)" .
+
+<http://fusepool.eu/pharmacy/17613> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO VINANTE GIORGIO E C. SNC" ;
+	geo:lat "46.2723420099138" ;
+	geo:long "11.4210023943257" .
+
+<http://fusepool.eu/pharmacy/address/158> a schema:PostalAddress ;
+	schema:streetAddress "VIA SEGHERIE, 74" ;
+	schema:addressLocality "CASTELLO-MOLINA DI FIEMME" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38030" .
+
+<http://fusepool.eu/pharmacy/17613> schema:streetAddress <http://fusepool.eu/pharmacy/address/158> ;
+	rdfs:label "Farmacia DISPENSARIO VINANTE GIORGIO E C. SNC" .
+
+<http://fusepool.eu/pharmacy/17615> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO PASI" ;
+	geo:lat "46.2696363876654" ;
+	geo:long "11.5827165518511" .
+
+<http://fusepool.eu/pharmacy/address/159> a schema:PostalAddress ;
+	schema:streetAddress "P.ZZA IV NOVEMBRE, 2" ;
+	schema:addressLocality "ZIANO DI FIEMME" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38030" .
+
+<http://fusepool.eu/pharmacy/17615> schema:streetAddress <http://fusepool.eu/pharmacy/address/159> ;
+	rdfs:label "Farmacia DISPENSARIO PASI" .
+
+<http://fusepool.eu/pharmacy/17620> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO CALLIANO SAS DI  VITULLO GHERTA" ;
+	geo:lat "45.928599" ;
+	geo:long "11.071881" .
+
+<http://fusepool.eu/pharmacy/address/160> a schema:PostalAddress ;
+	schema:streetAddress "VIA PAISSAN, 25" ;
+	schema:addressLocality "NOMI" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38060" .
+
+<http://fusepool.eu/pharmacy/17620> schema:streetAddress <http://fusepool.eu/pharmacy/address/160> ;
+	rdfs:label "Farmacia DISPENSARIO CALLIANO SAS DI  VITULLO GHERTA" .
+
+<http://fusepool.eu/pharmacy/17621> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO STAGIONALE" ;
+	geo:lat "46.1849438268682" ;
+	geo:long "11.010115588658" .
+
+<http://fusepool.eu/pharmacy/address/161> a schema:PostalAddress ;
+	schema:streetAddress "-" ;
+	schema:addressLocality "CAVEDAGO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/17621> schema:streetAddress <http://fusepool.eu/pharmacy/address/161> ;
+	rdfs:label "Farmacia DISPENSARIO STAGIONALE" .
+
+<http://fusepool.eu/pharmacy/17624> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR. ZANINI SNC" ;
+	geo:lat "46.2497503568464" ;
+	geo:long "11.170036999747" .
+
+<http://fusepool.eu/pharmacy/address/162> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA UNIT D'ITALIA, 10A" ;
+	schema:addressLocality "ROVERE' DELLA LUNA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38030" .
+
+<http://fusepool.eu/pharmacy/17624> schema:streetAddress <http://fusepool.eu/pharmacy/address/162> ;
+	rdfs:label "Farmacia DISPENSARIO DR. ZANINI SNC" .
+
+<http://fusepool.eu/pharmacy/17625> a schema:Pharmacy ;
+	schema:legalName "SUCCURSALE ASCANIO GIANLUCA" ;
+	geo:lat "46.259867" ;
+	geo:long "10.585872" .
+
+<http://fusepool.eu/pharmacy/address/163> a schema:PostalAddress ;
+	schema:streetAddress "VIA NAZIONALE" ;
+	schema:addressLocality "VERMIGLIO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38020" .
+
+<http://fusepool.eu/pharmacy/17625> schema:streetAddress <http://fusepool.eu/pharmacy/address/163> ;
+	rdfs:label "Farmacia SUCCURSALE ASCANIO GIANLUCA" .
+
+<http://fusepool.eu/pharmacy/17627> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR. TRINTINAGLIA G.MARIA" ;
+	geo:lat "45.9942077675575" ;
+	geo:long "11.6331029084974" .
+
+<http://fusepool.eu/pharmacy/address/164> a schema:PostalAddress ;
+	schema:streetAddress "VIA NAZIONALE" ;
+	schema:addressLocality "GRIGNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/17627> schema:streetAddress <http://fusepool.eu/pharmacy/address/164> ;
+	rdfs:label "Farmacia DISPENSARIO DR. TRINTINAGLIA G.MARIA" .
+
+<http://fusepool.eu/pharmacy/17628> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO D.SSA MONTELISCIANI M.LORETA" ;
+	geo:lat "46.0989757301504" ;
+	geo:long "11.5638552571326" .
+
+<http://fusepool.eu/pharmacy/address/165> a schema:PostalAddress ;
+	schema:streetAddress "VIA AMMIRAGLIO BETOLO, 5" ;
+	schema:addressLocality "BIENO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/17628> schema:streetAddress <http://fusepool.eu/pharmacy/address/165> ;
+	rdfs:label "Farmacia DISPENSARIO D.SSA MONTELISCIANI M.LORETA" .
+
+<http://fusepool.eu/pharmacy/17630> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO FARMACIA MORELLI SNC" ;
+	geo:lat "46.1618911" ;
+	geo:long "11.3034198" .
+
+<http://fusepool.eu/pharmacy/address/166> a schema:PostalAddress ;
+	schema:streetAddress "VIA VERDI, 35" ;
+	schema:addressLocality "BEDOLLO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38043" .
+
+<http://fusepool.eu/pharmacy/17630> schema:streetAddress <http://fusepool.eu/pharmacy/address/166> ;
+	rdfs:label "Farmacia DISPENSARIO FARMACIA MORELLI SNC" .
+
+<http://fusepool.eu/pharmacy/17631> a schema:Pharmacy ;
+	schema:legalName "DISPENSARIO DR. TONFOLINI" ;
+	geo:lat "46.248332022495" ;
+	geo:long "11.0042197966811" .
+
+<http://fusepool.eu/pharmacy/address/167> a schema:PostalAddress ;
+	schema:streetAddress "P.ZZA CENTRALE" ;
+	schema:addressLocality "CAMPODENNO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38010" .
+
+<http://fusepool.eu/pharmacy/17631> schema:streetAddress <http://fusepool.eu/pharmacy/address/167> ;
+	rdfs:label "Farmacia DISPENSARIO DR. TONFOLINI" .
+
+<http://fusepool.eu/pharmacy/18411> a schema:Pharmacy ;
+	schema:legalName "SARCHE" ;
+	geo:lat "46.0485028276484" ;
+	geo:long "10.9758140551811" .
+
+<http://fusepool.eu/pharmacy/address/168> a schema:PostalAddress ;
+	schema:streetAddress "VIA GERONI, 5" ;
+	schema:addressLocality "CALAVINO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38072" .
+
+<http://fusepool.eu/pharmacy/18411> schema:streetAddress <http://fusepool.eu/pharmacy/address/168> ;
+	rdfs:label "Farmacia SARCHE" .
+
+<http://fusepool.eu/pharmacy/18432> a schema:Pharmacy ;
+	schema:legalName "FARMACIA COMUNALE CASTELNUOVO" ;
+	geo:lat "46.05225" ;
+	geo:long "11.494495" .
+
+<http://fusepool.eu/pharmacy/address/169> a schema:PostalAddress ;
+	schema:streetAddress "PIAZZA MUNICIPIO, 13/B" ;
+	schema:addressLocality "CASTELNUOVO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38050" .
+
+<http://fusepool.eu/pharmacy/18432> schema:streetAddress <http://fusepool.eu/pharmacy/address/169> ;
+	rdfs:label "Farmacia FARMACIA COMUNALE CASTELNUOVO" .
+
+<http://fusepool.eu/pharmacy/18464> a schema:Pharmacy ;
+	schema:legalName "DI CARANO SAS DI CRISTELLON MATTEO & C." ;
+	geo:lat "46.2983914049297" ;
+	geo:long "11.406864080696" .
+
+<http://fusepool.eu/pharmacy/address/170> a schema:PostalAddress ;
+	schema:streetAddress "VIA GIOVANELLI, 38" ;
+	schema:addressLocality "CARANO" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38033" .
+
+<http://fusepool.eu/pharmacy/18464> schema:streetAddress <http://fusepool.eu/pharmacy/address/170> ;
+	rdfs:label "Farmacia DI CARANO SAS DI CRISTELLON MATTEO & C." .
+
+<http://fusepool.eu/pharmacy/4188> a schema:Pharmacy ;
+	schema:legalName "VINANTE DR. GIORGIO & C. SNC" ;
+	geo:lat "46.4285808397104" ;
+	geo:long "11.7261761244066" .
+
+<http://fusepool.eu/pharmacy/address/171> a schema:PostalAddress ;
+	schema:streetAddress "STRADA DE MEIDA 47" ;
+	schema:addressLocality "POZZA DI FASSA" ;
+	schema:addressRegion "PROV. AUTON. TRENTO" ;
+	schema:postalCode "38036" .
+
+<http://fusepool.eu/pharmacy/4188> schema:streetAddress <http://fusepool.eu/pharmacy/address/171> ;
+	rdfs:label "Farmacia VINANTE DR. GIORGIO & C. SNC" .
