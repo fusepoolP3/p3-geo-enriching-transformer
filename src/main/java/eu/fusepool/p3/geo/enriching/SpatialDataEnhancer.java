@@ -8,9 +8,20 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.clerezza.rdf.core.NonLiteral;
+import org.apache.clerezza.rdf.core.PlainLiteral;
+import org.apache.clerezza.rdf.core.Triple;
 import org.apache.clerezza.rdf.core.TripleCollection;
+import org.apache.clerezza.rdf.core.UriRef;
+import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.commons.io.IOUtils;
+import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.atlas.logging.LogCtl;
 import org.apache.jena.query.spatial.EntityDefinition;
 import org.apache.jena.query.spatial.SpatialDatasetFactory;
@@ -25,9 +36,14 @@ import org.slf4j.LoggerFactory;
 
 import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.query.DatasetFactory;
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ReadWrite;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.sparql.util.QueryExecUtils;
 import com.hp.hpl.jena.tdb.TDBFactory;
 /**
  * Enhances an input graph with information taken from a remote source. 
@@ -35,6 +51,9 @@ import com.hp.hpl.jena.tdb.TDBFactory;
  *
  */
 public class SpatialDataEnhancer {
+    
+    private static final UriRef geo_long = new UriRef("ttp://www.w3.org/2003/01/geo/wgs84_pos#long");
+    private static final UriRef geo_lat = new UriRef("ttp://www.w3.org/2003/01/geo/wgs84_pos#lat");
     
     File LUCENE_INDEX_DIR = null;
     File TDB_DIR = null;
@@ -51,13 +70,70 @@ public class SpatialDataEnhancer {
         //spatialDataset = initInMemoryDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR);
         spatialDataset = initTDBDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR, TDB_DIR);
     }
-    
-    public TripleCollection enhance(String sourceData, TripleCollection dataToEnhance) throws IOException {
-        TripleCollection result = null;
-        
-        loadData(spatialDataset, sourceData);
-        
+    /**
+     * Takes a RDF data set to search for point of interest close to objects provided in a graph.  
+     */
+    public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) throws IOException {
+        TripleCollection result = new SimpleMGraph();
+        result.addAll(dataToEnhance);
+        loadData(spatialDataset, dataSetUrl);
+        WGS84Point point = getPointList(dataToEnhance).get(0);
+        result.addAll(queryNearby(point));
         return result;
+    }
+    
+    private List<WGS84Point> getPointList(TripleCollection graph){
+        List<WGS84Point> points = new ArrayList<WGS84Point>();
+        Map<NonLiteral, String> pointsLat = new HashMap<NonLiteral,String>();
+        Iterator<Triple> ipointsLat = graph.filter(null, geo_lat, null);
+        while(ipointsLat.hasNext()){
+            Triple latStmt = ipointsLat.next();
+            NonLiteral subj = latStmt.getSubject();
+            String latitude = ((PlainLiteral)latStmt.getObject()).getLexicalForm();
+            pointsLat.put(subj, latitude);
+        }
+        Iterator<Triple> ipointsLong = graph.filter(null, geo_long, null);
+        while(ipointsLong.hasNext()){
+            Triple latStmt = ipointsLong.next();
+            NonLiteral subj = latStmt.getSubject();
+            String longitude = ((PlainLiteral)latStmt.getObject()).getLexicalForm();
+            String lat = pointsLat.get(subj);
+            WGS84Point point = new WGS84Point();
+            point.setLat( Double.parseDouble(lat) );
+            point.setLong( Double.parseDouble(longitude) );
+            points.add( point );
+            
+        }
+        
+        return points;
+    }
+    
+    private TripleCollection queryNearby(WGS84Point point){
+        TripleCollection result = null;
+        log.info("START");
+        long startTime = System.nanoTime();
+        String pre = StrUtils.strjoinNL("PREFIX : <http://example/>",
+                "PREFIX spatial: <http://jena.apache.org/spatial#>",
+                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+
+        System.out.println("nearby");
+        String qs = StrUtils.strjoinNL("SELECT * ",
+                " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " 1 'km') ;",
+                "      rdfs:label ?label", " }");
+
+        spatialDataset.begin(ReadWrite.READ);
+        try {
+            Query q = QueryFactory.create(pre + "\n" + qs);
+            QueryExecution qexec = QueryExecutionFactory.create(q, spatialDataset);
+            QueryExecUtils.executeQuery(q, qexec);
+        } finally {
+            spatialDataset.end();
+        }
+        long finishTime = System.nanoTime();
+        double time = (finishTime - startTime) / 1.0e6;
+        log.info(String.format("FINISH - %.2fms", time));
+        return result;
+
     }
     
     private Dataset initInMemoryDatasetWithLuceneSpatitalIndex(File indexDir) throws IOException {
@@ -100,11 +176,12 @@ public class SpatialDataEnhancer {
         // you need JTS lib in the classpath to run the examples
         //entDef.setSpatialContextFactory(SpatialQuery.JTS_SPATIAL_CONTEXT_FACTORY_CLASS);
         // set custom goe predicates
+        /*
         entDef.addSpatialPredicatePair(ResourceFactory.createResource("http://localhost/jena_example/#latitude_1"), ResourceFactory.createResource("http://localhost/jena_example/#longitude_1"));
         entDef.addSpatialPredicatePair(ResourceFactory.createResource("http://localhost/jena_example/#latitude_2"), ResourceFactory.createResource("http://localhost/jena_example/#longitude_2"));
         entDef.addWKTPredicate(ResourceFactory.createResource("http://localhost/jena_example/#wkt_1"));
         entDef.addWKTPredicate(ResourceFactory.createResource("http://localhost/jena_example/#wkt_2"));
-
+        */
         // Lucene, index in File system.
         Directory dir = FSDirectory.open(indexDir);
 
