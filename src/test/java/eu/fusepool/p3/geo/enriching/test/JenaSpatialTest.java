@@ -20,9 +20,14 @@ package eu.fusepool.p3.geo.enriching.test;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 import junit.framework.Assert;
 
+import org.apache.clerezza.rdf.core.TripleCollection;
+import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
+import org.apache.clerezza.rdf.core.serializedform.Parser;
+import org.apache.clerezza.rdf.core.serializedform.SupportedFormat;
 import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.atlas.logging.LogCtl;
 import org.apache.jena.query.spatial.*;
@@ -41,6 +46,7 @@ import com.hp.hpl.jena.sparql.util.QueryExecUtils;
 import com.hp.hpl.jena.tdb.TDBFactory;
 
 import eu.fusepool.p3.geo.enriching.SpatialDataEnhancer;
+import eu.fusepool.p3.geo.enriching.WGS84Point;
 
 import org.junit.Test;
 
@@ -63,10 +69,17 @@ public class JenaSpatialTest {
     }
 
     @Test
-    public void testJenaSpatial() throws IOException {
+    public void testLoadDataset() throws IOException {
         URL testFile = getClass().getResource(TEST_DATASET);
         jenas.loadData(jenas.getDataset(), testFile.getFile());
         queryData(jenas.getDataset());
+    }
+    
+    @Test
+    public void testGetPointList() throws IOException {
+        TripleCollection graph = Parser.getInstance().parse(getClass().getResourceAsStream(TEST_DATASET), SupportedFormat.TURTLE);
+        List<WGS84Point> pointList = jenas.getPointList(graph);
+        Assert.assertTrue(pointList.size() > 0);
     }
     
     public void queryData(Dataset spatialDataset) {

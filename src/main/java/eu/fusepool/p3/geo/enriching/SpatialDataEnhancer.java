@@ -18,6 +18,7 @@ import org.apache.clerezza.rdf.core.NonLiteral;
 import org.apache.clerezza.rdf.core.PlainLiteral;
 import org.apache.clerezza.rdf.core.Triple;
 import org.apache.clerezza.rdf.core.TripleCollection;
+import org.apache.clerezza.rdf.core.TypedLiteral;
 import org.apache.clerezza.rdf.core.UriRef;
 import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.commons.io.IOUtils;
@@ -52,8 +53,8 @@ import com.hp.hpl.jena.tdb.TDBFactory;
  */
 public class SpatialDataEnhancer {
     
-    private static final UriRef geo_long = new UriRef("ttp://www.w3.org/2003/01/geo/wgs84_pos#long");
-    private static final UriRef geo_lat = new UriRef("ttp://www.w3.org/2003/01/geo/wgs84_pos#lat");
+    private static final UriRef geo_long = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#long");
+    private static final UriRef geo_lat = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#lat");
     
     File LUCENE_INDEX_DIR = null;
     File TDB_DIR = null;
@@ -82,21 +83,21 @@ public class SpatialDataEnhancer {
         return result;
     }
     
-    private List<WGS84Point> getPointList(TripleCollection graph){
+    public List<WGS84Point> getPointList(TripleCollection graph){
         List<WGS84Point> points = new ArrayList<WGS84Point>();
         Map<NonLiteral, String> pointsLat = new HashMap<NonLiteral,String>();
         Iterator<Triple> ipointsLat = graph.filter(null, geo_lat, null);
         while(ipointsLat.hasNext()){
             Triple latStmt = ipointsLat.next();
             NonLiteral subj = latStmt.getSubject();
-            String latitude = ((PlainLiteral)latStmt.getObject()).getLexicalForm();
+            String latitude = ((TypedLiteral)latStmt.getObject()).getLexicalForm();
             pointsLat.put(subj, latitude);
         }
         Iterator<Triple> ipointsLong = graph.filter(null, geo_long, null);
         while(ipointsLong.hasNext()){
             Triple latStmt = ipointsLong.next();
             NonLiteral subj = latStmt.getSubject();
-            String longitude = ((PlainLiteral)latStmt.getObject()).getLexicalForm();
+            String longitude = ((TypedLiteral)latStmt.getObject()).getLexicalForm();
             String lat = pointsLat.get(subj);
             WGS84Point point = new WGS84Point();
             point.setLat( Double.parseDouble(lat) );

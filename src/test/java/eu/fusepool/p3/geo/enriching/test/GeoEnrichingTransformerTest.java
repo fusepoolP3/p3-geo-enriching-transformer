@@ -44,8 +44,8 @@ import org.apache.clerezza.rdf.utils.GraphNode;
 import org.junit.Rule;
 
 public class GeoEnrichingTransformerTest {
-	private static final UriRef LONG = new UriRef("ttp://www.w3.org/2003/01/geo/wgs84_pos#long");
-    private static final UriRef LAT = new UriRef("ttp://www.w3.org/2003/01/geo/wgs84_pos#lat");
+	private static final UriRef LONG = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#long");
+    private static final UriRef LAT = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#lat");
     private static MimeType turtle;
     static {
         try {
@@ -69,7 +69,7 @@ public class GeoEnrichingTransformerTest {
 	@Before
     public void setUp() throws Exception {
 		
-		mockServerDataSet = IOUtils.toByteArray(getClass().getResourceAsStream("farmacie-trentino.ttl"));	
+		mockServerDataSet = IOUtils.toByteArray(getClass().getResourceAsStream("farmacie-trentino-grounded.ttl"));	
 		final int transformerServerPort = findFreePort();
         transformerBaseUri = "http://localhost:" + transformerServerPort + "/";
         RestAssured.baseURI = transformerBaseUri;
