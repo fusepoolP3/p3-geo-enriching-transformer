@@ -134,14 +134,14 @@ public class GeoEnrichingTransformerTest {
         }, turtle);
     	
         Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
-        /*
+        
         InputStream in = response.getData();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String line;
         while((line = reader.readLine()) != null){
             System.out.println(line);
         }
-        */
+        
         final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
         //is there a better property for nearby?
         final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
