@@ -77,6 +77,7 @@ public class SpatialDataEnhancer {
     public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) throws IOException {
         TripleCollection result = new SimpleMGraph();
         result.addAll(dataToEnhance);
+        //look for the knowledge base name in the triple store before fetching the data from the url. 
         loadData(spatialDataset, dataSetUrl);
         WGS84Point point = getPointList(dataToEnhance).get(0);
         result.addAll(queryNearby(point));
@@ -222,6 +223,7 @@ public class SpatialDataEnhancer {
         spatialDataset.begin(ReadWrite.WRITE);
         try {
             Model m = spatialDataset.getDefaultModel();
+            spatialDataset.addNamedModel(url, m);
             RDFDataMgr.read(m, url);
             spatialDataset.commit();
         } finally {
