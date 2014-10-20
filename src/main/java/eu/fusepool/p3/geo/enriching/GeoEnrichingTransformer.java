@@ -69,10 +69,22 @@ class GeoEnrichingTransformer extends RdfGeneratingTransformer {
      */
     @Override
     protected TripleCollection generateRdf(HttpRequestEntity entity) throws IOException {
+        TripleCollection resultGraph = null;
         String mediaType = entity.getType().toString();   
         Parser parser = Parser.getInstance();
         TripleCollection requestedGraph = parser.parse( entity.getData(), mediaType);
-        return spatialDataEnhancer.enhance(kbDataUrl, requestedGraph);
+        
+        try {
+            
+            resultGraph = spatialDataEnhancer.enhance(kbDataUrl, requestedGraph);
+            
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return resultGraph;
+        
     }
   
     @Override

@@ -20,7 +20,12 @@ import org.apache.clerezza.rdf.core.Triple;
 import org.apache.clerezza.rdf.core.TripleCollection;
 import org.apache.clerezza.rdf.core.TypedLiteral;
 import org.apache.clerezza.rdf.core.UriRef;
+import org.apache.clerezza.rdf.core.impl.PlainLiteralImpl;
 import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
+import org.apache.clerezza.rdf.core.impl.TripleImpl;
+import org.apache.clerezza.rdf.core.serializedform.SupportedFormat;
+import org.apache.clerezza.rdf.ontologies.FOAF;
+import org.apache.clerezza.rdf.ontologies.RDFS;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.atlas.logging.LogCtl;
@@ -41,11 +46,17 @@ import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ReadWrite;
+import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.sparql.util.QueryExecUtils;
 import com.hp.hpl.jena.tdb.TDBFactory;
+
+import org.apache.clerezza.rdf.ontologies.RDFS;
 /**
  * Enhances an input graph with information taken from a remote source. 
  * @author luigi
@@ -68,19 +79,23 @@ public class SpatialDataEnhancer {
     public SpatialDataEnhancer() throws IOException {
         LUCENE_INDEX_DIR = File.createTempFile("lucene-", "-index");
         TDB_DIR = File.createTempFile("jenatdb-", "-dataset");
-        //spatialDataset = initInMemoryDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR);
-        spatialDataset = initTDBDatasetWithLuceneSpatitalIndex(LUCENE_INDEX_DIR, TDB_DIR);
+        //spatialDataset = initInMemoryDatasetWithLuceneSpatialIndex(LUCENE_INDEX_DIR);
+        spatialDataset = initTDBDatasetWithLuceneSpatialIndex(LUCENE_INDEX_DIR, TDB_DIR);
     }
     /**
      * Takes a RDF data set to search for point of interest close to objects provided in a graph.  
+     * @throws Exception 
      */
-    public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) throws IOException {
+    public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) throws Exception {
         TripleCollection result = new SimpleMGraph();
         result.addAll(dataToEnhance);
         //look for the knowledge base name in the triple store before fetching the data from the url. 
-        loadData(spatialDataset, dataSetUrl);
+        loadKnowledgeBase(spatialDataset, dataSetUrl);
         WGS84Point point = getPointList(dataToEnhance).get(0);
-        result.addAll(queryNearby(point));
+        TripleCollection poiGraph = queryNearby(point);
+        if(poiGraph.size() > 0){
+         result.addAll(poiGraph);
+        }
         return result;
     }
     
@@ -101,6 +116,7 @@ public class SpatialDataEnhancer {
             String longitude = ((TypedLiteral)latStmt.getObject()).getLexicalForm();
             String lat = pointsLat.get(subj);
             WGS84Point point = new WGS84Point();
+            point.setUri(subj.toString());
             point.setLat( Double.parseDouble(lat) );
             point.setLong( Double.parseDouble(longitude) );
             points.add( point );
@@ -110,42 +126,68 @@ public class SpatialDataEnhancer {
         return points;
     }
     
-    private TripleCollection queryNearby(WGS84Point point){
-        TripleCollection result = null;
+    public TripleCollection queryNearby(WGS84Point point){
+        TripleCollection resultGraph = new SimpleMGraph();
         log.info("START");
         long startTime = System.nanoTime();
         String pre = StrUtils.strjoinNL("PREFIX : <http://example/>",
                 "PREFIX spatial: <http://jena.apache.org/spatial#>",
+                "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
 
-        System.out.println("nearby");
+        log.info("nearby");
         String qs = StrUtils.strjoinNL("SELECT * ",
-                " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " 1 'km') ;",
+                " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " 10 'km') ;",
                 "      rdfs:label ?label", " }");
 
+        log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
         try {
             Query q = QueryFactory.create(pre + "\n" + qs);
             QueryExecution qexec = QueryExecutionFactory.create(q, spatialDataset);
-            QueryExecUtils.executeQuery(q, qexec);
-        } finally {
+            ResultSet results = qexec.execSelect() ;
+            for ( ; results.hasNext() ; ) {
+                QuerySolution solution = results.nextSolution() ;                            
+                String poiName = solution.getResource("s").getURI();
+                String label = solution.getLiteral("label").getString();
+                log.info("poi name: " + poiName + " label = " + label);
+                UriRef poiRef = new UriRef(poiName);
+                resultGraph.add( new TripleImpl(new UriRef(checkUriName(point.getUriName())), FOAF.based_near, poiRef) );               
+                resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(label)) );
+                
+                
+            }
+          
+        } 
+        finally {
             spatialDataset.end();
         }
         long finishTime = System.nanoTime();
         double time = (finishTime - startTime) / 1.0e6;
         log.info(String.format("FINISH - %.2fms", time));
-        return result;
+        return resultGraph;
 
     }
     
-    private Dataset initInMemoryDatasetWithLuceneSpatitalIndex(File indexDir) throws IOException {
+    private String checkUriName(String uri){
+ 
+        if(uri.startsWith("<")){
+            uri = uri.substring(1);
+        }
+        if(uri.endsWith(">")){
+            uri = uri.substring(0, uri.length() -1);
+        }
+        return uri;
+    }
+    
+    private Dataset initInMemoryDatasetWithLuceneSpatialIndex(File indexDir) throws IOException {
         SpatialQuery.init();
         deleteOldFiles(indexDir);
         indexDir.mkdirs();
         return createDatasetByCode(indexDir);
     }
 
-    private Dataset initTDBDatasetWithLuceneSpatitalIndex(File indexDir, File TDBDir) throws IOException {
+    private Dataset initTDBDatasetWithLuceneSpatialIndex(File indexDir, File TDBDir) throws IOException {
         SpatialQuery.init();
         deleteOldFiles(indexDir);
         deleteOldFiles(TDBDir);
@@ -216,14 +258,19 @@ public class SpatialDataEnhancer {
         }
 
     }
-    
-    public void loadData(Dataset spatialDataset, String url) {
+    /**
+     * Load a knowledge base
+     * @param spatialDataset
+     * @param uri
+     * @param url
+     * @throws Exception
+     */
+    public void loadKnowledgeBase(Dataset spatialDataset, String url) throws Exception {
         log.info("Start loading");
         long startTime = System.nanoTime();
         spatialDataset.begin(ReadWrite.WRITE);
         try {
             Model m = spatialDataset.getDefaultModel();
-            spatialDataset.addNamedModel(url, m);
             RDFDataMgr.read(m, url);
             spatialDataset.commit();
         } finally {
@@ -243,23 +290,11 @@ public class SpatialDataEnhancer {
      * Loads the data to be used as the application knowledge base. 
      * @throws Exception
      */
-    private File importDataFromUrl() throws Exception{
-        final String sourceDataUrl = "https://raw.githubusercontent.com/fusepoolP3/p3-geo-enriching-transformer/master/src/test/resources/eu/fusepool/p3/geo/enriching/test/farmacie-trentino.ttl";
+    public InputStream importKnowledgebase(String sourceDataUrl) throws Exception{
+        
         URL sourceUrl = new URL(sourceDataUrl);
         URLConnection connection = sourceUrl.openConnection();
-        InputStream in = connection.getInputStream();
-        OutputStream out = null;
-        File temp = null;
-        try {
-            temp = File.createTempFile("geo-enricher-source", ".ttl");
-            out = new FileOutputStream(temp);
-            IOUtils.copy(in, out);
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException(ex);
-        } finally {
-            out.close();
-        }
-        return temp;
+        return connection.getInputStream();
     }
 
 }

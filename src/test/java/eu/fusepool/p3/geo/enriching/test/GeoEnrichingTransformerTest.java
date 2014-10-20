@@ -25,22 +25,27 @@ import eu.fusepool.p3.transformer.client.Transformer;
 import eu.fusepool.p3.transformer.client.TransformerClientImpl;
 import eu.fusepool.p3.transformer.commons.Entity;
 import eu.fusepool.p3.transformer.commons.util.WritingEntity;
+
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.activation.MimeType;
 import javax.activation.MimeTypeParseException;
+
 import org.apache.clerezza.rdf.core.MGraph;
 import org.apache.clerezza.rdf.core.UriRef;
 import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.clerezza.rdf.core.serializedform.Serializer;
 import org.apache.clerezza.rdf.ontologies.FOAF;
 import org.apache.clerezza.rdf.utils.GraphNode;
-
 import org.junit.Rule;
 
 public class GeoEnrichingTransformerTest {
@@ -99,7 +104,7 @@ public class GeoEnrichingTransformerTest {
 
 	@Test
     public void testRemoteConfig() throws Exception {
-		stubFor(get(urlEqualTo("/data/farmacie-trentino.ttl"))
+		stubFor(get(urlEqualTo("/data/farmacie-trentino-grounded.ttl"))
 	    	    .willReturn(aResponse()
 	    			.withStatus(HttpStatus.SC_OK)
 	    			.withHeader("Content-Type", "text/turtle")
@@ -113,7 +118,7 @@ public class GeoEnrichingTransformerTest {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Serializer.getInstance().serialize(baos, graphToEnrich, "text/turtle");
         final byte[] ttlData = baos.toByteArray();
-        String dataUrl = "http://localhost:" + mockPort + "/data/farmacie-trentino.ttl";
+        String dataUrl = "http://localhost:" + mockPort + "/data/farmacie-trentino-grounded.ttl";
         Transformer t = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl, "UTF-8"));
         Entity response = t.transform(new WritingEntity() {
 
@@ -129,6 +134,14 @@ public class GeoEnrichingTransformerTest {
         }, turtle);
     	
         Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
+        /*
+        InputStream in = response.getData();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String line;
+        while((line = reader.readLine()) != null){
+            System.out.println(line);
+        }
+        */
         final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
         //is there a better property for nearby?
         final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);

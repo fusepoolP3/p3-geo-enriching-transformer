@@ -4,6 +4,15 @@ public class WGS84Point {
 
 	private double latitude;
 	private double longitude;
+	private String uriName;
+	
+	public String getUriName(){
+	    return uriName;
+	}
+	
+	public void setUri(String uriName){
+	    this.uriName = uriName;
+	}
 	
 	
 	public double getLat() {
