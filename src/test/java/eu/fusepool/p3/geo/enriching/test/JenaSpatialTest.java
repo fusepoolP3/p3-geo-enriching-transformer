@@ -95,6 +95,7 @@ public class JenaSpatialTest {
     @Test
     public void testQueryNearby() throws Exception {
         WGS84Point point = new WGS84Point();
+        point.setUri("http://geo.org/?lat=41.79,lon=12.24");
         point.setLat(41.79);
         point.setLong(12.24);
         TripleCollection pois = jenas.queryNearby(point);

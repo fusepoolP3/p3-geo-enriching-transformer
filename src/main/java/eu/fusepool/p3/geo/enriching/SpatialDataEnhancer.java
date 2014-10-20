@@ -147,12 +147,14 @@ public class SpatialDataEnhancer {
             QueryExecution qexec = QueryExecutionFactory.create(q, spatialDataset);
             ResultSet results = qexec.execSelect() ;
             for ( ; results.hasNext() ; ) {
-                QuerySolution solution = results.nextSolution() ;                            
-                String poiName = solution.getResource("s").getURI();
+                QuerySolution solution = results.nextSolution() ;
+                String poiUri = solution.getResource("s").getURI();
+                String poiName = checkUriName(poiUri);
                 String label = solution.getLiteral("label").getString();
                 log.info("poi name: " + poiName + " label = " + label);
                 UriRef poiRef = new UriRef(poiName);
-                resultGraph.add( new TripleImpl(new UriRef(checkUriName(point.getUriName())), FOAF.based_near, poiRef) );               
+                String pointName = point.getUriName();
+                resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(label)) );
                 
                 
