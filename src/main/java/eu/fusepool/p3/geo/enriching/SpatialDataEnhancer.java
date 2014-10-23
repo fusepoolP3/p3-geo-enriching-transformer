@@ -91,10 +91,12 @@ public class SpatialDataEnhancer {
     public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) throws Exception {
         TripleCollection result = new SimpleMGraph();
         result.addAll(dataToEnhance);
-        //look for the knowledge base name in the triple store before fetching the data from the url. 
-        loadKnowledgeBase(spatialDataset, dataSetUrl);
+        //look for the knowledge base name in the triple store before fetching the data from the url.
+        if( ! isDataCached(dataSetUrl) ){
+          loadKnowledgeBase(spatialDataset, dataSetUrl);
+        }
         WGS84Point point = getPointList(dataToEnhance).get(0);
-        TripleCollection poiGraph = queryNearby(point);
+        TripleCollection poiGraph = queryNearby(point, dataSetUrl);
         if(poiGraph.size() > 0){
          result.addAll(poiGraph);
         }
@@ -128,7 +130,7 @@ public class SpatialDataEnhancer {
         return points;
     }
     
-    public TripleCollection queryNearby(WGS84Point point){
+    public TripleCollection queryNearby(WGS84Point point, String url){
         TripleCollection resultGraph = new SimpleMGraph();
         log.info("START");
         long startTime = System.nanoTime();
@@ -139,6 +141,7 @@ public class SpatialDataEnhancer {
 
         log.info("nearby");
         String qs = StrUtils.strjoinNL("SELECT * ",
+                "FROM <" + url + ">",
                 " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " 10 'km') ;",
                 "   geo:lat ?lat ;" ,
                 "   geo:long ?lon ; ",
@@ -280,7 +283,7 @@ public class SpatialDataEnhancer {
         long startTime = System.nanoTime();
         spatialDataset.begin(ReadWrite.WRITE);
         try {
-            Model m = spatialDataset.getDefaultModel();
+            Model m = spatialDataset.getNamedModel(url);
             RDFDataMgr.read(m, url);
             spatialDataset.commit();
         } finally {
@@ -294,6 +297,15 @@ public class SpatialDataEnhancer {
     
     public Dataset getDataset() {
         return spatialDataset;
+    }
+    
+    public boolean isDataCached(String url){
+        boolean isCached = false;
+        Model m = spatialDataset.getNamedModel(url);
+        if(m != null){
+            isCached = true;
+        }
+        return isCached;
     }
     
     /**

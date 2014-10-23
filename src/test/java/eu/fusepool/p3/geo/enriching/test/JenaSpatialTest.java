@@ -91,7 +91,7 @@ public class JenaSpatialTest {
         point.setUri("http://geo.org/?lat=41.79,lon=12.24");
         point.setLat(41.79);
         point.setLong(12.24);
-        TripleCollection pois = jenas.queryNearby(point);
+        TripleCollection pois = jenas.queryNearby(point, TEST_DATASET);
         Assert.assertTrue(! pois.isEmpty());
     }
     
