@@ -43,8 +43,10 @@ import javax.activation.MimeTypeParseException;
 import org.apache.clerezza.rdf.core.MGraph;
 import org.apache.clerezza.rdf.core.UriRef;
 import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
+import org.apache.clerezza.rdf.core.impl.TypedLiteralImpl;
 import org.apache.clerezza.rdf.core.serializedform.Serializer;
 import org.apache.clerezza.rdf.ontologies.FOAF;
+import org.apache.clerezza.rdf.ontologies.XSD;
 import org.apache.clerezza.rdf.utils.GraphNode;
 import org.junit.Rule;
 
@@ -113,8 +115,8 @@ public class GeoEnrichingTransformerTest {
 		final MGraph graphToEnrich = new SimpleMGraph();
         final UriRef res1 = new UriRef("http://example.org/res1");
         final GraphNode node = new GraphNode(res1, graphToEnrich);
-        node.addPropertyValue(LAT, "46.2220374200606");
-        node.addPropertyValue(LONG, "10.7963137713743");
+        node.addProperty(LAT, new TypedLiteralImpl("46.2220374200606", XSD.float_));
+        node.addProperty(LONG, new TypedLiteralImpl("10.7963137713743", XSD.float_));
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Serializer.getInstance().serialize(baos, graphToEnrich, "text/turtle");
         final byte[] ttlData = baos.toByteArray();

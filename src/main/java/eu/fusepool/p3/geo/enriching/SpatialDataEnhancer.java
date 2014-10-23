@@ -23,9 +23,11 @@ import org.apache.clerezza.rdf.core.UriRef;
 import org.apache.clerezza.rdf.core.impl.PlainLiteralImpl;
 import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.clerezza.rdf.core.impl.TripleImpl;
+import org.apache.clerezza.rdf.core.impl.TypedLiteralImpl;
 import org.apache.clerezza.rdf.core.serializedform.SupportedFormat;
 import org.apache.clerezza.rdf.ontologies.FOAF;
 import org.apache.clerezza.rdf.ontologies.RDFS;
+import org.apache.clerezza.rdf.ontologies.XSD;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.atlas.logging.LogCtl;
@@ -160,8 +162,8 @@ public class SpatialDataEnhancer {
                 String pointName = checkUriName(point.getUriName());
                 resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
-                resultGraph.add( new TripleImpl(poiRef, geo_lat, new PlainLiteralImpl(poiLatitude)) );
-                resultGraph.add( new TripleImpl(poiRef, geo_long, new PlainLiteralImpl(poiLongitude)) );
+                resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
+                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );
                 
                 
             }

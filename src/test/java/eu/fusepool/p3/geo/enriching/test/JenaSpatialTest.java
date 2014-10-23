@@ -85,13 +85,6 @@ public class JenaSpatialTest {
         Assert.assertTrue(pointList.size() > 0);
     }
     
-    //@Test
-    public void testImportKnowledgebase() throws Exception {
-      final String sourceDataUrl = "https://raw.githubusercontent.com/fusepoolP3/p3-geo-enriching-transformer/master/src/test/resources/eu/fusepool/p3/geo/enriching/test/farmacie-trentino-grounded.ttl";
-      InputStream in = jenas.importKnowledgebase(sourceDataUrl);
-        
-    }
-    
     @Test
     public void testQueryNearby() throws Exception {
         WGS84Point point = new WGS84Point();
