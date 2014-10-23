@@ -138,7 +138,9 @@ public class SpatialDataEnhancer {
         log.info("nearby");
         String qs = StrUtils.strjoinNL("SELECT * ",
                 " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " 10 'km') ;",
-                "      rdfs:label ?label", " }");
+                "   geo:lat ?lat ;" ,
+                "   geo:long ?lon ; ",
+                "      rdfs:label ?label .", " }");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
@@ -150,12 +152,16 @@ public class SpatialDataEnhancer {
                 QuerySolution solution = results.nextSolution() ;
                 String poiUri = solution.getResource("s").getURI();
                 String poiName = checkUriName(poiUri);
-                String label = solution.getLiteral("label").getString();
-                log.info("poi name: " + poiName + " label = " + label);
+                String poiLabel = solution.getLiteral("label").getString();
+                String poiLatitude = solution.getLiteral("lat").getString();
+                String poiLongitude = solution.getLiteral("lon").getString();
+                log.info("poi name: " + poiName + " label = " + poiLabel);
                 UriRef poiRef = new UriRef(poiName);
                 String pointName = checkUriName(point.getUriName());
                 resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
-                resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(label)) );
+                resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
+                resultGraph.add( new TripleImpl(poiRef, geo_lat, new PlainLiteralImpl(poiLatitude)) );
+                resultGraph.add( new TripleImpl(poiRef, geo_long, new PlainLiteralImpl(poiLongitude)) );
                 
                 
             }

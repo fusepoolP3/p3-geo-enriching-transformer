@@ -108,12 +108,15 @@ public class JenaSpatialTest {
         long startTime = System.nanoTime();
         String pre = StrUtils.strjoinNL("PREFIX : <http://example/>",
                 "PREFIX spatial: <http://jena.apache.org/spatial#>",
+                "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
         // NEARBY
         log.info("nearby");
         String qs = StrUtils.strjoinNL("SELECT * ",
                 " { ?s spatial:nearby (41.79 12.24 10 'km') ;",
-                "      rdfs:label ?label", " }");
+                "   geo:lat ?lat ;" ,
+                "   geo:long ?long ; ",
+                "      rdfs:label ?label .", " }");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
