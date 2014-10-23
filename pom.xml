@@ -3,10 +3,10 @@
     <groupId>eu.fusepoolp3</groupId>
     <artifactId>geo-enriching-transformer</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Fusepool P3 Geo Enriching Tranformer</name>
+    <name>Fusepool P3 Geo Enriching Transformer</name>
     <packaging>jar</packaging>
     <description>
-        A transformer enrichng RDF data containg locations with Points of interest nearby these locations.
+        A transformer enriching RDF data containing locations with Points of interest nearby these locations.
     </description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
