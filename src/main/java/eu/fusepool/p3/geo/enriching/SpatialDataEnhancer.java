@@ -96,7 +96,7 @@ public class SpatialDataEnhancer {
           loadKnowledgeBase(spatialDataset, dataSetUrl);
         }
         WGS84Point point = getPointList(dataToEnhance).get(0);
-        TripleCollection poiGraph = queryNearby(point, dataSetUrl);
+        TripleCollection poiGraph = queryNearby(point, dataSetUrl, 10);
         if(poiGraph.size() > 0){
          result.addAll(poiGraph);
         }
@@ -130,21 +130,20 @@ public class SpatialDataEnhancer {
         return points;
     }
     
-    public TripleCollection queryNearby(WGS84Point point, String url){
+    public TripleCollection queryNearby(WGS84Point point, String url, int radius){
         TripleCollection resultGraph = new SimpleMGraph();
+        log.info("queryNearby()");
         log.info("START");
         long startTime = System.nanoTime();
         String pre = StrUtils.strjoinNL("PREFIX : <http://example/>",
                 "PREFIX spatial: <http://jena.apache.org/spatial#>",
                 "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-
-        log.info("nearby");
+                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");        
         String qs = StrUtils.strjoinNL("SELECT * ",
-                "FROM <" + url + ">",
-                " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " 10 'km') ;",
-                "   geo:lat ?lat ;" ,
-                "   geo:long ?lon ; ",
+                //"FROM <" + url + ">",
+                " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'km') ;",
+                "      geo:lat ?lat ;" ,
+                "      geo:long ?lon ; ",
                 "      rdfs:label ?label .", " }");
 
         log.info(pre + "\n" + qs);
@@ -166,8 +165,7 @@ public class SpatialDataEnhancer {
                 resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
-                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );
-                
+                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );   
                 
             }
           
@@ -183,7 +181,6 @@ public class SpatialDataEnhancer {
     }
     
     private String checkUriName(String uri){
- 
         if(uri.startsWith("<")){
             uri = uri.substring(1);
         }
@@ -279,11 +276,12 @@ public class SpatialDataEnhancer {
      * @throws Exception
      */
     public void loadKnowledgeBase(Dataset spatialDataset, String url) throws Exception {
-        log.info("Start loading");
+        
+        log.info("Start loading data from: " + url);
         long startTime = System.nanoTime();
         spatialDataset.begin(ReadWrite.WRITE);
         try {
-            Model m = spatialDataset.getNamedModel(url);
+            Model m = spatialDataset.getDefaultModel();
             RDFDataMgr.read(m, url);
             spatialDataset.commit();
         } finally {
@@ -292,7 +290,8 @@ public class SpatialDataEnhancer {
 
         long finishTime = System.nanoTime();
         double time = (finishTime - startTime) / 1.0e6;
-        log.info(String.format("Finish loading - %.2fms", time));
+        log.info(String.format("Finish loading triples  - %.2fms", time));
+       
     }
     
     public Dataset getDataset() {
@@ -301,9 +300,15 @@ public class SpatialDataEnhancer {
     
     public boolean isDataCached(String url){
         boolean isCached = false;
-        Model m = spatialDataset.getNamedModel(url);
-        if(m != null){
+        spatialDataset.begin(ReadWrite.READ);
+        try {
+          Model m = spatialDataset.getNamedModel(url);
+          if(m != null & (! m.isEmpty()) ){
             isCached = true;
+          }
+        }
+        finally {
+            spatialDataset.end();
         }
         return isCached;
     }
@@ -317,6 +322,21 @@ public class SpatialDataEnhancer {
         URL sourceUrl = new URL(sourceDataUrl);
         URLConnection connection = sourceUrl.openConnection();
         return connection.getInputStream();
+    }
+    
+    public List<String> listGraphsNames(Dataset dataset){
+        List<String> nameList = new ArrayList<String>();
+        dataset.begin(ReadWrite.READ);
+        try {
+            Iterator<String> inames = getDataset().listNames();
+            while(inames.hasNext()){
+                nameList.add(inames.next());
+            }
+        }
+        finally {
+            dataset.end();
+        }
+        return nameList;
     }
 
 }

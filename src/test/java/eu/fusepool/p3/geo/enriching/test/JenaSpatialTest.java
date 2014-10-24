@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
 
 import junit.framework.Assert;
@@ -69,7 +70,15 @@ public class JenaSpatialTest {
     public void setUp() throws Exception {
         jenas = new SpatialDataEnhancer();
         URL testFile = getClass().getResource(TEST_DATASET);
-        jenas.loadKnowledgeBase(jenas.getDataset(), testFile.getFile());
+        if( ! jenas.isDataCached(testFile.toString()) )
+          jenas.loadKnowledgeBase(jenas.getDataset(), testFile.toString());
+    }
+    
+    //@Test
+    public void testListGraphsNames(){
+        URL testFile = getClass().getResource(TEST_DATASET);
+        List<String> names = jenas.listGraphsNames(jenas.getDataset());
+        Assert.assertEquals(testFile.toString(), names.iterator().next());
     }
     
     @Test
@@ -87,17 +96,20 @@ public class JenaSpatialTest {
     
     @Test
     public void testQueryNearby() throws Exception {
+        URL testFile = getClass().getResource(TEST_DATASET);
         WGS84Point point = new WGS84Point();
         point.setUri("http://geo.org/?lat=41.79,lon=12.24");
         point.setLat(41.79);
         point.setLong(12.24);
-        TripleCollection pois = jenas.queryNearby(point, TEST_DATASET);
+        TripleCollection pois = jenas.queryNearby(point, testFile.toString(), 10);
         Assert.assertTrue(! pois.isEmpty());
     }
     
     
     private void queryData(Dataset spatialDataset) {
+        log.info("queryData()");
         log.info("START");
+        URL testFile = getClass().getResource(TEST_DATASET);
         long startTime = System.nanoTime();
         String pre = StrUtils.strjoinNL("PREFIX : <http://example/>",
                 "PREFIX spatial: <http://jena.apache.org/spatial#>",
@@ -106,6 +118,7 @@ public class JenaSpatialTest {
         // NEARBY
         log.info("nearby");
         String qs = StrUtils.strjoinNL("SELECT * ",
+                //"FROM <" + testFile.toString() + ">",
                 " { ?s spatial:nearby (41.79 12.24 10 'km') ;",
                 "   geo:lat ?lat ;" ,
                 "   geo:long ?long ; ",
