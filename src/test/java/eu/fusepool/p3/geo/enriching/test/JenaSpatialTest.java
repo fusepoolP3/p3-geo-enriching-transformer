@@ -60,8 +60,9 @@ import org.junit.Test;
  */
 public class JenaSpatialTest {
 
-    final String TEST_DATASET = "spatial-data-latlong.ttl";    
-    //final String TEST_DATASET_URI = "<spatial-data-latlong.ttl>";
+    final String TEST_DATASET = "spatial-data-latlong.ttl";  
+    final String TEST_DATASET_URI = "http://airport.com/";
+    
     static SpatialDataEnhancer jenas = null;
     
     static {
@@ -76,145 +77,46 @@ public class JenaSpatialTest {
 
     @Before
     public void setUp() throws Exception {
-        
         URL testFile = getClass().getResource(TEST_DATASET);
         if( ! jenas.isDataCached(testFile.toString()) )
-          jenas.loadKnowledgeBase(jenas.getDataset(), testFile.toString());
+          jenas.loadKnowledgeBase(jenas.getDataset(), testFile.toString(), TEST_DATASET_URI);
     }
     
     @Test
-    public void testListGraphsNames(){
-        log.info("Test graphs names");
-        URL testFile = getClass().getResource(TEST_DATASET);
-        List<String> names = jenas.listGraphsNames(jenas.getDataset());
-        Iterator<String> inames = names.iterator();
-        while (inames.hasNext()){
-            String name = inames.next();
-            log.info("Graph name: " + name);
-        }
-        //Assert.assertEquals(testFile.toString(), names.iterator().next());
-    }
-    
-    @Test
-    public void testGraphStatements(){
-        URL testFile = getClass().getResource(TEST_DATASET);
-        log.info("Test print all statements in graph " + testFile.toString());
-        jenas.getDataset().begin(ReadWrite.READ);
-        try {
-            Model m = jenas.getDataset().getNamedModel(testFile.toString());
-            StmtIterator istmt = m.listStatements();
-            while(istmt.hasNext()){
-                Statement stmt = istmt.next();
-                String statement = stmt.toString();
-                log.info(statement);
-            }
-        }
-        finally {
-            jenas.getDataset().end();
-        }
-    }
-    
-    @Test
-    public void testGraphSize(){
-        log.info("Test graph size");
-        URL testFile = getClass().getResource(TEST_DATASET);
-        jenas.getDataset().begin(ReadWrite.READ);
-        long graphSize = 0;
-        try {
-            Model m = jenas.getDataset().getNamedModel(testFile.toString());
-            graphSize = m.size();
-        }
-        finally {
-            jenas.getDataset().end();
-        }
-        
-        Assert.assertEquals(24, graphSize);
-        
-    }
-    
-    //@Test
     public void testQueryKnowledgebase() throws Exception {
         
         queryData(jenas.getDataset());
     }
     
-    //@Test
+    @Test
     public void testGetPointList() throws IOException {
         TripleCollection graph = Parser.getInstance().parse(getClass().getResourceAsStream(TEST_DATASET), SupportedFormat.TURTLE);
         List<WGS84Point> pointList = jenas.getPointList(graph);
         Assert.assertTrue(pointList.size() > 0);
     }
     
-    //@Test
+    @Test
     public void testQueryNearby() throws Exception {
-        URL testFile = getClass().getResource(TEST_DATASET);
         WGS84Point point = new WGS84Point();
         point.setUri("http://geo.org/?lat=41.79,lon=12.24");
         point.setLat(41.79);
         point.setLong(12.24);
-        TripleCollection pois = jenas.queryNearby(point, testFile.toString(), 10);
+        TripleCollection pois = jenas.queryNearby(point, TEST_DATASET_URI, 10);
         Assert.assertTrue(! pois.isEmpty());
     }
-    
-    @Test
-    public void testPrintAllSpatialObjects(){
-        log.info("Print all spatial objects");
-        log.info("START");
-        URL testFile = getClass().getResource(TEST_DATASET);
-        long startTime = System.nanoTime();
-        String pre = StrUtils.strjoinNL("PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        
-        String qs = StrUtils.strjoinNL("SELECT ?s ",
-                //"FROM NAMED <" + testFile.toString() + ">",
-                "WHERE { ",
-                "GRAPH <" + testFile.toString() + "> ",
-                " { ?s geo:lat ?lat ;",                
-                "   geo:long ?long ; ",
-                "      rdfs:label ?label .", " }",
-                "}");
-
-        log.info(pre + "\n" + qs);
-        jenas.getDataset().begin(ReadWrite.READ);
-        try {
-            Query q = QueryFactory.create(pre + "\n" + qs);
-            QueryExecution qexec = QueryExecutionFactory.create(q, jenas.getDataset());
-            ResultSet results = qexec.execSelect() ;
-            if(results != null){
-                for ( ; results.hasNext() ; ) {
-                    QuerySolution solution = results.nextSolution() ;
-                    String poiUri = solution.getResource("s").getURI();
-                    log.info(poiUri);
-                }
-            }
-            else {
-                log.info("No results");
-            }
-        } finally {
-            jenas.getDataset().end();
-        }
-        long finishTime = System.nanoTime();
-        double time = (finishTime - startTime) / 1.0e6;
-        log.info(String.format("FINISH - %.2fms", time));
-        
-    }
-    
-    
+     
     private void queryData(Dataset spatialDataset) {
         log.info("queryData()");
-        log.info("START");
-        URL testFile = getClass().getResource(TEST_DATASET);
         long startTime = System.nanoTime();
-        String pre = StrUtils.strjoinNL("PREFIX : <http://example/>",
-                "PREFIX spatial: <http://jena.apache.org/spatial#>",
+        String pre = StrUtils.strjoinNL("PREFIX spatial: <http://jena.apache.org/spatial#>",
                 "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
         // NEARBY
         log.info("nearby");
         String qs = StrUtils.strjoinNL("SELECT * ",
-                "FROM <" + testFile.toString() + ">",
+                "FROM NAMED <" + TEST_DATASET_URI + ">",
                 "WHERE { ",
-                "GRAPH <" + testFile.toString() + "> ",
+                "GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:nearby (41.79 12.24 10 'km') ;",
                 "   geo:lat ?lat ;" ,
                 "   geo:long ?long ; ",
@@ -238,8 +140,9 @@ public class JenaSpatialTest {
         log.info("withinCircle");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:withinCircle (51.3000 -2.71000 100.0 'miles' 3) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
@@ -258,8 +161,9 @@ public class JenaSpatialTest {
         log.info("withinBox");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:withinBox (51.1000 -4.0000 51.4000 0.0000 -1) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
@@ -278,8 +182,9 @@ public class JenaSpatialTest {
         log.info("interesectBox");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:intersectBox (51.1000 -4.0000 51.4000 0.0000) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
@@ -298,8 +203,9 @@ public class JenaSpatialTest {
         log.info("north");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:north (51.3000 0.0000) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
@@ -315,11 +221,12 @@ public class JenaSpatialTest {
         log.info(String.format("FINISH - %.2fms", time));
 
         // SOUTH
-        System.out.println("south");
+        log.info("south");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:south (51.3000 0.0000) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         spatialDataset.begin(ReadWrite.READ);
         try {
@@ -334,11 +241,12 @@ public class JenaSpatialTest {
         log.info(String.format("FINISH - %.2fms", time));
 
         // EAST
-        System.out.println("east");
+        log.info("east");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:east (51.3000 0.0000) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
@@ -354,11 +262,12 @@ public class JenaSpatialTest {
         log.info(String.format("FINISH - %.2fms", time));
 
         // WEST
-        System.out.println("west");
+        log.info("west");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:west (51.3000 0.0000) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         spatialDataset.begin(ReadWrite.READ);
         try {
@@ -373,11 +282,12 @@ public class JenaSpatialTest {
         log.info(String.format("FINISH - %.2fms", time));
 
         //WEST2
-        System.out.println("west2");
+        log.info("west2");
         startTime = System.nanoTime();
         qs = StrUtils.strjoinNL("SELECT * ",
+                "{ GRAPH <" + TEST_DATASET_URI + "> ",
                 " { ?s spatial:withinBox (51.1 -180.0000 51.9 0.0000) ;",
-                "      rdfs:label ?label", " }");
+                "      rdfs:label ?label", " }}");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);

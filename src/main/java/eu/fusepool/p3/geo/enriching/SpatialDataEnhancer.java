@@ -93,7 +93,7 @@ public class SpatialDataEnhancer {
         result.addAll(dataToEnhance);
         //look for the knowledge base name in the triple store before fetching the data from the url.
         if( ! isDataCached(dataSetUrl) ){
-          loadKnowledgeBase(spatialDataset, dataSetUrl);
+          loadKnowledgeBase(spatialDataset, dataSetUrl, dataSetUrl);
         }
         WGS84Point point = getPointList(dataToEnhance).get(0);
         TripleCollection poiGraph = queryNearby(point, dataSetUrl, 10);
@@ -129,20 +129,26 @@ public class SpatialDataEnhancer {
         
         return points;
     }
-    
-    public TripleCollection queryNearby(WGS84Point point, String url, int radius){
+    /**
+     * Searches for points of interest within a circle of a given radius. 
+     * The data used is stored in a named graph.
+     * @param point
+     * @param uri
+     * @param radius
+     * @return
+     */
+    public TripleCollection queryNearby(WGS84Point point, String graphName, int radius){
         TripleCollection resultGraph = new SimpleMGraph();
         log.info("queryNearby()");
-        log.info("START");
         long startTime = System.nanoTime();
-        String pre = StrUtils.strjoinNL("PREFIX : <http://example/>",
-                "PREFIX spatial: <http://jena.apache.org/spatial#>",
+        String pre = StrUtils.strjoinNL("PREFIX spatial: <http://jena.apache.org/spatial#>",
                 "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");        
+                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+        
         String qs = StrUtils.strjoinNL("SELECT * ",
-                "FROM <" + url + ">",
+                "FROM NAMED <" + graphName + ">",
                 "WHERE { ",
-                "GRAPH <" + url + "> ",
+                "GRAPH <" + graphName + "> ",
                 " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'km') ;",
                 "      geo:lat ?lat ;" ,
                 "      geo:long ?lon ; ",
@@ -278,13 +284,13 @@ public class SpatialDataEnhancer {
      * @param url
      * @throws Exception
      */
-    public void loadKnowledgeBase(Dataset spatialDataset, String url) throws Exception {
+    public void loadKnowledgeBase(Dataset spatialDataset, String url, String graphName) throws Exception {
         
         log.info("Start loading data from: " + url);
         long startTime = System.nanoTime();
         spatialDataset.begin(ReadWrite.WRITE);
         try {
-            Model m = spatialDataset.getNamedModel(url);
+            Model m = spatialDataset.getNamedModel(graphName);
             RDFDataMgr.read(m, url);
             spatialDataset.commit();
         } finally {
@@ -295,7 +301,7 @@ public class SpatialDataEnhancer {
         
         spatialDataset.begin(ReadWrite.READ);
         try {
-            Model m = spatialDataset.getNamedModel(url);
+            Model m = spatialDataset.getNamedModel(graphName);
             numberOfTriples = m.size();
             spatialDataset.commit();
         } finally {
@@ -304,7 +310,7 @@ public class SpatialDataEnhancer {
 
         long finishTime = System.nanoTime();
         double time = (finishTime - startTime) / 1.0e6;
-        log.info(String.format("Finish loading " + numberOfTriples + " triples  - %.2fms", time));
+        log.info(String.format("Finish loading " + numberOfTriples + " triples in graph " + graphName + " - %.2fms", time));
        
     }
     
