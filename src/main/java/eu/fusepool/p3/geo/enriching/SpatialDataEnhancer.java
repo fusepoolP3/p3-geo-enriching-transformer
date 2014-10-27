@@ -140,11 +140,14 @@ public class SpatialDataEnhancer {
                 "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");        
         String qs = StrUtils.strjoinNL("SELECT * ",
-                //"FROM <" + url + ">",
+                "FROM <" + url + ">",
+                "WHERE { ",
+                "GRAPH <" + url + "> ",
                 " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'km') ;",
                 "      geo:lat ?lat ;" ,
                 "      geo:long ?lon ; ",
-                "      rdfs:label ?label .", " }");
+                "      rdfs:label ?label .", " }",
+                "}");
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
@@ -281,8 +284,19 @@ public class SpatialDataEnhancer {
         long startTime = System.nanoTime();
         spatialDataset.begin(ReadWrite.WRITE);
         try {
-            Model m = spatialDataset.getDefaultModel();
+            Model m = spatialDataset.getNamedModel(url);
             RDFDataMgr.read(m, url);
+            spatialDataset.commit();
+        } finally {
+            spatialDataset.end();
+        }
+        
+        long numberOfTriples = 0;
+        
+        spatialDataset.begin(ReadWrite.READ);
+        try {
+            Model m = spatialDataset.getNamedModel(url);
+            numberOfTriples = m.size();
             spatialDataset.commit();
         } finally {
             spatialDataset.end();
@@ -290,7 +304,7 @@ public class SpatialDataEnhancer {
 
         long finishTime = System.nanoTime();
         double time = (finishTime - startTime) / 1.0e6;
-        log.info(String.format("Finish loading triples  - %.2fms", time));
+        log.info(String.format("Finish loading " + numberOfTriples + " triples  - %.2fms", time));
        
     }
     
