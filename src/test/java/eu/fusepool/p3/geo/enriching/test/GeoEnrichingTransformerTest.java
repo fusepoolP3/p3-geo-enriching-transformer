@@ -108,13 +108,13 @@ public class GeoEnrichingTransformerTest {
     public void testRemoteConfig() throws Exception {
 	    // test the trasnformer fetching the data from the url
 	    testRemoteConfigFetchData();
-	    // test the transformer using the data stored in the previous call
-	    testRemoteConfigNoFetchData();
+	    // test the transformer using the data stored as a graph in the previous call
+	    //testRemoteConfigNoFetchData();
     	
     }
 	
 	private void testRemoteConfigFetchData() throws Exception {
-	    // Set up a service in the mock server to respond to a get request that must be sent by the transforem 
+	    // Set up a service in the mock server to respond to a get request that must be sent by the transformer 
         // to fetch the data 
         stubFor(get(urlEqualTo("/data/farmacie-trentino-grounded.ttl"))
                 .willReturn(aResponse()
