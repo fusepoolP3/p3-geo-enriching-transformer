@@ -74,8 +74,7 @@ class GeoEnrichingTransformer extends RdfGeneratingTransformer {
         Parser parser = Parser.getInstance();
         TripleCollection requestedGraph = parser.parse( entity.getData(), mediaType);
         
-        try {
-            
+        try {            
             resultGraph = spatialDataEnhancer.enhance(kbDataUrl, requestedGraph);
             
         } catch (Exception e) {

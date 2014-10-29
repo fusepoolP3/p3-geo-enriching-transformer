@@ -78,8 +78,7 @@ public class JenaSpatialTest {
     @Before
     public void setUp() throws Exception {
         URL testFile = getClass().getResource(TEST_DATASET);
-        if( ! jenas.isDataCached(testFile.toString()) )
-          jenas.loadKnowledgeBase(jenas.getDataset(), testFile.toString(), TEST_DATASET_URI);
+        jenas.loadKnowledgeBase(jenas.getDataset(), testFile.toString(), TEST_DATASET_URI);
     }
     
     @Test

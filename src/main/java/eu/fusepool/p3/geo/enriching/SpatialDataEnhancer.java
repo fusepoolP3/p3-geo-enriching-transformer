@@ -93,8 +93,11 @@ public class SpatialDataEnhancer {
         TripleCollection result = new SimpleMGraph();
         result.addAll(dataToEnhance);
         //look for the knowledge base name in the triple store before fetching the data from the url.
-        if( ! isDataCached(dataSetUrl) ){
+        if( ! isCachedGraph(spatialDataset, dataSetUrl) ){
           loadKnowledgeBase(spatialDataset, dataSetUrl, dataSetUrl);
+        }
+        else {
+            log.info("Rdf data set " + dataSetUrl + " already in the triple store.");
         }
         WGS84Point point = getPointList(dataToEnhance).get(0);
         TripleCollection poiGraph = queryNearby(point, dataSetUrl, 10);
@@ -328,20 +331,6 @@ public class SpatialDataEnhancer {
         return spatialDataset;
     }
     
-    public boolean isDataCached(String url){
-        boolean isCached = false;
-        spatialDataset.begin(ReadWrite.READ);
-        try {
-          Model m = spatialDataset.getNamedModel(url);
-          if(m != null & (! m.isEmpty()) ){
-            isCached = true;
-          }
-        }
-        finally {
-            spatialDataset.end();
-        }
-        return isCached;
-    }
     
     /**
      * Loads the data to be used as the application knowledge base. 
@@ -354,19 +343,21 @@ public class SpatialDataEnhancer {
         return connection.getInputStream();
     }
     
-    public List<String> listGraphsNames(Dataset dataset){
-        List<String> nameList = new ArrayList<String>();
+    public boolean isCachedGraph(Dataset dataset, String graphName){
+        boolean isCached = false;
         dataset.begin(ReadWrite.READ);
         try {
             Iterator<String> inames = getDataset().listNames();
             while(inames.hasNext()){
-                nameList.add(inames.next());
+                if( graphName.equals( inames.next() )) {
+                     isCached = true;  
+                }
             }
         }
         finally {
             dataset.end();
         }
-        return nameList;
+        return isCached;
     }
 
 }
