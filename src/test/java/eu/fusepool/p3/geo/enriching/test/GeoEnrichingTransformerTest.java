@@ -63,7 +63,8 @@ public class GeoEnrichingTransformerTest {
     }
     
 	private static int mockPort = 0;
-    private byte[] mockServerDataSet;
+    private byte[] mockServerDataSet1;
+    private byte[] mockServerDataSet2;
     private String transformerBaseUri;
 	
 	//private final int WIREMOCK_PORT = 8089;
@@ -76,7 +77,8 @@ public class GeoEnrichingTransformerTest {
 	@Before
     public void setUp() throws Exception {
 		
-		mockServerDataSet = IOUtils.toByteArray(getClass().getResourceAsStream("farmacie-trentino-grounded.ttl"));	
+		mockServerDataSet1 = IOUtils.toByteArray(getClass().getResourceAsStream("farmacie-trentino-grounded.ttl"));	
+		mockServerDataSet2 = IOUtils.toByteArray(getClass().getResourceAsStream("local-business-trento-grounded.ttl"));
 		final int transformerServerPort = findFreePort();
         transformerBaseUri = "http://localhost:" + transformerServerPort + "/";
         RestAssured.baseURI = transformerBaseUri;
@@ -104,30 +106,38 @@ public class GeoEnrichingTransformerTest {
     }
         
 
+    /**
+     * Performs three calls. The first to fetch data set 1 and apply the transformation. The 2nd call uses the 
+     * same data set that has been cached as named graph in the triple store. The 3rd fetch a different data set
+     * and repeat the same test as in the 1st call.
+     * @throws Exception
+     */
 	@Test
     public void testTransformation() throws Exception {
-	 // Set up a service in the mock server to respond to a get request that must be sent by the transformer 
-        // to fetch the data 
+	    // Set up a service in the mock server to respond to a get request that must be sent by the transformer 
+        // to fetch the data
+	    // 1st data set, 1st call
         stubFor(get(urlEqualTo("/data/farmacie-trentino-grounded.ttl"))
                 .willReturn(aResponse()
                     .withStatus(HttpStatus.SC_OK)
                     .withHeader("Content-Type", "text/turtle")
-                    .withBody(mockServerDataSet)));
+                    .withBody(mockServerDataSet1)));
         
-        final MGraph graphToEnrich = new SimpleMGraph();
+        // prepare the client data for the 1st data set
+        final MGraph graphToEnrich1 = new SimpleMGraph();
         final UriRef res1 = new UriRef("http://example.org/res1");
-        final GraphNode node = new GraphNode(res1, graphToEnrich);
-        node.addProperty(LAT, new TypedLiteralImpl("46.2220374200606", XSD.float_));
-        node.addProperty(LONG, new TypedLiteralImpl("10.7963137713743", XSD.float_));
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Serializer.getInstance().serialize(baos, graphToEnrich, "text/turtle");
-        final byte[] ttlData = baos.toByteArray();
-        String dataUrl = "http://localhost:" + mockPort + "/data/farmacie-trentino-grounded.ttl";
+        final GraphNode node1 = new GraphNode(res1, graphToEnrich1);
+        node1.addProperty(LAT, new TypedLiteralImpl("46.2220374200606", XSD.float_));
+        node1.addProperty(LONG, new TypedLiteralImpl("10.7963137713743", XSD.float_));
+        final ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+        Serializer.getInstance().serialize(baos1, graphToEnrich1, "text/turtle");
+        final byte[] ttlData1 = baos1.toByteArray();
+        String dataUrl1 = "http://localhost:" + mockPort + "/data/farmacie-trentino-grounded.ttl";
         // a client send a request to the transformer with the url of the data to be fetched
-        Transformer t = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl, "UTF-8"));
+        Transformer t1 = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl1, "UTF-8"));
         // the transformer fetches the data from the mock server, applies its transformation and sends the RDF result to the client
         {
-            Entity response = t.transform(new WritingEntity() {
+            Entity response = t1.transform(new WritingEntity() {
 
                 @Override
                 public MimeType getType() {
@@ -136,7 +146,7 @@ public class GeoEnrichingTransformerTest {
 
                 @Override
                 public void writeData(OutputStream out) throws IOException {
-                    out.write(ttlData);
+                    out.write(ttlData1);
                 }
             }, turtle);
 
@@ -153,11 +163,12 @@ public class GeoEnrichingTransformerTest {
             //is there a better property for nearby?
             final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
+            //verify that the data has been loaded from the server (one call)
             verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl")));
         }
-        //second call
+        // 1st data set, 2nd call (same url)
         {
-            Entity response = t.transform(new WritingEntity() {
+            Entity response = t1.transform(new WritingEntity() {
 
                 @Override
                 public MimeType getType() {
@@ -166,7 +177,7 @@ public class GeoEnrichingTransformerTest {
 
                 @Override
                 public void writeData(OutputStream out) throws IOException {
-                    out.write(ttlData);
+                    out.write(ttlData1);
                 }
             }, turtle);
 
@@ -183,9 +194,60 @@ public class GeoEnrichingTransformerTest {
             //is there a better property for nearby?
             final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
-            //verify that the data has not been loaded from the server
+            //verify that the data has not been loaded from the server (still only one call)
             verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl")));
         }
+        
+        // 2nd data set
+        stubFor(get(urlEqualTo("/data/local-business-trento-grounded.ttl"))
+            .willReturn(aResponse()
+                .withStatus(HttpStatus.SC_OK)
+                .withHeader("Content-Type", "text/turtle")
+                .withBody(mockServerDataSet2)));
+        
+        // prepare the client data for the 2nd data set
+        final MGraph graphToEnrich2 = new SimpleMGraph();
+        final UriRef res2 = new UriRef("http://example.org/res2");
+        final GraphNode node2 = new GraphNode(res2, graphToEnrich2);
+        node2.addProperty(LAT, new TypedLiteralImpl("46.064", XSD.double_));
+        node2.addProperty(LONG, new TypedLiteralImpl("11.123", XSD.double_));
+        final ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+        Serializer.getInstance().serialize(baos2, graphToEnrich2, "text/turtle");
+        final byte[] ttlData2 = baos2.toByteArray();
+        String dataUrl2 = "http://localhost:" + mockPort + "/data/local-business-trento-grounded.ttl";
+        // the client sends a request to the transformer with the url of the data to be fetched
+        Transformer t2 = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl2, "UTF-8"));
+        {
+            Entity response = t2.transform(new WritingEntity() {
+
+                @Override
+                public MimeType getType() {
+                    return turtle;
+                }
+
+                @Override
+                public void writeData(OutputStream out) throws IOException {
+                    out.write(ttlData2);
+                }
+            }, turtle);
+
+            Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
+
+            InputStream in = response.getData();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            while((line = reader.readLine()) != null){
+                System.out.println(line);
+            }
+
+            final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
+            //is there a better property for nearby?
+            final Iterator<Triple> baseNearIter = responseGraph.filter(res2, FOAF.based_near, null);
+            Assert.assertTrue("No base_near property on res2 in response", baseNearIter.hasNext());
+            verify(1,getRequestedFor(urlEqualTo("/data/local-business-trento-grounded.ttl")));
+        }
+        
+        
 	    
 	}
     

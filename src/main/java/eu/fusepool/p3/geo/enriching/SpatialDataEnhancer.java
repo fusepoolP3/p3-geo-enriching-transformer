@@ -100,7 +100,7 @@ public class SpatialDataEnhancer {
             log.info("Rdf data set " + dataSetUrl + " already in the triple store.");
         }
         WGS84Point point = getPointList(dataToEnhance).get(0);
-        TripleCollection poiGraph = queryNearby(point, dataSetUrl, 10);
+        TripleCollection poiGraph = queryNearby(point, dataSetUrl, 1);
         if(poiGraph.size() > 0){
          result.addAll(poiGraph);
         }
@@ -164,6 +164,7 @@ public class SpatialDataEnhancer {
 
         log.info(pre + "\n" + qs);
         spatialDataset.begin(ReadWrite.READ);
+        int poiCounter = 0;
         try {
             Query q = QueryFactory.create(pre + "\n" + qs);
             QueryExecution qexec = QueryExecutionFactory.create(q, spatialDataset);
@@ -183,7 +184,8 @@ public class SpatialDataEnhancer {
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
                 resultGraph.add( new TripleImpl(poiRef, RDF.type, new UriRef(poiType)));
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
-                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );   
+                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );  
+                poiCounter++;
                 
             }
           
@@ -194,6 +196,7 @@ public class SpatialDataEnhancer {
         long finishTime = System.nanoTime();
         double time = (finishTime - startTime) / 1.0e6;
         log.info(String.format("FINISH - %.2fms", time));
+        log.info(String.format("Found " + poiCounter + " points of interest."));
         return resultGraph;
 
     }
