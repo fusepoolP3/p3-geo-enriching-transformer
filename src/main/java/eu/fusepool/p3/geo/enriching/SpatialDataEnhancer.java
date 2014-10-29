@@ -26,6 +26,7 @@ import org.apache.clerezza.rdf.core.impl.TripleImpl;
 import org.apache.clerezza.rdf.core.impl.TypedLiteralImpl;
 import org.apache.clerezza.rdf.core.serializedform.SupportedFormat;
 import org.apache.clerezza.rdf.ontologies.FOAF;
+import org.apache.clerezza.rdf.ontologies.RDF;
 import org.apache.clerezza.rdf.ontologies.RDFS;
 import org.apache.clerezza.rdf.ontologies.XSD;
 import org.apache.commons.io.IOUtils;
@@ -143,6 +144,7 @@ public class SpatialDataEnhancer {
         long startTime = System.nanoTime();
         String pre = StrUtils.strjoinNL("PREFIX spatial: <http://jena.apache.org/spatial#>",
                 "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
+                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>",
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
         
         String qs = StrUtils.strjoinNL("SELECT * ",
@@ -150,8 +152,10 @@ public class SpatialDataEnhancer {
                 "WHERE { ",
                 "GRAPH <" + graphName + "> ",
                 " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'km') ;",
+                "      rdf:type ?type ; ",
                 "      geo:lat ?lat ;" ,
                 "      geo:long ?lon ; ",
+                
                 "      rdfs:label ?label .", " }",
                 "}");
 
@@ -165,6 +169,7 @@ public class SpatialDataEnhancer {
                 QuerySolution solution = results.nextSolution() ;
                 String poiUri = solution.getResource("s").getURI();
                 String poiName = checkUriName(poiUri);
+                String poiType = checkUriName(solution.getResource("type").getURI());
                 String poiLabel = solution.getLiteral("label").getString();
                 String poiLatitude = solution.getLiteral("lat").getString();
                 String poiLongitude = solution.getLiteral("lon").getString();
@@ -173,6 +178,7 @@ public class SpatialDataEnhancer {
                 String pointName = checkUriName(point.getUriName());
                 resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
+                resultGraph.add( new TripleImpl(poiRef, RDF.type, new UriRef(poiType)));
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
                 resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );   
                 
@@ -188,7 +194,11 @@ public class SpatialDataEnhancer {
         return resultGraph;
 
     }
-    
+    /**
+     * Extracts the name from the URI (removes '<' and '>' )
+     * @param uri
+     * @return
+     */
     private String checkUriName(String uri){
         if(uri.startsWith("<")){
             uri = uri.substring(1);
