@@ -153,7 +153,7 @@ public class GeoEnrichingTransformerTest {
             //is there a better property for nearby?
             final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
-            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl"));
+            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl")));
         }
         //second call
         {
@@ -184,7 +184,7 @@ public class GeoEnrichingTransformerTest {
             final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
             //verify that the data has not been loaded from the server
-            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl"));
+            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl")));
         }
 	    
 	}
