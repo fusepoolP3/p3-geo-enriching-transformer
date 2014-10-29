@@ -105,15 +105,7 @@ public class GeoEnrichingTransformerTest {
         
 
 	@Test
-    public void testRemoteConfig() throws Exception {
-	    // test the trasnformer fetching the data from the url
-	    testRemoteConfigFetchData();
-	    // test the transformer using the data stored as a graph in the previous call
-	    //testRemoteConfigNoFetchData();
-    	
-    }
-	
-	private void testRemoteConfigFetchData() throws Exception {
+    public void testTransformation() throws Exception {
 	    // Set up a service in the mock server to respond to a get request that must be sent by the transformer 
         // to fetch the data 
         stubFor(get(urlEqualTo("/data/farmacie-trentino-grounded.ttl"))
@@ -134,76 +126,66 @@ public class GeoEnrichingTransformerTest {
         // a client send a request to the transformer with the url of the data to be fetched
         Transformer t = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl, "UTF-8"));
         // the transformer fetches the data from the mock server, applies its transformation and sends the RDF result to the client
-        Entity response = t.transform(new WritingEntity() {
+        {
+            Entity response = t.transform(new WritingEntity() {
 
-            @Override
-            public MimeType getType() {
-                return turtle;
+                @Override
+                public MimeType getType() {
+                    return turtle;
+                }
+
+                @Override
+                public void writeData(OutputStream out) throws IOException {
+                    out.write(ttlData);
+                }
+            }, turtle);
+
+            Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
+
+            InputStream in = response.getData();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            while((line = reader.readLine()) != null){
+                System.out.println(line);
             }
 
-            @Override
-            public void writeData(OutputStream out) throws IOException {
-                out.write(ttlData);
-            }
-        }, turtle);
-        
-        Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
-        
-        InputStream in = response.getData();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        String line;
-        while((line = reader.readLine()) != null){
-            System.out.println(line);
+            final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
+            //is there a better property for nearby?
+            final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
+            Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
+            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl"));
         }
-        
-        final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
-        //is there a better property for nearby?
-        final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
-        Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
-	    
-	}
-	
-	private void testRemoteConfigNoFetchData() throws Exception {
-	    // this code must be called after a the request url has been previously fetched to test that the transformer 
-	    // will use the data in the triple store without fetching it from the url
-	    final MGraph graphToEnrich = new SimpleMGraph();
-        final UriRef res1 = new UriRef("http://example.org/res1");
-        final GraphNode node = new GraphNode(res1, graphToEnrich);
-        node.addProperty(LAT, new TypedLiteralImpl("46.2220374200606", XSD.float_));
-        node.addProperty(LONG, new TypedLiteralImpl("10.7963137713743", XSD.float_));
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Serializer.getInstance().serialize(baos, graphToEnrich, "text/turtle");
-        final byte[] ttlData = baos.toByteArray();
-        String dataUrl = "http://localhost:" + mockPort + "/data/farmacie-trentino-grounded.ttl";
-        // a client send a request to the transformer with the url of the data to be fetched
-        Transformer t = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl, "UTF-8"));
-        // the transformer fetches the data from the mock server, applies its transformation and sends the RDF result to the client
-        Entity response = t.transform(new WritingEntity() {
+        //second call
+        {
+            Entity response = t.transform(new WritingEntity() {
 
-            @Override
-            public MimeType getType() {
-                return turtle;
+                @Override
+                public MimeType getType() {
+                    return turtle;
+                }
+
+                @Override
+                public void writeData(OutputStream out) throws IOException {
+                    out.write(ttlData);
+                }
+            }, turtle);
+
+            Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
+
+            InputStream in = response.getData();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            while((line = reader.readLine()) != null){
+                System.out.println(line);
             }
 
-            @Override
-            public void writeData(OutputStream out) throws IOException {
-                out.write(ttlData);
-            }
-        }, turtle);
-        
-        Assert.assertEquals("Wrong media Type of response", turtle.toString(), response.getType().toString());
-        
-        InputStream in = response.getData();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        String line;
-        while((line = reader.readLine()) != null){
-            System.out.println(line);
+            final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
+            //is there a better property for nearby?
+            final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
+            Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
+            //verify that the data has not been loaded from the server
+            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl"));
         }
-        
-        final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
-        //is there a better property for nearby?
-        final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
-        Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
 	    
 	}
     
