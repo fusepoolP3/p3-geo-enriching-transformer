@@ -109,7 +109,7 @@ public class GeoEnrichingTransformerTest {
 	    // test the trasnformer fetching the data from the url
 	    testRemoteConfigFetchData();
 	    // test the transformer using the data stored as a graph in the previous call
-	    //testRemoteConfigNoFetchData();
+	    testRemoteConfigNoFetchData();
     	
     }
 	
