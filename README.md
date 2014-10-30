@@ -3,9 +3,6 @@ Fusepool P3 Geo-enriching Transformer
 
 A transformer enriching RDF data containing locations with information about points of interest nearby these locations.
 
-
-
-
 [![Build Status](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer.svg)](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer)
 
 Compile the application running the command
@@ -23,7 +20,7 @@ To test the transformer send an http post message with the data containing the p
     <urn:uuid:fusepoolp3:myplace> geo:lat "46.41"^^xsd:double ;
             geo:long "11.05"^^xsd:double .
 
-Use curl to send the http post request like in the following example
+If you store the above example content in a file `test_geo_enricher.ttl`you can Use cURL to send the HTTP POST request as follows:
 
     curl -i -X POST -H "Content-Type: text/turtle" -T test_geo_enricher.ttl http://localhost:7100/?data=https://raw.githubusercontent.com/fusepoolP3/p3-geo-enriching-transformer/master/src/test/resources/eu/fusepool/p3/geo/enriching/test/farmacie-trentino-grounded.ttl
 
@@ -38,6 +35,6 @@ The command start an asynchronous task and the server sends the following inform
     Transfer-Encoding: chunked
     Server: Jetty(9.2.0.RC0)
 
-In order to get the result the following http get request must be sent to the server
+In order to get the result the following HTTP GET request must be sent to the server
 
     curl http://localhost:7100/job/1bd4b0ad-5054-41ae-a429-949883a95f82
