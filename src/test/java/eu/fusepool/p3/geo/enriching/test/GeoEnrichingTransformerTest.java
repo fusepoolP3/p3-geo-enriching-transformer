@@ -77,8 +77,8 @@ public class GeoEnrichingTransformerTest {
 	@Before
     public void setUp() throws Exception {
 		
-		mockServerDataSet1 = IOUtils.toByteArray(getClass().getResourceAsStream("farmacie-trentino-grounded.ttl"));	
-		mockServerDataSet2 = IOUtils.toByteArray(getClass().getResourceAsStream("local-business-trento-grounded.ttl"));
+		mockServerDataSet1 = IOUtils.toByteArray(getClass().getResourceAsStream("farmacie-trentino-uuid.ttl"));	
+		mockServerDataSet2 = IOUtils.toByteArray(getClass().getResourceAsStream("local-business-trento-uuid.ttl"));
 		final int transformerServerPort = findFreePort();
         transformerBaseUri = "http://localhost:" + transformerServerPort + "/";
         RestAssured.baseURI = transformerBaseUri;
@@ -117,7 +117,7 @@ public class GeoEnrichingTransformerTest {
 	    // Set up a service in the mock server to respond to a get request that must be sent by the transformer 
         // to fetch the data
 	    // 1st data set, 1st call
-        stubFor(get(urlEqualTo("/data/farmacie-trentino-grounded.ttl"))
+        stubFor(get(urlEqualTo("/data/farmacie-trentino-uuid.ttl"))
                 .willReturn(aResponse()
                     .withStatus(HttpStatus.SC_OK)
                     .withHeader("Content-Type", "text/turtle")
@@ -132,7 +132,7 @@ public class GeoEnrichingTransformerTest {
         final ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
         Serializer.getInstance().serialize(baos1, graphToEnrich1, "text/turtle");
         final byte[] ttlData1 = baos1.toByteArray();
-        String dataUrl1 = "http://localhost:" + mockPort + "/data/farmacie-trentino-grounded.ttl";
+        String dataUrl1 = "http://localhost:" + mockPort + "/data/farmacie-trentino-uuid.ttl";
         // a client send a request to the transformer with the url of the data to be fetched
         Transformer t1 = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl1, "UTF-8"));
         // the transformer fetches the data from the mock server, applies its transformation and sends the RDF result to the client
@@ -164,7 +164,7 @@ public class GeoEnrichingTransformerTest {
             final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
             //verify that the data has been loaded from the server (one call)
-            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl")));
+            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-uuid.ttl")));
         }
         // 1st data set, 2nd call (same url)
         {
@@ -195,11 +195,11 @@ public class GeoEnrichingTransformerTest {
             final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
             //verify that the data has not been loaded from the server (still only one call)
-            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-grounded.ttl")));
+            verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-uuid.ttl")));
         }
         
         // 2nd data set
-        stubFor(get(urlEqualTo("/data/local-business-trento-grounded.ttl"))
+        stubFor(get(urlEqualTo("/data/local-business-trento-uuid.ttl"))
             .willReturn(aResponse()
                 .withStatus(HttpStatus.SC_OK)
                 .withHeader("Content-Type", "text/turtle")
@@ -214,7 +214,7 @@ public class GeoEnrichingTransformerTest {
         final ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
         Serializer.getInstance().serialize(baos2, graphToEnrich2, "text/turtle");
         final byte[] ttlData2 = baos2.toByteArray();
-        String dataUrl2 = "http://localhost:" + mockPort + "/data/local-business-trento-grounded.ttl";
+        String dataUrl2 = "http://localhost:" + mockPort + "/data/local-business-trento-uuid.ttl";
         // the client sends a request to the transformer with the url of the data to be fetched
         Transformer t2 = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl2, "UTF-8"));
         {
@@ -245,7 +245,7 @@ public class GeoEnrichingTransformerTest {
             final Iterator<Triple> baseNearIter = responseGraph.filter(res2, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res2 in response", baseNearIter.hasNext());
             //verify that the data has been loaded from the server (one call)
-            verify(1,getRequestedFor(urlEqualTo("/data/local-business-trento-grounded.ttl")));
+            verify(1,getRequestedFor(urlEqualTo("/data/local-business-trento-uuid.ttl")));
         }
         
         
