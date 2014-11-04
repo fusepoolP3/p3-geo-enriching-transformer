@@ -89,20 +89,30 @@ public class SpatialDataEnhancer {
      * Takes a RDF data set to search for point of interest close to objects provided in a graph.  
      * @throws Exception 
      */
-    public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) throws Exception {
+    public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) {
         TripleCollection result = new SimpleMGraph();
-        result.addAll(dataToEnhance);
-        //look for the knowledge base name in the triple store before fetching the data from the url.
-        if( ! isCachedGraph(spatialDataset, dataSetUrl) ){
-          loadKnowledgeBase(spatialDataset, dataSetUrl, dataSetUrl);
+        if( dataToEnhance != null ){
+        	if( ! dataToEnhance.isEmpty() ) {
+		        result.addAll(dataToEnhance);
+		        //look for the knowledge base name in the triple store before fetching the data from the url.
+		        if( ! isCachedGraph(spatialDataset, dataSetUrl) ){
+		          loadKnowledgeBase(spatialDataset, dataSetUrl, dataSetUrl);
+		        }
+		        else {
+		            log.info("Rdf data set " + dataSetUrl + " already in the triple store.");
+		        }
+		        WGS84Point point = getPointList(dataToEnhance).get(0);
+		        TripleCollection poiGraph = queryNearby(point, dataSetUrl, 1);
+		        if(poiGraph.size() > 0){
+		         result.addAll(poiGraph);
+		        }
+        	}
+        	else {
+        		throw new IllegalArgumentException("An empty graph cannot be enhanced");
+        	}
         }
         else {
-            log.info("Rdf data set " + dataSetUrl + " already in the triple store.");
-        }
-        WGS84Point point = getPointList(dataToEnhance).get(0);
-        TripleCollection poiGraph = queryNearby(point, dataSetUrl, 1);
-        if(poiGraph.size() > 0){
-         result.addAll(poiGraph);
+        	throw new NullPointerException("A null object has been passed instead of a graph.");
         }
         return result;
     }
@@ -300,7 +310,7 @@ public class SpatialDataEnhancer {
      * @param url
      * @throws Exception
      */
-    public void loadKnowledgeBase(Dataset spatialDataset, String url, String graphName) throws Exception {
+    public void loadKnowledgeBase(Dataset spatialDataset, String url, String graphName)  {
         
         log.info("Start loading data from: " + url);
         long startTime = System.nanoTime();

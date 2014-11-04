@@ -244,6 +244,7 @@ public class GeoEnrichingTransformerTest {
             //is there a better property for nearby?
             final Iterator<Triple> baseNearIter = responseGraph.filter(res2, FOAF.based_near, null);
             Assert.assertTrue("No base_near property on res2 in response", baseNearIter.hasNext());
+            //verify that the data has been loaded from the server (one call)
             verify(1,getRequestedFor(urlEqualTo("/data/local-business-trento-grounded.ttl")));
         }
         

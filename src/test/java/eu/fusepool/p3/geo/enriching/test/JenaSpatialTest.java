@@ -95,6 +95,37 @@ public class JenaSpatialTest {
     }
     
     @Test
+    public void testEnhanceNullClientGraph() {
+    	String errorMessage = "";
+    	try {
+    	   TripleCollection resultGraph = jenas.enhance(TEST_DATASET_URI, null);
+    	   
+    	}
+    	catch(NullPointerException npe){
+    		errorMessage = npe.getMessage();
+    		
+    	}
+    	Assert.assertEquals("A null object has been passed instead of a graph.", errorMessage);
+    	
+    }
+    
+    @Test
+    public void testEnhanceEmptyClientGraph() {
+    	String errorMessage = "";
+    	try {
+    	   TripleCollection resultGraph = jenas.enhance(TEST_DATASET_URI, new SimpleMGraph());
+   
+    	}
+    	catch(IllegalArgumentException iae){
+    		errorMessage = iae.getMessage();
+    		
+    	}
+    	
+    	Assert.assertEquals("An empty graph cannot be enhanced", errorMessage);
+    	
+    }
+    
+    @Test
     public void testQueryNearby() throws Exception {
         WGS84Point point = new WGS84Point();
         point.setUri("http://geo.org/?lat=41.79,lon=12.24");
