@@ -134,9 +134,8 @@
         <dependency>
             <groupId>eu.fusepool.p3</groupId>
             <artifactId>transformer-client-library</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <scope>test</scope>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>
