@@ -1,0 +1,5 @@
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:uuid:fusepoolp3:myplace> geo:lat "46.06"^^xsd:double ;
+	geo:long "11.12"^^xsd:double .
