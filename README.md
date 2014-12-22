@@ -2,6 +2,7 @@ Fusepool P3 Geo-enriching Transformer
 ============================
 
 A transformer enriching RDF data containing locations with information about points of interest nearby these locations.
+Implements the requirement in [FP-205](https://fusepool.atlassian.net/browse/FP-205).
 
 [![Build Status](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer.svg)](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer)
 
