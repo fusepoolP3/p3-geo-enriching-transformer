@@ -1,0 +1,2398 @@
+[
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://schema.org/address",
+              "curie": "schema:address",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "INDIRIZZO"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "INDIRIZZO"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "/address/ + '/' + value",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [],
+                "links": []
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "/address/ + '/' + value",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [],
+                "links": []
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": [
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "INDIRIZZO"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressLocality",
+              "curie": "schema:addressLocality",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "COMUNE"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressRegion",
+              "curie": "schema:addressRegion",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "REGIONE"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "/address/ + '/' + value",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [],
+                "links": []
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": [
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "INDIRIZZO"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressLocality",
+              "curie": "schema:addressLocality",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "COMUNE"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressRegion",
+              "curie": "schema:addressRegion",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "REGIONE"
+              }
+            },
+            {
+              "uri": "http://schema.org/postalCode",
+              "curie": "schema:postalCode",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "CAP"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "/address/ + '/' + value",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": []
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": [
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "INDIRIZZO"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressLocality",
+              "curie": "schema:addressLocality",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "COMUNE"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressRegion",
+              "curie": "schema:addressRegion",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "REGIONE"
+              }
+            },
+            {
+              "uri": "http://schema.org/postalCode",
+              "curie": "schema:postalCode",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "CAP"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "/address/ + '/' + value",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": []
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": [
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "INDIRIZZO"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressLocality",
+              "curie": "schema:addressLocality",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "COMUNE"
+              }
+            },
+            {
+              "uri": "http://schema.org/addressRegion",
+              "curie": "schema:addressRegion",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "REGIONE"
+              }
+            },
+            {
+              "uri": "http://schema.org/postalCode",
+              "curie": "schema:postalCode",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "CAP"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-blank",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-blank",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-blank",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-blank",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-blank",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-blank",
+                "isRowNumberCell": false,
+                "columnName": "COD_FARMACIA",
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "'Farmacia ' + value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'/pharmacy/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'/pharmacy/address/' + value",
+                "isRowNumberCell": true,
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "'Farmacia ' + value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://fusepool.eu/",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'/pharmacy/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'/pharmacy/address/' + value",
+                "isRowNumberCell": true,
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "'Farmacia ' + value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "urn:uuid:fusepool:",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'urn:uuid:fusepoolp3:' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'/pharmacy/address/' + value",
+                "isRowNumberCell": true,
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "'Farmacia ' + value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "urn:uuid:fusepool:",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'urn:uuid:fusepoolp3:pharmacy:' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'urn:uuid:fusepoolp3:pharmacy:address:' + value",
+                "isRowNumberCell": true,
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "'Farmacia ' + value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "urn:uuid:fusepool:",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "geo",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'urn:uuid:fusepoolp3:pharmacy:' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/Pharmacy",
+              "curie": "schema:Pharmacy"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/legalName",
+              "curie": "schema:legalName",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+              "curie": "geo:lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "LATITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+              "curie": "geo:long",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "LONGITUDINE_P"
+              }
+            },
+            {
+              "uri": "http://schema.org/streetAddress",
+              "curie": "schema:streetAddress",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'urn:uuid:fusepoolp3:pharmacy:address:' + value",
+                "isRowNumberCell": true,
+                "rdfTypes": [
+                  {
+                    "uri": "http://schema.org/PostalAddress",
+                    "curie": "schema:PostalAddress"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://schema.org/streetAddress",
+                    "curie": "schema:streetAddress",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "INDIRIZZO"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressLocality",
+                    "curie": "schema:addressLocality",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "COMUNE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/addressRegion",
+                    "curie": "schema:addressRegion",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "REGIONE"
+                    }
+                  },
+                  {
+                    "uri": "http://schema.org/postalCode",
+                    "curie": "schema:postalCode",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "CAP"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "'Farmacia ' + value",
+                "isRowNumberCell": false,
+                "columnName": "FARMACIA"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "/address/ + '/' + value",
+          "isRowNumberCell": false,
+          "columnName": "COD_FARMACIA",
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  }
+]
