@@ -8,7 +8,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -69,6 +73,9 @@ public class SpatialDataEnhancer {
     
     private static final UriRef geo_long = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#long");
     private static final UriRef geo_lat = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#lat");
+    private static final UriRef schema_event = new UriRef("http://schema.org/event");
+    private static final UriRef schema_startDate = new UriRef("http://schema.org/startDate");
+    private static final UriRef schema_endDate = new UriRef("http://schema.org/endDate");
     
     File LUCENE_INDEX_DIR = null;
     File TDB_DIR = null;
@@ -87,6 +94,7 @@ public class SpatialDataEnhancer {
     }
     /**
      * Takes a RDF data set to search for point of interest close to objects provided in a graph.  
+     * @throws ParseException 
      * @throws Exception 
      */
     public TripleCollection enhance(String dataSetUrl, TripleCollection dataToEnhance) {
@@ -116,8 +124,13 @@ public class SpatialDataEnhancer {
         }
         return result;
     }
-    
-    public List<WGS84Point> getPointList(TripleCollection graph){
+    /**
+     * Extracts one spatial point from the client data.
+     * @param graph
+     * @return
+     * @throws ParseException 
+     */
+    public List<WGS84Point> getPointList(TripleCollection graph) {
         List<WGS84Point> points = new ArrayList<WGS84Point>();
         Map<NonLiteral, String> pointsLat = new HashMap<NonLiteral,String>();
         Iterator<Triple> ipointsLat = graph.filter(null, geo_lat, null);
@@ -129,15 +142,32 @@ public class SpatialDataEnhancer {
         }
         Iterator<Triple> ipointsLong = graph.filter(null, geo_long, null);
         while(ipointsLong.hasNext()){
-            Triple latStmt = ipointsLong.next();
-            NonLiteral subj = latStmt.getSubject();
-            String longitude = ((TypedLiteral)latStmt.getObject()).getLexicalForm();
+            Triple longStmt = ipointsLong.next();
+            NonLiteral subj = longStmt.getSubject();
+            String longitude = ((TypedLiteral)longStmt.getObject()).getLexicalForm();
             String lat = pointsLat.get(subj);
             WGS84Point point = new WGS84Point();
             point.setUri(subj.toString());
             point.setLat( Double.parseDouble(lat) );
             point.setLong( Double.parseDouble(longitude) );
             points.add( point );
+            
+        }
+        
+        // look for events
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        Iterator<Triple> iEvent = graph.filter(null, schema_event, null);
+        while(iEvent.hasNext()){
+            Triple eventStmt = iEvent.next();
+            String placeUri = eventStmt.getSubject().toString();
+            UriRef event = (UriRef)eventStmt.getObject();
+            for(Iterator<WGS84Point> i = points.iterator(); i.hasNext(); ){
+                WGS84Point point = i.next();
+                if( placeUri.equals(point.getUriName()) )
+                    // put the real value
+                    point.setStartDate("2015-02-06");
+                    point.setEndDate("2015-02-06");
+            }
             
         }
         
@@ -265,8 +295,9 @@ public class SpatialDataEnhancer {
         // you need JTS lib in the classpath to run the examples
         //entDef.setSpatialContextFactory(SpatialQuery.JTS_SPATIAL_CONTEXT_FACTORY_CLASS);
         // set custom goe predicates
+        
+        entDef.addSpatialPredicatePair(ResourceFactory.createResource("http://schema.org/latitude"), ResourceFactory.createResource("http://schema.org/longitude"));
         /*
-        entDef.addSpatialPredicatePair(ResourceFactory.createResource("http://localhost/jena_example/#latitude_1"), ResourceFactory.createResource("http://localhost/jena_example/#longitude_1"));
         entDef.addSpatialPredicatePair(ResourceFactory.createResource("http://localhost/jena_example/#latitude_2"), ResourceFactory.createResource("http://localhost/jena_example/#longitude_2"));
         entDef.addWKTPredicate(ResourceFactory.createResource("http://localhost/jena_example/#wkt_1"));
         entDef.addWKTPredicate(ResourceFactory.createResource("http://localhost/jena_example/#wkt_2"));

@@ -1,11 +1,32 @@
 package eu.fusepool.p3.geo.enriching;
 
+import java.util.Date;
+
 public class WGS84Point {
 
 	private double latitude;
 	private double longitude;
 	private String uriName;
+	private String startDate;
+	public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    private String endDate;
 	
+
 	public String getUriName(){
 	    return uriName;
 	}

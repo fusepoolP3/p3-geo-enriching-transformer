@@ -64,7 +64,7 @@ class GeoEnrichingTransformer extends RdfGeneratingTransformer {
     /**
      * Takes the RDF data sent by the client and the graph name (url) of the knowledge base to search
      * for points of interest nearby the locations described in the client graph and sends it back enriched with
-     * information about the points of interest that have been found. It looks for the knowledge name in the triple store
+     * information about the points of interest that have been found. It looks for the knowledge base name in the triple store
      * before fetching the data from the url.    
      */
     @Override
@@ -72,8 +72,8 @@ class GeoEnrichingTransformer extends RdfGeneratingTransformer {
         TripleCollection resultGraph = null;
         String mediaType = entity.getType().toString();   
         Parser parser = Parser.getInstance();
-        TripleCollection requestedGraph = parser.parse( entity.getData(), mediaType);
-        resultGraph = spatialDataEnhancer.enhance(kbDataUrl, requestedGraph);
+        TripleCollection requestGraph = parser.parse( entity.getData(), mediaType);
+        resultGraph = spatialDataEnhancer.enhance(kbDataUrl, requestGraph);
             
         return resultGraph;
         
