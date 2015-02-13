@@ -1,26 +1,19 @@
 package eu.fusepool.p3.geo.enriching;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.clerezza.rdf.core.NonLiteral;
-import org.apache.clerezza.rdf.core.PlainLiteral;
-import org.apache.clerezza.rdf.core.Triple;
+import org.apache.clerezza.rdf.core.Resource;
 import org.apache.clerezza.rdf.core.TripleCollection;
 import org.apache.clerezza.rdf.core.TypedLiteral;
 import org.apache.clerezza.rdf.core.UriRef;
@@ -28,12 +21,10 @@ import org.apache.clerezza.rdf.core.impl.PlainLiteralImpl;
 import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.clerezza.rdf.core.impl.TripleImpl;
 import org.apache.clerezza.rdf.core.impl.TypedLiteralImpl;
-import org.apache.clerezza.rdf.core.serializedform.SupportedFormat;
 import org.apache.clerezza.rdf.ontologies.FOAF;
 import org.apache.clerezza.rdf.ontologies.RDF;
 import org.apache.clerezza.rdf.ontologies.RDFS;
 import org.apache.clerezza.rdf.ontologies.XSD;
-import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.atlas.logging.LogCtl;
 import org.apache.jena.query.spatial.EntityDefinition;
@@ -57,13 +48,8 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ReadWrite;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.sparql.util.QueryExecUtils;
 import com.hp.hpl.jena.tdb.TDBFactory;
-
-import org.apache.clerezza.rdf.ontologies.RDFS;
 /**
  * Enhances an input graph with information taken from a remote source. 
  * @author luigi
@@ -109,10 +95,18 @@ public class SpatialDataEnhancer {
 		        else {
 		            log.info("Rdf data set " + dataSetUrl + " already in the triple store.");
 		        }
-		        WGS84Point point = getPointList(dataToEnhance).get(0);
-		        TripleCollection poiGraph = queryNearby(point, dataSetUrl, 1);
-		        if(poiGraph.size() > 0){
-		         result.addAll(poiGraph);
+		        WGS84Point point = getPoint(dataToEnhance);
+		        if(point.getStartDate() != null || point.getEndDate() != null){ 
+    		        TripleCollection poiGraph = queryEventsNearby(point, dataSetUrl, 1);
+    		        if(poiGraph.size() > 0){
+    		         result.addAll(poiGraph);
+    		        }
+		        }
+		        else {
+		            TripleCollection poiGraph = queryNearby(point, dataSetUrl, 1);
+                    if(poiGraph.size() > 0){
+                     result.addAll(poiGraph);
+                    }
 		        }
         	}
         	else {
@@ -125,53 +119,26 @@ public class SpatialDataEnhancer {
         return result;
     }
     /**
-     * Extracts one spatial point from the client data.
+     * Extracts one spatial point or event from the client data.
      * @param graph
      * @return
      * @throws ParseException 
      */
-    public List<WGS84Point> getPointList(TripleCollection graph) {
-        List<WGS84Point> points = new ArrayList<WGS84Point>();
-        Map<NonLiteral, String> pointsLat = new HashMap<NonLiteral,String>();
-        Iterator<Triple> ipointsLat = graph.filter(null, geo_lat, null);
-        while(ipointsLat.hasNext()){
-            Triple latStmt = ipointsLat.next();
-            NonLiteral subj = latStmt.getSubject();
-            String latitude = ((TypedLiteral)latStmt.getObject()).getLexicalForm();
-            pointsLat.put(subj, latitude);
+    public WGS84Point getPoint(TripleCollection graph) {
+        WGS84Point point = new WGS84Point();   
+        NonLiteral pointRef = graph.filter(null, geo_lat, null).next().getSubject();
+        String latitude = ( (TypedLiteral) graph.filter(pointRef, geo_lat, null).next().getObject() ).getLexicalForm();
+        String longitude = ( (TypedLiteral) graph.filter(pointRef, geo_long, null).next().getObject() ).getLexicalForm();
+        point.setUri(pointRef.toString());
+        point.setLat(Double.valueOf(latitude));
+        point.setLong(Double.valueOf(longitude));
+        // look for events linked to places
+        if(graph.filter(pointRef, schema_event, null).hasNext()){
+            NonLiteral event = (NonLiteral)graph.filter(pointRef, schema_event, null).next().getObject();        
+            String startDate = ( (TypedLiteral) graph.filter(event, schema_startDate, null).next().getObject()).getLexicalForm();
+            point.setStartDate(startDate);
         }
-        Iterator<Triple> ipointsLong = graph.filter(null, geo_long, null);
-        while(ipointsLong.hasNext()){
-            Triple longStmt = ipointsLong.next();
-            NonLiteral subj = longStmt.getSubject();
-            String longitude = ((TypedLiteral)longStmt.getObject()).getLexicalForm();
-            String lat = pointsLat.get(subj);
-            WGS84Point point = new WGS84Point();
-            point.setUri(subj.toString());
-            point.setLat( Double.parseDouble(lat) );
-            point.setLong( Double.parseDouble(longitude) );
-            points.add( point );
-            
-        }
-        
-        // look for events
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        Iterator<Triple> iEvent = graph.filter(null, schema_event, null);
-        while(iEvent.hasNext()){
-            Triple eventStmt = iEvent.next();
-            String placeUri = eventStmt.getSubject().toString();
-            UriRef event = (UriRef)eventStmt.getObject();
-            for(Iterator<WGS84Point> i = points.iterator(); i.hasNext(); ){
-                WGS84Point point = i.next();
-                if( placeUri.equals(point.getUriName()) )
-                    // put the real value
-                    point.setStartDate("2015-02-06");
-                    point.setEndDate("2015-02-06");
-            }
-            
-        }
-        
-        return points;
+        return point;
     }
     /**
      * Searches for points of interest within a circle of a given radius. 
@@ -225,6 +192,82 @@ public class SpatialDataEnhancer {
                 resultGraph.add( new TripleImpl(poiRef, RDF.type, new UriRef(poiType)));
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
                 resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );  
+                poiCounter++;
+                
+            }
+          
+        } 
+        finally {
+            spatialDataset.end();
+        }
+        long finishTime = System.nanoTime();
+        double time = (finishTime - startTime) / 1.0e6;
+        log.info(String.format("FINISH - %.2fms", time));
+        log.info(String.format("Found " + poiCounter + " points of interest."));
+        return resultGraph;
+
+    }
+    /**
+     * Searches for events within a circle of a given radius, starting from a date or within a time frame. 
+     * The data used is stored in a named graph.
+     * @param point
+     * @param uri
+     * @param radius
+     * @return
+     */
+    public TripleCollection queryEventsNearby(WGS84Point point, String graphName, int radius){
+        TripleCollection resultGraph = new SimpleMGraph();
+        log.info("queryNearby()");
+        long startTime = System.nanoTime();
+        String pre = StrUtils.strjoinNL("PREFIX spatial: <http://jena.apache.org/spatial#>",
+                "PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>",
+                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>",
+                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
+                "PREFIX schema: <http://schema.org/>",
+                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>");
+        
+        String qs = StrUtils.strjoinNL("SELECT * ",
+                "FROM NAMED <" + graphName + ">",
+                "WHERE { ",
+                "GRAPH <" + graphName + "> ",
+                " { ?location spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'km') .",
+                "   ?location geo:lat ?lat ." ,
+                "   ?location geo:long ?lon . ",
+                "   ?location rdf:type ?type . ",
+                "   ?location rdfs:label ?label .",
+                "   ?event schema:location ?location .",
+                "   ?event schema:startDate ?start .",
+                "   FILTER(?start >= \"" + point.getStartDate() + "\"^^xsd:date ) ",
+                " }",
+                "}");
+
+        log.info(pre + "\n" + qs);
+        spatialDataset.begin(ReadWrite.READ);
+        int poiCounter = 0;
+        try {
+            Query q = QueryFactory.create(pre + "\n" + qs);
+            QueryExecution qexec = QueryExecutionFactory.create(q, spatialDataset);
+            ResultSet results = qexec.execSelect() ;
+            for ( ; results.hasNext() ; ) {
+                QuerySolution solution = results.nextSolution() ;
+                String poiUri = solution.getResource("location").getURI();
+                String poiName = checkUriName(poiUri);
+                String poiType = checkUriName(solution.getResource("type").getURI());
+                String poiLabel = solution.getLiteral("label").getString();
+                String poiLatitude = solution.getLiteral("lat").getString();
+                String poiLongitude = solution.getLiteral("lon").getString();
+                log.info("poi name: " + poiName + " label = " + poiLabel);
+                UriRef poiRef = new UriRef(poiName);                
+                String pointName = checkUriName(point.getUriName());
+                resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
+                resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
+                resultGraph.add( new TripleImpl(poiRef, RDF.type, new UriRef(poiType)));
+                resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
+                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );
+                String eventUri = solution.getResource("event").getURI();
+                String startDate = solution.getLiteral("start").getString();
+                UriRef eventRef = new UriRef(eventUri);
+                resultGraph.add(new TripleImpl(eventRef,schema_startDate,new TypedLiteralImpl(startDate, XSD.double_)));
                 poiCounter++;
                 
             }

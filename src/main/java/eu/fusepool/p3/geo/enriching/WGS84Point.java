@@ -8,6 +8,8 @@ public class WGS84Point {
 	private double longitude;
 	private String uriName;
 	private String startDate;
+	private String endDate;
+	
 	public String getStartDate() {
         return startDate;
     }
@@ -23,9 +25,6 @@ public class WGS84Point {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-
-    private String endDate;
-	
 
 	public String getUriName(){
 	    return uriName;

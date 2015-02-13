@@ -88,10 +88,10 @@ public class JenaSpatialTest {
     }
     
     @Test
-    public void testGetPointList() throws IOException {
+    public void testGetPoint() throws IOException {
         TripleCollection graph = Parser.getInstance().parse(getClass().getResourceAsStream(TEST_DATASET), SupportedFormat.TURTLE);
-        List<WGS84Point> pointList = jenas.getPointList(graph);
-        Assert.assertTrue(pointList.size() > 0);
+        WGS84Point point = jenas.getPoint(graph);
+        Assert.assertTrue(point != null);
     }
     
     @Test
