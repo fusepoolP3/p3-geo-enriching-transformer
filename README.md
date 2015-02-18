@@ -27,7 +27,7 @@ To test the transformer send an http post message with the data containing the p
 
 If you store the above example content in a file `test_geo_enricher.ttl` you can Use cURL to send the HTTP POST request as follows:
 
-    curl -i -X POST -H "Content-Type: text/turtle" -d @test_geo_enricher.ttl http://localhost:7100/?data=file:///home/user/eventi.ttl
+    curl -i -X POST -H "Content-Type: text/turtle" -d @test_geo_enricher.ttl http://localhost:7100/?graph=file:///home/user/eventi.ttl
 
 If the data set can be put in a server use its http url in place of the file url. The command start an asynchronous task and the server sends the following
 information to the client to tell where the result could be fetched
