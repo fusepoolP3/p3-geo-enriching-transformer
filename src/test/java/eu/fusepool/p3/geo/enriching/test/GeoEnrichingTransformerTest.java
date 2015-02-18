@@ -134,7 +134,7 @@ public class GeoEnrichingTransformerTest {
         final byte[] ttlData1 = baos1.toByteArray();
         String dataUrl1 = "http://localhost:" + mockPort + "/data/farmacie-trentino-uuid.ttl";
         // a client send a request to the transformer with the url of the data to be fetched
-        Transformer t1 = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl1, "UTF-8"));
+        Transformer t1 = new TransformerClientImpl(RestAssured.baseURI+"?graph="+URLEncoder.encode(dataUrl1, "UTF-8"));
         // the transformer fetches the data from the mock server, applies its transformation and sends the RDF result to the client
         {
             Entity response = t1.transform(new WritingEntity() {
@@ -161,7 +161,7 @@ public class GeoEnrichingTransformerTest {
 
             final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
             //is there a better property for nearby?
-            final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
+            final Iterator<Triple> baseNearIter = responseGraph.filter(null, FOAF.based_near, res1);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
             //verify that the data has been loaded from the server (one call)
             verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-uuid.ttl")));
@@ -192,7 +192,7 @@ public class GeoEnrichingTransformerTest {
 
             final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
             //is there a better property for nearby?
-            final Iterator<Triple> baseNearIter = responseGraph.filter(res1, FOAF.based_near, null);
+            final Iterator<Triple> baseNearIter = responseGraph.filter(null, FOAF.based_near, res1);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
             //verify that the data has not been loaded from the server (still only one call)
             verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-uuid.ttl")));
@@ -216,7 +216,7 @@ public class GeoEnrichingTransformerTest {
         final byte[] ttlData2 = baos2.toByteArray();
         String dataUrl2 = "http://localhost:" + mockPort + "/data/local-business-trento-uuid.ttl";
         // the client sends a request to the transformer with the url of the data to be fetched
-        Transformer t2 = new TransformerClientImpl(RestAssured.baseURI+"?data="+URLEncoder.encode(dataUrl2, "UTF-8"));
+        Transformer t2 = new TransformerClientImpl(RestAssured.baseURI+"?graph="+URLEncoder.encode(dataUrl2, "UTF-8"));
         {
             Entity response = t2.transform(new WritingEntity() {
 
@@ -242,7 +242,7 @@ public class GeoEnrichingTransformerTest {
 
             final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
             //is there a better property for nearby?
-            final Iterator<Triple> baseNearIter = responseGraph.filter(res2, FOAF.based_near, null);
+            final Iterator<Triple> baseNearIter = responseGraph.filter(null, FOAF.based_near, res2);
             Assert.assertTrue("No base_near property on res2 in response", baseNearIter.hasNext());
             //verify that the data has been loaded from the server (one call)
             verify(1,getRequestedFor(urlEqualTo("/data/local-business-trento-uuid.ttl")));

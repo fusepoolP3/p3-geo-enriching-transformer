@@ -29,7 +29,7 @@ public class GeoEnrichingTransformerFactory implements TransformerFactory {
     
     @Override
     public Transformer getTransformer(HttpServletRequest request) {
-        final String dataUri = request.getParameter("data");
+        final String dataUri = request.getParameter("graph");
         return getTransfomerFor(dataUri);
     }
 

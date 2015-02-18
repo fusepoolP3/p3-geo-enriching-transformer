@@ -60,6 +60,7 @@ public class SpatialDataEnhancer {
     private static final UriRef geo_long = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#long");
     private static final UriRef geo_lat = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#lat");
     private static final UriRef schema_event = new UriRef("http://schema.org/event");
+    private static final UriRef schema_location = new UriRef("http://schema.org/location");
     private static final UriRef schema_startDate = new UriRef("http://schema.org/startDate");
     private static final UriRef schema_endDate = new UriRef("http://schema.org/endDate");
     
@@ -97,13 +98,13 @@ public class SpatialDataEnhancer {
 		        }
 		        WGS84Point point = getPoint(dataToEnhance);
 		        if(point.getStartDate() != null || point.getEndDate() != null){ 
-    		        TripleCollection poiGraph = queryEventsNearby(point, dataSetUrl, 1);
+    		        TripleCollection poiGraph = queryEventsNearby(point, dataSetUrl, 0.5);
     		        if(poiGraph.size() > 0){
     		         result.addAll(poiGraph);
     		        }
 		        }
 		        else {
-		            TripleCollection poiGraph = queryNearby(point, dataSetUrl, 1);
+		            TripleCollection poiGraph = queryNearby(point, dataSetUrl, 0.5);
                     if(poiGraph.size() > 0){
                      result.addAll(poiGraph);
                     }
@@ -148,7 +149,7 @@ public class SpatialDataEnhancer {
      * @param radius
      * @return
      */
-    public TripleCollection queryNearby(WGS84Point point, String graphName, int radius){
+    public TripleCollection queryNearby(WGS84Point point, String graphName, double radius){
         TripleCollection resultGraph = new SimpleMGraph();
         log.info("queryNearby()");
         long startTime = System.nanoTime();
@@ -186,8 +187,8 @@ public class SpatialDataEnhancer {
                 String poiLongitude = solution.getLiteral("lon").getString();
                 log.info("poi name: " + poiName + " label = " + poiLabel);
                 UriRef poiRef = new UriRef(poiName);
-                String pointName = checkUriName(point.getUriName());
-                resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
+                String positionUri = checkUriName(point.getUriName());
+                resultGraph.add( new TripleImpl(poiRef, FOAF.based_near, new UriRef(positionUri)) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
                 resultGraph.add( new TripleImpl(poiRef, RDF.type, new UriRef(poiType)));
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
@@ -215,7 +216,7 @@ public class SpatialDataEnhancer {
      * @param radius
      * @return
      */
-    public TripleCollection queryEventsNearby(WGS84Point point, String graphName, int radius){
+    public TripleCollection queryEventsNearby(WGS84Point point, String graphName, double radius){
         TripleCollection resultGraph = new SimpleMGraph();
         log.info("queryNearby()");
         long startTime = System.nanoTime();
@@ -236,6 +237,7 @@ public class SpatialDataEnhancer {
                 "   ?location rdf:type ?type . ",
                 "   ?location rdfs:label ?label .",
                 "   ?event schema:location ?location .",
+                "   ?event rdfs:label ?eventLabel .",
                 "   ?event schema:startDate ?start .",
                 "   FILTER(?start >= \"" + point.getStartDate() + "\"^^xsd:date ) ",
                 " }",
@@ -252,21 +254,23 @@ public class SpatialDataEnhancer {
                 QuerySolution solution = results.nextSolution() ;
                 String poiUri = solution.getResource("location").getURI();
                 String poiName = checkUriName(poiUri);
-                String poiType = checkUriName(solution.getResource("type").getURI());
                 String poiLabel = solution.getLiteral("label").getString();
                 String poiLatitude = solution.getLiteral("lat").getString();
                 String poiLongitude = solution.getLiteral("lon").getString();
                 log.info("poi name: " + poiName + " label = " + poiLabel);
                 UriRef poiRef = new UriRef(poiName);                
-                String pointName = checkUriName(point.getUriName());
-                resultGraph.add( new TripleImpl(new UriRef(pointName), FOAF.based_near, poiRef) );               
+                String positionUri = checkUriName(point.getUriName());
+                resultGraph.add( new TripleImpl(poiRef, FOAF.based_near, new UriRef(positionUri)) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
-                resultGraph.add( new TripleImpl(poiRef, RDF.type, new UriRef(poiType)));
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
-                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );
+                resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );           
                 String eventUri = solution.getResource("event").getURI();
+                String eventLabel = solution.getLiteral("eventLabel").getString();
                 String startDate = solution.getLiteral("start").getString();
                 UriRef eventRef = new UriRef(eventUri);
+                resultGraph.add(new TripleImpl(eventRef, RDFS.label, new PlainLiteralImpl(eventLabel)) );
+                resultGraph.add(new TripleImpl(eventRef,schema_location, poiRef));
+                resultGraph.add(new TripleImpl(poiRef,schema_event, eventRef));
                 resultGraph.add(new TripleImpl(eventRef,schema_startDate,new TypedLiteralImpl(startDate, XSD.double_)));
                 poiCounter++;
                 

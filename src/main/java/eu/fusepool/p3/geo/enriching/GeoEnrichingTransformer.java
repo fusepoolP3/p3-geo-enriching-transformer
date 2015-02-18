@@ -41,12 +41,16 @@ class GeoEnrichingTransformer extends RdfGeneratingTransformer {
     
     final SpatialDataEnhancer spatialDataEnhancer;
     final String kbDataUrl;
+    final String geoJsonMimeType = "application/vnd.geo+json";
 
     GeoEnrichingTransformer(SpatialDataEnhancer spatialDataEnhancer, String kbDataUrl) {
         this.spatialDataEnhancer = spatialDataEnhancer;
         this.kbDataUrl = kbDataUrl;
     }
 
+    /**
+     * Set of client data formats supported.
+     */
     @Override
     public Set<MimeType> getSupportedInputFormats() {
         Parser parser = Parser.getInstance();
@@ -56,6 +60,21 @@ class GeoEnrichingTransformer extends RdfGeneratingTransformer {
               mimeSet.add(new MimeType(mediaFormat));
             }
             return Collections.unmodifiableSet(mimeSet);
+        } catch (MimeTypeParseException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    
+    /**
+     * Set of transformer output data formats supported.
+     */
+    @Override
+    public Set<MimeType> getSupportedOutputFormats() {
+        try {
+          Set<MimeType> mimeSet = new HashSet<MimeType>();  
+          mimeSet.add(new MimeType("text/turtle"));
+          mimeSet.add(new MimeType(geoJsonMimeType));
+          return Collections.unmodifiableSet(mimeSet);
         } catch (MimeTypeParseException ex) {
             throw new RuntimeException(ex);
         }
@@ -82,7 +101,7 @@ class GeoEnrichingTransformer extends RdfGeneratingTransformer {
     @Override
     public boolean isLongRunning() {
         // downloading the dataset can be time consuming
-        return true;
+        return false;
     }
 
 }
