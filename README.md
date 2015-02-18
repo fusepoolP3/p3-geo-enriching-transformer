@@ -29,23 +29,7 @@ If you store the above example content in a file `test_geo_enricher.ttl` you can
 
     curl -i -X POST -H "Content-Type: text/turtle" -d @test_geo_enricher.ttl http://localhost:7100/?graph=file:///home/user/eventi.ttl
 
-If the data set can be put in a server use its http url in place of the file url. The command start an asynchronous task and the server sends the following
-information to the client to tell where the result could be fetched
-
-    HTTP/1.1 100 Continue
-
-
-    HTTP/1.1 202 Accepted
-    Date: Tue, 21 Oct 2014 09:01:08 GMT
-    Location: /job/1bd4b0ad-5054-41ae-a429-949883a95f82
-    Transfer-Encoding: chunked
-    Server: Jetty(9.2.0.RC0)
-
-In order to get the result the following HTTP GET request must be sent to the server
-
-    curl http://localhost:7100/job/1bd4b0ad-5054-41ae-a429-949883a95f82
-
-The result is a graph of points of interest close to the location specified by the client in the request data
+If the data set can be put in a server use its http url in place of the file url. The result is a graph of points of interest close to the location specified by the client in the request data
 
     <urn:uuid:fusepoolp3:pharmacy:16670>
         a       <http://schema.org/Pharmacy> ;
@@ -54,6 +38,8 @@ The result is a graph of points of interest close to the location specified by t
         <http://www.w3.org/2003/01/geo/wgs84_pos#lat>
                 "46.0524938275703"^^<http://www.w3.org/2001/XMLSchema#float> ;
         <http://www.w3.org/2003/01/geo/wgs84_pos#long>
-                "11.1198202997403"^^<http://www.w3.org/2001/XMLSchema#float> .
+                "11.1198202997403"^^<http://www.w3.org/2001/XMLSchema#float> ;
+        <http://xmlns.com/foaf/0.1/based_near>
+                <urn:uuid:fusepoolp3:myplace> .
 
 In case a date was given related to the position by a schema:startDate predicate, as in the above example, the points of interest are intended to be locations of events and will be filtered further so that only events nearby that happen after that date will be returned. 
