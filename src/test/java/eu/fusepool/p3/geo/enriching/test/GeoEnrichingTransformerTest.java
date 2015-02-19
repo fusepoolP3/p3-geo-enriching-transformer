@@ -42,6 +42,7 @@ import javax.activation.MimeTypeParseException;
 
 import org.apache.clerezza.rdf.core.MGraph;
 import org.apache.clerezza.rdf.core.UriRef;
+import org.apache.clerezza.rdf.core.impl.PlainLiteralImpl;
 import org.apache.clerezza.rdf.core.impl.SimpleMGraph;
 import org.apache.clerezza.rdf.core.impl.TypedLiteralImpl;
 import org.apache.clerezza.rdf.core.serializedform.Serializer;
@@ -53,6 +54,9 @@ import org.junit.Rule;
 public class GeoEnrichingTransformerTest {
 	private static final UriRef LONG = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#long");
     private static final UriRef LAT = new UriRef("http://www.w3.org/2003/01/geo/wgs84_pos#lat");
+    private static final UriRef schema_circle = new UriRef("http://schema.org/circle");
+    private static final UriRef schema_containedIn = new UriRef("http://schema.org/containedIn");
+    
     private static MimeType turtle;
     static {
         try {
@@ -129,6 +133,7 @@ public class GeoEnrichingTransformerTest {
         final GraphNode node1 = new GraphNode(res1, graphToEnrich1);
         node1.addProperty(LAT, new TypedLiteralImpl("46.2220374200606", XSD.float_));
         node1.addProperty(LONG, new TypedLiteralImpl("10.7963137713743", XSD.float_));
+        node1.addProperty(schema_circle, new PlainLiteralImpl("46.222 10.796 10000"));
         final ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
         Serializer.getInstance().serialize(baos1, graphToEnrich1, "text/turtle");
         final byte[] ttlData1 = baos1.toByteArray();
@@ -161,7 +166,7 @@ public class GeoEnrichingTransformerTest {
 
             final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
             //is there a better property for nearby?
-            final Iterator<Triple> baseNearIter = responseGraph.filter(null, FOAF.based_near, res1);
+            final Iterator<Triple> baseNearIter = responseGraph.filter(null, schema_containedIn, res1);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
             //verify that the data has been loaded from the server (one call)
             verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-uuid.ttl")));
@@ -192,7 +197,7 @@ public class GeoEnrichingTransformerTest {
 
             final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
             //is there a better property for nearby?
-            final Iterator<Triple> baseNearIter = responseGraph.filter(null, FOAF.based_near, res1);
+            final Iterator<Triple> baseNearIter = responseGraph.filter(null, schema_containedIn, res1);
             Assert.assertTrue("No base_near property on res1 in response", baseNearIter.hasNext());
             //verify that the data has not been loaded from the server (still only one call)
             verify(1,getRequestedFor(urlEqualTo("/data/farmacie-trentino-uuid.ttl")));
@@ -209,8 +214,9 @@ public class GeoEnrichingTransformerTest {
         final MGraph graphToEnrich2 = new SimpleMGraph();
         final UriRef res2 = new UriRef("http://example.org/res2");
         final GraphNode node2 = new GraphNode(res2, graphToEnrich2);
-        node2.addProperty(LAT, new TypedLiteralImpl("46.064", XSD.double_));
-        node2.addProperty(LONG, new TypedLiteralImpl("11.123", XSD.double_));
+        node2.addProperty(LAT, new TypedLiteralImpl("46.0672", XSD.double_));
+        node2.addProperty(LONG, new TypedLiteralImpl("11.1200", XSD.double_));
+        node2.addProperty(schema_circle, new PlainLiteralImpl("46.064 11.123 100"));
         final ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
         Serializer.getInstance().serialize(baos2, graphToEnrich2, "text/turtle");
         final byte[] ttlData2 = baos2.toByteArray();
@@ -242,7 +248,7 @@ public class GeoEnrichingTransformerTest {
 
             final Graph responseGraph = Parser.getInstance().parse(response.getData(), "text/turtle");
             //is there a better property for nearby?
-            final Iterator<Triple> baseNearIter = responseGraph.filter(null, FOAF.based_near, res2);
+            final Iterator<Triple> baseNearIter = responseGraph.filter(null, schema_containedIn, res2);
             Assert.assertTrue("No base_near property on res2 in response", baseNearIter.hasNext());
             //verify that the data has been loaded from the server (one call)
             verify(1,getRequestedFor(urlEqualTo("/data/local-business-trento-uuid.ttl")));

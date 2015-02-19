@@ -63,10 +63,18 @@ public class SpatialDataEnhancer {
     private static final UriRef schema_location = new UriRef("http://schema.org/location");
     private static final UriRef schema_startDate = new UriRef("http://schema.org/startDate");
     private static final UriRef schema_endDate = new UriRef("http://schema.org/endDate");
+    private static final UriRef schema_circle = new UriRef("http://schema.org/circle");
+    private static final UriRef schema_containedIn = new UriRef("http://schema.org/containedIn");
     
     File LUCENE_INDEX_DIR = null;
     File TDB_DIR = null;
     Dataset spatialDataset = null;
+    
+    private class Circle {
+        double centerLong;
+        double centerLat;
+        double radius = 500.0; // default value for radius in meters
+    }
     
     static {
         LogCtl.setLog4j();
@@ -97,14 +105,15 @@ public class SpatialDataEnhancer {
 		            log.info("Rdf data set " + dataSetUrl + " already in the triple store.");
 		        }
 		        WGS84Point point = getPoint(dataToEnhance);
+		        double radius = getCircle(dataToEnhance).radius;
 		        if(point.getStartDate() != null || point.getEndDate() != null){ 
-    		        TripleCollection poiGraph = queryEventsNearby(point, dataSetUrl, 0.5);
+    		        TripleCollection poiGraph = queryEventsNearby(point, dataSetUrl, radius);
     		        if(poiGraph.size() > 0){
     		         result.addAll(poiGraph);
     		        }
 		        }
 		        else {
-		            TripleCollection poiGraph = queryNearby(point, dataSetUrl, 0.5);
+		            TripleCollection poiGraph = queryNearby(point, dataSetUrl, radius);
                     if(poiGraph.size() > 0){
                      result.addAll(poiGraph);
                     }
@@ -134,12 +143,30 @@ public class SpatialDataEnhancer {
         point.setLat(Double.valueOf(latitude));
         point.setLong(Double.valueOf(longitude));
         // look for events linked to places
-        if(graph.filter(pointRef, schema_event, null).hasNext()){
-            NonLiteral event = (NonLiteral)graph.filter(pointRef, schema_event, null).next().getObject();        
-            String startDate = ( (TypedLiteral) graph.filter(event, schema_startDate, null).next().getObject()).getLexicalForm();
+        if(graph.filter(null, schema_startDate, null).hasNext()){                    
+            String startDate = ( (TypedLiteral) graph.filter(null, schema_startDate, null).next().getObject()).getLexicalForm();
             point.setStartDate(startDate);
         }
         return point;
+    }
+    /**
+     * Returns a circle object with the geo coordinate and radius of the circle centered around a position.
+     * @param positionRef
+     * @param graph
+     * @return
+     */
+    public Circle getCircle(TripleCollection graph) {
+        Circle circle = new Circle();
+        if (graph.filter(null, schema_circle, null).hasNext()) {
+            String circleTxt = ((PlainLiteralImpl) graph.filter(null, schema_circle, null).next().getObject()).getLexicalForm();
+            String [] circleData = circleTxt.split(" ");
+            circle.centerLat = Double.parseDouble(circleData[0]);
+            circle.centerLong = Double.parseDouble(circleData[1]);
+            if (circleData[2] != null && ! "".equals(circleData[2]) ) {
+                circle.radius = Double.parseDouble(circleData[2]);
+            }
+        }
+        return circle;
     }
     /**
      * Searches for points of interest within a circle of a given radius. 
@@ -162,7 +189,7 @@ public class SpatialDataEnhancer {
                 "FROM NAMED <" + graphName + ">",
                 "WHERE { ",
                 "GRAPH <" + graphName + "> ",
-                " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'km') ;",
+                " { ?s spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'm') ;",
                 "      rdf:type ?type ; ",
                 "      geo:lat ?lat ;" ,
                 "      geo:long ?lon ; ",
@@ -188,7 +215,7 @@ public class SpatialDataEnhancer {
                 log.info("poi name: " + poiName + " label = " + poiLabel);
                 UriRef poiRef = new UriRef(poiName);
                 String positionUri = checkUriName(point.getUriName());
-                resultGraph.add( new TripleImpl(poiRef, FOAF.based_near, new UriRef(positionUri)) );               
+                resultGraph.add( new TripleImpl(poiRef, schema_containedIn, new UriRef(positionUri)) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
                 resultGraph.add( new TripleImpl(poiRef, RDF.type, new UriRef(poiType)));
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
@@ -231,7 +258,7 @@ public class SpatialDataEnhancer {
                 "FROM NAMED <" + graphName + ">",
                 "WHERE { ",
                 "GRAPH <" + graphName + "> ",
-                " { ?location spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'km') .",
+                " { ?location spatial:nearby (" + point.getLat() + " " + point.getLong() + " " + radius + " 'm') .",
                 "   ?location geo:lat ?lat ." ,
                 "   ?location geo:long ?lon . ",
                 "   ?location rdf:type ?type . ",
@@ -260,7 +287,7 @@ public class SpatialDataEnhancer {
                 log.info("poi name: " + poiName + " label = " + poiLabel);
                 UriRef poiRef = new UriRef(poiName);                
                 String positionUri = checkUriName(point.getUriName());
-                resultGraph.add( new TripleImpl(poiRef, FOAF.based_near, new UriRef(positionUri)) );               
+                resultGraph.add( new TripleImpl(poiRef, schema_containedIn, new UriRef(positionUri)) );               
                 resultGraph.add( new TripleImpl(poiRef, RDFS.label, new PlainLiteralImpl(poiLabel)) );
                 resultGraph.add( new TripleImpl(poiRef, geo_lat, new TypedLiteralImpl(poiLatitude, XSD.float_)) );
                 resultGraph.add( new TripleImpl(poiRef, geo_long, new TypedLiteralImpl(poiLongitude, XSD.float_)) );           
