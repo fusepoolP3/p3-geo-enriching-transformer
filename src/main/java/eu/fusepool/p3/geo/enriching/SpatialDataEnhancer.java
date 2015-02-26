@@ -145,7 +145,9 @@ public class SpatialDataEnhancer {
         // look for events linked to places
         if(graph.filter(null, schema_startDate, null).hasNext()){                    
             String startDate = ( (TypedLiteral) graph.filter(null, schema_startDate, null).next().getObject()).getLexicalForm();
+            String endDate = ( (TypedLiteral) graph.filter(null, schema_endDate, null).next().getObject()).getLexicalForm();
             point.setStartDate(startDate);
+            point.setEndDate(endDate);
         }
         return point;
     }
@@ -193,7 +195,6 @@ public class SpatialDataEnhancer {
                 "      rdf:type ?type ; ",
                 "      geo:lat ?lat ;" ,
                 "      geo:long ?lon ; ",
-                
                 "      rdfs:label ?label .", " }",
                 "}");
 
@@ -266,7 +267,8 @@ public class SpatialDataEnhancer {
                 "   ?event schema:location ?location .",
                 "   ?event rdfs:label ?eventLabel .",
                 "   ?event schema:startDate ?start .",
-                "   FILTER(?start >= \"" + point.getStartDate() + "\"^^xsd:date ) ",
+                "   ?event schema:endDate ?end .",
+                "   FILTER(?start >= \"" + point.getStartDate() + "\"^^xsd:date && ?end <= \"" + point.getEndDate() + "\"^^xsd:date ) ",
                 " }",
                 "}");
 
@@ -294,11 +296,13 @@ public class SpatialDataEnhancer {
                 String eventUri = solution.getResource("event").getURI();
                 String eventLabel = solution.getLiteral("eventLabel").getString();
                 String startDate = solution.getLiteral("start").getString();
+                String endDate = solution.getLiteral("end").getString();
                 UriRef eventRef = new UriRef(eventUri);
                 resultGraph.add(new TripleImpl(eventRef, RDFS.label, new PlainLiteralImpl(eventLabel)) );
                 resultGraph.add(new TripleImpl(eventRef,schema_location, poiRef));
                 resultGraph.add(new TripleImpl(poiRef,schema_event, eventRef));
                 resultGraph.add(new TripleImpl(eventRef,schema_startDate,new TypedLiteralImpl(startDate, XSD.double_)));
+                resultGraph.add(new TripleImpl(eventRef,schema_endDate,new TypedLiteralImpl(endDate, XSD.double_)));
                 poiCounter++;
                 
             }
