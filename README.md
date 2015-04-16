@@ -1,4 +1,4 @@
-Fusepool P3 Geo-enriching Transformer
+Geo-enriching Transformer
 ============================
 
 A transformer enriching RDF data containing the position of the client with information about events and points of interest nearby this position.
@@ -6,6 +6,7 @@ Implements the requirement in [FP-205](https://fusepool.atlassian.net/browse/FP-
 
 [![Build Status](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer.svg)](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer)
 
+## Compiling and Running
 Compile the application running the command
 
     mvn install
@@ -14,6 +15,7 @@ Start the application using the command
 
     mvn exec:java
 
+## Usage
 To search for points of interest around a place send an http post message with the data containing its geographic coordinates position and the URL of the data set in which to search for points of interest nearby it. The position of the client must be described like in the following  
 
     @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
