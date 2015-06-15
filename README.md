@@ -6,11 +6,11 @@ Implements the requirement in [FP-205](https://fusepool.atlassian.net/browse/FP-
 
 ## Try it out
 
-First, obtain the latest [release](https://github.com/fusepoolP3/p3-geocoordinates-transformer/releases/latest).
+First, obtain the latest [release](https://github.com/fusepoolP3/p3-geo-enriching-transformer/releases/latest).
 
 Next, start the transformer:
 
-    java -jar p3-geocoordinates-transformer-v*-jar-with-dependencies.jar
+    java -jar geo-enriching-transformer-v*-jar-with-dependencies.jar
 
 To obtain the supported input/output-formats of the transformer, query it with the curl-utility:
 
