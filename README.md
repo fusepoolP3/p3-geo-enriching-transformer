@@ -1,17 +1,29 @@
-Geo-enriching Transformer
-============================
+Geo-enriching Transformer [![Build Status](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer.svg)](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer)
+=========================
 
 A transformer enriching RDF data containing the position of the client with information about events and points of interest nearby this position.
 Implements the requirement in [FP-205](https://fusepool.atlassian.net/browse/FP-205).
 
-[![Build Status](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer.svg)](https://travis-ci.org/fusepoolP3/p3-geo-enriching-transformer)
+## Try it out
+
+First, obtain the latest [release](https://github.com/fusepoolP3/p3-geocoordinates-transformer/releases/latest).
+
+Next, start the transformer:
+
+    java -jar p3-geocoordinates-transformer-v*-jar-with-dependencies.jar
+
+To obtain the supported input/output-formats of the transformer, query it with the curl-utility:
+
+    curl -X GET -H "ContentType: text/turtle" http://localhost:7100
+
+For advanced testing of the transformer, refer to the section "Usage" just below.
 
 ## Compiling and Running
-Compile the application running the command
+Compile the transformer using maven:
 
     mvn install
 
-Start the application using the command
+To start the compiled transformer, also use maven:
 
     mvn exec:java
 
