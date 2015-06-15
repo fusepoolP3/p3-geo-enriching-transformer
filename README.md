@@ -14,7 +14,7 @@ Next, start the transformer:
 
 To obtain the supported input/output-formats of the transformer, query it with the curl-utility:
 
-    curl -X GET -H "ContentType: text/turtle" http://localhost:7100
+    curl http://localhost:7100
 
 For advanced testing of the transformer, refer to the section "Usage" just below.
 
